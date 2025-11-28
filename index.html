@@ -5,6 +5,15 @@
     <title>Salvatori Servicio Automotriz | Su Taller Experto</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Salvatori Servicio Automotriz, taller mecánico en Gómez Palacio, especialistas en mantenimiento, diagnóstico y flotas Uber/Didi.">
+
+    <!-- Fuente moderna (Poppins) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Favicon (icono pestaña) -->
+    <link rel="icon" type="image/png" href="img/favicon.png">
+
     <style>
         :root {
             --rojo: #c62828;
@@ -21,7 +30,7 @@
 
         body {
             margin: 0;
-            font-family: Arial, Helvetica, sans-serif;
+            font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
             color: var(--texto);
             background-color: var(--gris-fondo);
         }
@@ -59,13 +68,17 @@
         .logo-img {
             width: 56px;
             height: 56px;
-            background: #ddd;
             border-radius: 8px;
+            overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 11px;
-            text-align: center;
+            background: #111;
+        }
+
+        .logo-img img {
+            max-width: 100%;
+            max-height: 100%;
         }
 
         .logo-text {
@@ -110,11 +123,18 @@
             font-weight: bold;
         }
 
+        .contact-dato {
+            font-weight: 600;
+        }
+
         /* HERO */
         .hero {
             background: linear-gradient(135deg, var(--rojo) 0%, var(--rojo-oscuro) 50%, #000000 100%);
             color: #ffffff;
             padding: 40px 16px 30px;
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
         }
 
         .hero-inner {
@@ -128,14 +148,14 @@
 
         .hero h1 {
             margin-top: 0;
-            font-size: 28px;
+            font-size: 30px;
             margin-bottom: 10px;
         }
 
         .hero h2 {
             margin: 0;
             font-size: 18px;
-            font-weight: normal;
+            font-weight: 400;
             color: #ffeb3b;
         }
 
@@ -146,7 +166,7 @@
             margin-top: 12px;
             padding: 6px 10px;
             border-radius: 20px;
-            background: rgba(0,0,0,0.3);
+            background: rgba(0,0,0,0.35);
             font-size: 12px;
         }
 
@@ -182,11 +202,17 @@
             padding: 10px 18px;
             font-size: 14px;
             cursor: pointer;
-            font-weight: bold;
+            font-weight: 600;
             display: inline-flex;
             align-items: center;
             justify-content: center;
             gap: 6px;
+            transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 3px 8px rgba(0,0,0,0.18);
         }
 
         .btn-primary {
@@ -215,6 +241,12 @@
             border-radius: 12px;
             box-shadow: 0 6px 18px rgba(0,0,0,0.35);
             font-size: 13px;
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
+        }
+
+        .hero-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.4);
         }
 
         .hero-card h3 {
@@ -259,6 +291,12 @@
             padding: 14px;
             box-shadow: 0 2px 6px rgba(0,0,0,0.08);
             font-size: 13px;
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
+        }
+
+        .servicio-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 14px rgba(0,0,0,0.12);
         }
 
         .servicio-card h3 {
@@ -300,7 +338,7 @@
         }
 
         .resaltado {
-            font-weight: bold;
+            font-weight: 600;
             color: var(--rojo-oscuro);
         }
 
@@ -317,6 +355,13 @@
             padding: 14px;
             font-size: 13px;
             border-left: 5px solid var(--verde);
+            box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
+        }
+
+        .promo-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 14px rgba(0,0,0,0.12);
         }
 
         .promo-card h3 {
@@ -328,76 +373,6 @@
             font-size: 12px;
             color: #555;
             margin-top: 6px;
-        }
-
-        /* RECEPCIÓN */
-        .recepcion-wrapper {
-            background: #ffffff;
-            border-radius: 12px;
-            padding: 18px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-        }
-
-        .recepcion-grid {
-            display: grid;
-            grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
-            gap: 20px;
-        }
-
-        form label {
-            display: block;
-            margin-top: 8px;
-            font-size: 13px;
-            font-weight: bold;
-        }
-
-        form input,
-        form select,
-        form textarea {
-            width: 100%;
-            padding: 7px;
-            margin-top: 3px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-            font-size: 13px;
-        }
-
-        form textarea {
-            min-height: 70px;
-            resize: vertical;
-        }
-
-        .fila-doble {
-            display: flex;
-            gap: 10px;
-        }
-
-        .fila-doble > div {
-            flex: 1;
-        }
-
-        .campo-mini {
-            font-size: 11px;
-            font-weight: normal;
-        }
-
-        .mensaje-form {
-            margin-top: 10px;
-            font-size: 12px;
-        }
-
-        .mensaje-ok {
-            color: var(--verde);
-        }
-
-        .mensaje-error {
-            color: var(--rojo);
-        }
-
-        .nota-legal {
-            font-size: 11px;
-            color: #666;
-            margin-top: 10px;
         }
 
         /* CONTACTO */
@@ -413,6 +388,12 @@
             padding: 14px;
             border-radius: 10px;
             box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
+        }
+
+        .contact-block:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 14px rgba(0,0,0,0.12);
         }
 
         .contact-block h3 {
@@ -424,10 +405,6 @@
             margin: 4px 0;
         }
 
-        .contact-dato {
-            font-weight: bold;
-        }
-
         .mapa-falso {
             background: #ddd;
             height: 180px;
@@ -437,6 +414,7 @@
             justify-content: center;
             font-size: 12px;
             text-align: center;
+            overflow: hidden;
         }
 
         /* FOOTER */
@@ -452,7 +430,6 @@
         /* RESPONSIVE */
         @media (max-width: 800px) {
             .hero-inner,
-            .recepcion-grid,
             .plataformas,
             .contact-grid {
                 grid-template-columns: 1fr;
@@ -466,6 +443,18 @@
             .nav-contact {
                 text-align: left;
             }
+
+            .hero {
+                padding-top: 26px;
+                padding-bottom: 26px;
+                min-height: auto;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .section {
+                padding: 24px 12px;
+            }
         }
     </style>
 </head>
@@ -474,9 +463,9 @@
 <header>
     <div class="nav-container">
         <div class="logo-area">
-            <!-- Sustituye estas cajas por tus imágenes reales -->
             <div class="logo-img">
-                LOGO<br>SALVATORI
+                <!-- Asegúrate de subir img/logo-salvatori.png -->
+                <img src="img/logo-salvatori.png" alt="Logo Salvatori Servicio Automotriz">
             </div>
             <div class="logo-text">
                 <strong>Salvatori Servicio Automotriz</strong>
@@ -490,7 +479,7 @@
             <a href="#servicios">Servicios</a>
             <a href="#plataformas">Uber / Didi</a>
             <a href="#promos">Promociones</a>
-            <a href="#recepcion">Recepción en línea</a>
+            <a href="recepcion/">Recepción en línea</a>
             <a href="#contacto">Contacto</a>
         </nav>
 
@@ -524,7 +513,7 @@
                 </p>
 
                 <div class="hero-cta">
-                    <button class="btn btn-primary" onclick="document.getElementById('recepcion').scrollIntoView({behavior:'smooth'})">
+                    <button class="btn btn-primary" onclick="location.href='recepcion/'">
                         Agendar recepción en línea
                     </button>
                     <a href="https://wa.me/5218711562351" target="_blank" rel="noopener">
@@ -618,7 +607,7 @@
             <div>
                 <div class="contact-block">
                     <h3>¿Eres driver y quieres entrar al programa?</h3>
-                    <p>1. Regístrate en la sección de <a href="#recepcion"><strong>Recepción en línea</strong></a> indicando que eres Uber / Didi.</p>
+                    <p>1. Regístrate en la página de <a href="recepcion/"><strong>Recepción en línea</strong></a> indicando que eres Uber / Didi.</p>
                     <p>2. Menciona a tu asesor si vienes por recomendación de algún grupo o administrador.</p>
                     <p>3. Nosotros nos encargamos de la bitácora, recordatorios y seguimiento de tu auto.</p>
                     <p style="margin-top:8px;">
@@ -659,128 +648,6 @@
         </div>
     </section>
 
-    <!-- RECEPCIÓN EN LÍNEA -->
-    <section id="recepcion" class="section">
-        <h2>Recepción de vehículo en línea</h2>
-        <p class="sub">
-            Llena este formato para adelantar la recepción de tu vehículo. Te contactaremos para confirmar hora y detalles.
-            Toda la información se registra en nuestro sistema interno.
-        </p>
-
-        <div class="recepcion-wrapper">
-            <div class="recepcion-grid">
-                <div>
-                    <form id="frmRecepcion">
-                        <h3>Datos del cliente</h3>
-
-                        <label for="tipoCliente">Tipo de cliente</label>
-                        <select id="tipoCliente" name="TipoCliente">
-                            <option value="Particular">Particular</option>
-                            <option value="Uber/Didi">Uber / Didi</option>
-                            <option value="Flota/Empresa">Flota / Empresa</option>
-                        </select>
-
-                        <label for="nombreCliente">Nombre completo *</label>
-                        <input type="text" id="nombreCliente" name="NombreCliente" required>
-
-                        <div class="fila-doble">
-                            <div>
-                                <label for="telefono">Teléfono *</label>
-                                <input type="tel" id="telefono" name="Telefono" required>
-                            </div>
-                            <div>
-                                <label for="correo">Correo electrónico</label>
-                                <input type="email" id="correo" name="Correo">
-                            </div>
-                        </div>
-
-                        <h3 style="margin-top:16px;">Datos del vehículo</h3>
-
-                        <div class="fila-doble">
-                            <div>
-                                <label for="marca">Marca</label>
-                                <input type="text" id="marca" name="Marca">
-                            </div>
-                            <div>
-                                <label for="modelo">Modelo</label>
-                                <input type="text" id="modelo" name="Modelo">
-                            </div>
-                        </div>
-
-                        <div class="fila-doble">
-                            <div>
-                                <label for="ano">Año</label>
-                                <input type="number" id="ano" name="Ano" min="1980" max="2100">
-                            </div>
-                            <div>
-                                <label for="placas">Placas</label>
-                                <input type="text" id="placas" name="Placas">
-                            </div>
-                        </div>
-
-                        <div class="fila-doble">
-                            <div>
-                                <label for="kilometraje">Kilometraje</label>
-                                <input type="number" id="kilometraje" name="Kilometraje" min="0" step="1">
-                            </div>
-                            <div>
-                                <label for="fechaCompromiso">Fecha tentativa de entrega
-                                    <span class="campo-mini">(si la conoces)</span>
-                                </label>
-                                <input type="date" id="fechaCompromiso" name="FechaCompromiso">
-                            </div>
-                        </div>
-
-                        <h3 style="margin-top:16px;">Servicio solicitado</h3>
-
-                        <label for="trabajoSolicitado">Describe el problema o servicio requerido *</label>
-                        <textarea id="trabajoSolicitado" name="TrabajoSolicitado" required></textarea>
-
-                        <label for="observaciones">Observaciones adicionales</label>
-                        <textarea id="observaciones" name="Observaciones" placeholder="Ej. ruidos, testigos en el tablero, historial reciente, etc."></textarea>
-
-                        <label>
-                            <input type="checkbox" id="autorizaPrueba" name="AutorizaPruebaManejo" value="Sí">
-                            Autorizo que se realice prueba de manejo si es necesario.
-                        </label>
-
-                        <button type="submit" class="btn btn-primary" style="margin-top:10px;">
-                            Enviar recepción
-                        </button>
-
-                        <div id="msgForm" class="mensaje-form"></div>
-
-                        <p class="nota-legal">
-                            La información proporcionada se utiliza únicamente para seguimiento de servicio y
-                            administración interna del taller.
-                        </p>
-                    </form>
-                </div>
-
-                <div>
-                    <h3>¿Qué pasa con tus datos?</h3>
-                    <p style="font-size:13px;">
-                        Cada recepción que envías desde esta página se guarda en nuestro sistema interno y en una
-                        bitácora en Excel para llevar el control de:
-                    </p>
-                    <ul class="lista-simple">
-                        <li>Datos del cliente y del vehículo.</li>
-                        <li>Servicios solicitados y observaciones.</li>
-                        <li>Histórico de visitas al taller.</li>
-                    </ul>
-                    <p style="font-size:13px;margin-top:8px;">
-                        Al llegar al taller solo confirmamos la información, revisamos físicamente la unidad y se
-                        genera la orden de trabajo con todo el detalle.
-                    </p>
-                    <p style="font-size:12px;margin-top:10px;color:#777;">
-                        Si prefieres, también puedes agendar por teléfono o WhatsApp y nosotros llenamos el formato
-                        por ti.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- CONTACTO -->
     <section id="contacto" class="section">
         <h2>Contacto y ubicación</h2>
@@ -810,8 +677,9 @@
             <div class="contact-block">
                 <h3>Ubicación de referencia</h3>
                 <div class="mapa-falso">
-                    Aquí puedes incrustar un mapa de Google Maps<br>
-                    (reemplaza este recuadro con el iframe real si lo deseas).
+                    <!-- Sustituye este bloque por el iframe real de Google Maps -->
+                    Aquí va el mapa de Google Maps.<br>
+                    En Google Maps → Compartir → Insertar un mapa → pega el código iframe aquí.
                 </div>
                 <p style="margin-top:8px;font-size:12px;">
                     Si lo prefieres, búscanos en Google como <strong>“Salvatori Servicio Automotriz”</strong>
@@ -826,73 +694,6 @@
 <footer>
     Salvatori Servicio Automotriz · Su Taller Experto · Francisco I. Madero 453 Nte., Gómez Palacio · Tel. 871 723 043 · WhatsApp 871 156 2351
 </footer>
-
-<script>
-    // ====== CONFIGURA AQUÍ TU WEBHOOK DE MAKE ======
-    // Reemplaza el texto entre comillas por la URL del webhook de Make
-    const WEBHOOK_URL = "TU_URL_WEBHOOK_AQUI";
-
-    const frm = document.getElementById('frmRecepcion');
-    const msgForm = document.getElementById('msgForm');
-
-    frm.addEventListener('submit', async function (e) {
-        e.preventDefault();
-
-        msgForm.textContent = "Enviando recepción...";
-        msgForm.className = "mensaje-form";
-
-        const btn = frm.querySelector('button[type="submit"]');
-        btn.disabled = true;
-
-        const ahora = new Date();
-        const fechaISO = ahora.toISOString().split('T')[0];
-        const hora = ahora.toTimeString().split(' ')[0];
-
-        const datos = {
-            Fecha: fechaISO,
-            Hora: hora,
-            TipoCliente: frm.TipoCliente.value,
-            NombreCliente: frm.NombreCliente.value,
-            Telefono: frm.Telefono.value,
-            Correo: frm.Correo.value,
-            Marca: frm.Marca.value,
-            Modelo: frm.Modelo.value,
-            Ano: frm.Ano.value,
-            Placas: frm.Placas.value,
-            Kilometraje: frm.Kilometraje.value,
-            FechaCompromiso: frm.FechaCompromiso.value,
-            TrabajoSolicitado: frm.TrabajoSolicitado.value,
-            Observaciones: frm.Observaciones.value,
-            AutorizaPruebaManejo: frm.AutorizaPruebaManejo.checked ? "Sí" : "No",
-            Origen: "Web Recepción Salvatori"
-        };
-
-        try {
-            const resp = await fetch(WEBHOOK_URL, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(datos)
-            });
-
-            if (resp.ok) {
-                msgForm.textContent = "¡Recepción enviada correctamente! Te contactaremos para confirmar.";
-                msgForm.className = "mensaje-form mensaje-ok";
-                frm.reset();
-            } else {
-                msgForm.textContent = "Hubo un problema al enviar la información. Intenta de nuevo o contáctanos por WhatsApp.";
-                msgForm.className = "mensaje-form mensaje-error";
-            }
-        } catch (err) {
-            console.error(err);
-            msgForm.textContent = "Error de conexión. Revisa tu internet o envíanos un mensaje por WhatsApp.";
-            msgForm.className = "mensaje-form mensaje-error";
-        } finally {
-            btn.disabled = false;
-        }
-    });
-</script>
 
 </body>
 </html>
