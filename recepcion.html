@@ -655,7 +655,7 @@
 
         <!-- ACCIONES -->
         <div class="acciones-form">
-            <button type="button" class="btn btn-secondary" onclick="document.getElementById('frmRecepcion').reset();">
+            <button type="button" class="btn btn-secondary" onclick="document.getElementById('frmRecepcion').reset(); initFechaHora();">
                 Limpiar formulario
             </button>
             <button type="submit" class="btn btn-primary">
@@ -672,11 +672,11 @@
 </footer>
 
 <script>
-    // 🔗 PON AQUÍ TU WEBHOOK DE MAKE
-    const WEBHOOK_URL = "https://hook.us2.make.com/qalrej6f1ms2a6bssqkjte8got8kbuzu"; // ← reemplazar
+    // 🔗 TU WEBHOOK DE MAKE
+    const WEBHOOK_URL = "https://hook.us2.make.com/qalrej6f1ms2a6bssqkjte8got8kbuzu";
 
     // Prefill fecha y hora al cargar
-    (function initFechaHora() {
+    function initFechaHora() {
         const hoy = new Date();
         const fechaInput = document.getElementById('fechaRecepcion');
         const horaInput = document.getElementById('horaRecepcion');
@@ -689,10 +689,25 @@
             const mins  = String(hoy.getMinutes()).padStart(2, '0');
             horaInput.value = horas + ":" + mins;
         }
-    })();
+    }
+    initFechaHora();
 
     const frm = document.getElementById('frmRecepcion');
     const msgForm = document.getElementById('msgForm');
+
+    // 🔹 Campos que SIEMPRE queremos enviar al webhook (en el orden que tú quieres)
+    const CAMPOS_ESPERADOS = [
+        "FechaRecepcion","HoraRecepcion","NumeroOT","NombreCliente","TelefonoCliente",
+        "Marca","Modelo","Anio","Kilometraje","Placas","Combustible",
+        "Carroceria","CarroceriaObs","Pintura","PinturaObs","Cristales","CristalesObs",
+        "Llantas","LlantasObs","Luces","LucesObs","Interior","InteriorObs",
+        "Tablero","TableroObs","Estereo","EstereoObs","Clima","ClimaObs",
+        "TarjetaCirc","TarjetaCircObs","Poliza","PolizaObs","Llaves","LlavesObs",
+        "ControlAlarma","ControlAlarmaObs","Gato","GatoObs","Triangulos","TriangulosObs",
+        "Tapetes","TapetesObs","Herramientas","HerramientasObs","TAG","TAGObs",
+        "Otros","OtrosObs","ObservacionesGenerales","AceptaTerminos",
+        "FirmaCliente","FirmaAsesor","FechaEnvio","HoraEnvio","Origen"
+    ];
 
     frm.addEventListener('submit', async function(e) {
         e.preventDefault();
@@ -702,28 +717,31 @@
         const btnSubmit = frm.querySelector('button[type="submit"]');
         btnSubmit.disabled = true;
 
-        // Serializar datos del formulario
         const formData = new FormData(frm);
         const datos = {};
 
-        for (const [key, value] of formData.entries()) {
-            if (datos[key] !== undefined) {
-                // Por si hubiera campos repetidos
-                if (Array.isArray(datos[key])) {
-                    datos[key].push(value);
-                } else {
-                    datos[key] = [datos[key], value];
-                }
-            } else {
-                datos[key] = value;
+        // 1) Rellenar todos los campos esperados
+        CAMPOS_ESPERADOS.forEach(campo => {
+            // Estos los llenamos más abajo como metadatos
+            if (campo === "FechaEnvio" || campo === "HoraEnvio" || campo === "Origen") {
+                return;
             }
-        }
 
-        // Metadatos adicionales
+            if (campo === "AceptaTerminos") {
+                // Checkbox: si está marcado → "1", si no → "0"
+                datos[campo] = formData.has("AceptaTerminos") ? "1" : "0";
+            } else {
+                // Cualquier otro campo: si no existe en el form, mandamos cadena vacía
+                const valor = formData.get(campo);
+                datos[campo] = (valor !== null ? valor : "");
+            }
+        });
+
+        // 2) Metadatos adicionales
         const ahora = new Date();
-        datos["FechaEnvio"] = ahora.toISOString().split('T')[0];
-        datos["HoraEnvio"] = ahora.toTimeString().split(' ')[0];
-        datos["Origen"]    = "FormatoRecepcionTablet";
+        datos["FechaEnvio"] = ahora.toISOString().split('T')[0];       // YYYY-MM-DD
+        datos["HoraEnvio"]  = ahora.toTimeString().split(' ')[0];      // HH:MM:SS
+        datos["Origen"]     = "FormatoRecepcionTablet";
 
         try {
             const resp = await fetch(WEBHOOK_URL, {
@@ -736,7 +754,6 @@
                 msgForm.textContent = "¡Recepción enviada correctamente! Gracias. El asesor continuará el proceso.";
                 msgForm.className = "mensaje-form mensaje-ok";
                 frm.reset();
-                // Volver a setear fecha y hora
                 initFechaHora();
             } else {
                 msgForm.textContent = "Hubo un problema al enviar. Avísale al asesor para validar el registro.";
@@ -754,4 +771,3 @@
 
 </body>
 </html>
-
