@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Recepción de Vehículo - Salvatori Servicio Automotriz</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 700px;
+            margin: 20px auto;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .subtitulo {
+            text-align: center;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            color: #555;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        input, textarea, select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 4px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+        textarea {
+            min-height: 80px;
+        }
+        .fila-doble {
+            display: flex;
+            gap: 10px;
+        }
+        .fila-doble > div {
+            flex: 1;
+        }
+        button {
+            margin-top: 20px;
+            width: 100%;
+            padding: 10px;
+            background: #d32f2f;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+        button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+        .mensaje {
+            margin-top: 15px;
+            font-size: 0.9rem;
+        }
+        .ok {
+            color: green;
+        }
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Recepción de Vehículo</h1>
+    <div class="subtitulo">Salvatori Servicio Automotriz - Su Taller Experto</div>
+
+    <form id="frmRecepcion">
+        <!-- Datos del cliente -->
+        <h3>Datos del Cliente</h3>
+        <label>Nombre del cliente *</label>
+        <input type="text" name="NombreCliente" required>
+
+        <div class="fila-doble">
+            <div>
+                <label>Teléfono</label>
+                <input type="tel" name="Telefono">
+            </div>
+            <div>
+                <label>Correo</label>
+                <input type="email" name="Correo">
+            </div>
+        </div>
+
+        <!-- Datos del vehículo -->
+        <h3>Datos del Vehículo</h3>
+        <div class="fila-doble">
+            <div>
+                <label>Marca</label>
+                <input type="text" name="Marca">
+            </div>
+            <div>
+                <label>Modelo</label>
+                <input type="text" name="Modelo">
+            </div>
+        </div>
+
+        <div class="fila-doble">
+            <div>
+                <label>Año</label>
+                <input type="number" name="Ano">
+            </div>
+            <div>
+                <label>Placas</label>
+                <input type="text" name="Placas">
+            </div>
+        </div>
+
+        <label>Kilometraje</label>
+        <input type="number" name="Kilometraje" step="1">
+
+        <!-- Trabajo -->
+        <h3>Trabajo Solicitado</h3>
+        <label>Descripción del problema / servicio *</label>
+        <textarea name="TrabajoSolicitado" required></textarea>
+
+        <label>Observaciones adicionales</label>
+        <textarea name="Observaciones"></textarea>
+
+        <button type="submit">Enviar recepción</button>
+        <div id="msg" class="mensaje"></div>
+    </form>
+</div>
+
+<script>
+document.getElementById('frmRecepcion').addEventListener('submit', async function (e) {
+    e.preventDefault();
+    const form = e.target;
+    const btn = form.querySelector('button');
+    const msg = document.getElementById('msg');
+
+    btn.disabled = true;
+    msg.textContent = "Enviando...";
+    msg.className = "mensaje";
+
+    const datos = {
+        Fecha: new Date().toISOString().split('T')[0],
+        Hora: new Date().toTimeString().split(' ')[0],
+        NombreCliente: form.NombreCliente.value,
+        Telefono: form.Telefono.value,
+        Correo: form.Correo.value,
+        Marca: form.Marca.value,
+        Modelo: form.Modelo.value,
+        Ano: form.Ano.value,
+        Placas: form.Placas.value,
+        Kilometraje: form.Kilometraje.value,
+        TrabajoSolicitado: form.TrabajoSolicitado.value,
+        Observaciones: form.Observaciones.value
+    };
+
+    try {
+        const respuesta = await fetch("https://hook.us2.make.com/qalrej6f1ms2a6bssqkjte8got8kbuzu", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(datos)
+        });
+
+        if (respuesta.ok) {
+            msg.textContent = "¡Recepción enviada correctamente! Muchas gracias.";
+            msg.className = "mensaje ok";
+            form.reset();
+        } else {
+            msg.textContent = "Hubo un problema al enviar. Intenta de nuevo.";
+            msg.className = "mensaje error";
+        }
+    } catch (err) {
+        console.error(err);
+        msg.textContent = "Error de conexión. Revisa tu internet.";
+        msg.className = "mensaje error";
+    } finally {
+        btn.disabled = false;
+    }
+});
+</script>
+</body>
+</html>
