@@ -4,14 +4,22 @@
     <meta charset="UTF-8">
     <title>Salvatori Servicio Automotriz | Su Taller Experto</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Salvatori Servicio Automotriz, taller mecánico en Gómez Palacio, especialistas en mantenimiento, diagnóstico y flotas Uber/Didi.">
+    <meta name="description" content="Taller mecánico en Gómez Palacio con más de 25 años de experiencia. Afinaciones, frenos, diagnóstico computarizado, mantenimiento para Uber y Didi.">
+    <meta name="robots" content="index,follow">
+
+    <!-- Open Graph para compartir en redes -->
+    <meta property="og:title" content="Salvatori Servicio Automotriz | Su Taller Experto">
+    <meta property="og:description" content="Mecánica, diagnóstico computarizado y mantenimiento profesional en Gómez Palacio. Más de 25 años de experiencia.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://salvatori.com.mx/">
+    <meta property="og:image" content="https://salvatori.com.mx/img/og-salvatori.jpg">
 
     <!-- Fuente moderna (Poppins) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-    <!-- Favicon (icono pestaña) -->
+    <!-- Favicon -->
     <link rel="icon" type="image/png" href="img/favicon.png">
 
     <style>
@@ -24,9 +32,7 @@
             --texto: #333333;
         }
 
-        * {
-            box-sizing: border-box;
-        }
+        * { box-sizing: border-box; }
 
         body {
             margin: 0;
@@ -157,15 +163,15 @@
             box-shadow: 0 2px 6px rgba(0,0,0,0.2);
         }
 
-        .rrss-contact {
-            justify-content: flex-start;
-        }
+        .rrss-contact { justify-content: flex-start; }
 
         /* HERO */
         .hero {
-            background: linear-gradient(135deg, var(--rojo) 0%, var(--rojo-oscuro) 50%, #000000 100%);
+            background:
+                linear-gradient(135deg, rgba(0,0,0,0.65), rgba(0,0,0,0.85)),
+                url("img/taller-hero.jpg") center/cover no-repeat;
             color: #ffffff;
-            padding: 40px 16px 30px;
+            padding: 50px 16px 40px;
             min-height: 70vh;
             display: flex;
             align-items: center;
@@ -175,14 +181,14 @@
             max-width: 1100px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: minmax(0, 2fr) minmax(0, 1.5fr);
+            grid-template-columns: minmax(0, 2fr) minmax(0, 1.4fr);
             gap: 30px;
             align-items: center;
         }
 
         .hero h1 {
             margin-top: 0;
-            font-size: 30px;
+            font-size: 32px;
             margin-bottom: 10px;
         }
 
@@ -200,7 +206,7 @@
             margin-top: 12px;
             padding: 6px 10px;
             border-radius: 20px;
-            background: rgba(0,0,0,0.35);
+            background: rgba(0,0,0,0.45);
             font-size: 12px;
         }
 
@@ -220,7 +226,7 @@
         .hero-text {
             margin-top: 15px;
             font-size: 14px;
-            max-width: 480px;
+            max-width: 520px;
         }
 
         .hero-cta {
@@ -254,9 +260,7 @@
             color: #000;
         }
 
-        .btn-primary:hover {
-            background: #ffca28;
-        }
+        .btn-primary:hover { background: #ffca28; }
 
         .btn-outline {
             background: transparent;
@@ -264,9 +268,7 @@
             border: 1px solid rgba(255,255,255,0.7);
         }
 
-        .btn-outline:hover {
-            background: rgba(255,255,255,0.1);
-        }
+        .btn-outline:hover { background: rgba(255,255,255,0.1); }
 
         .hero-card {
             background: #ffffff;
@@ -275,12 +277,6 @@
             border-radius: 12px;
             box-shadow: 0 6px 18px rgba(0,0,0,0.35);
             font-size: 13px;
-            transition: transform 0.15s ease, box-shadow 0.15s ease;
-        }
-
-        .hero-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(0,0,0,0.4);
         }
 
         .hero-card h3 {
@@ -325,12 +321,6 @@
             padding: 14px;
             box-shadow: 0 2px 6px rgba(0,0,0,0.08);
             font-size: 13px;
-            transition: transform 0.15s ease, box-shadow 0.15s ease;
-        }
-
-        .servicio-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 14px rgba(0,0,0,0.12);
         }
 
         .servicio-card h3 {
@@ -344,7 +334,28 @@
             padding: 0;
         }
 
-        /* UBER / DIDi */
+        /* POR QUÉ ELEGIRNOS */
+        .grid-por-que {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+        }
+
+        .por-que-card {
+            background: #ffffff;
+            border-radius: 10px;
+            padding: 14px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+            font-size: 13px;
+        }
+
+        .por-que-card h3 {
+            margin-top: 0;
+            font-size: 15px;
+            color: var(--rojo);
+        }
+
+        /* UBER / DIDI */
         .plataformas {
             background: #ffffff;
             border-radius: 10px;
@@ -376,6 +387,32 @@
             color: var(--rojo-oscuro);
         }
 
+        /* TESTIMONIOS */
+        .testimonios-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 16px;
+        }
+
+        .testimonio-card {
+            background: #ffffff;
+            border-radius: 10px;
+            padding: 14px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+            font-size: 13px;
+        }
+
+        .testimonio-card strong {
+            display: block;
+            margin-top: 8px;
+            font-size: 12px;
+        }
+
+        .estrellas {
+            color: #f9a825;
+            font-size: 13px;
+        }
+
         /* PROMOS */
         .promos-grid {
             display: grid;
@@ -390,12 +427,6 @@
             font-size: 13px;
             border-left: 5px solid var(--verde);
             box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-            transition: transform 0.15s ease, box-shadow 0.15s ease;
-        }
-
-        .promo-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 14px rgba(0,0,0,0.12);
         }
 
         .promo-card h3 {
@@ -409,7 +440,7 @@
             margin-top: 6px;
         }
 
-        /* PUBLICACIONES / RRSS FEED */
+        /* PUBLICACIONES */
         .rrss-feed {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -436,10 +467,6 @@
             color: #555;
         }
 
-        .rrss-card button {
-            font-size: 13px;
-        }
-
         .fb-wrapper iframe {
             width: 100%;
             border-radius: 10px;
@@ -460,12 +487,6 @@
             padding: 14px;
             border-radius: 10px;
             box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-            transition: transform 0.15s ease, box-shadow 0.15s ease;
-        }
-
-        .contact-block:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 14px rgba(0,0,0,0.12);
         }
 
         .contact-block h3 {
@@ -489,14 +510,42 @@
             overflow: hidden;
         }
 
+        /* BOTÓN FLOTANTE WHATSAPP */
+        .btn-wa-float {
+            position: fixed;
+            right: 16px;
+            bottom: 16px;
+            z-index: 200;
+            background: #25D366;
+            color: #fff;
+            border-radius: 999px;
+            padding: 10px 16px;
+            font-size: 14px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+        }
+
+        .btn-wa-float:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+        }
+
         /* FOOTER */
         footer {
             background: #111;
             color: #ccc;
             font-size: 11px;
             text-align: center;
-            padding: 10px 5px 14px;
+            padding: 14px 5px 18px;
             margin-top: 20px;
+        }
+
+        footer a {
+            color: #fff;
+            text-decoration: underline;
         }
 
         /* RESPONSIVE */
@@ -504,7 +553,8 @@
             .hero-inner,
             .plataformas,
             .contact-grid,
-            .rrss-feed {
+            .rrss-feed,
+            .grid-por-que {
                 grid-template-columns: 1fr;
             }
 
@@ -518,8 +568,8 @@
             }
 
             .hero {
-                padding-top: 26px;
-                padding-bottom: 26px;
+                padding-top: 32px;
+                padding-bottom: 30px;
                 min-height: auto;
             }
         }
@@ -527,6 +577,11 @@
         @media (max-width: 500px) {
             .section {
                 padding: 24px 12px;
+            }
+
+            .btn-wa-float {
+                right: 10px;
+                bottom: 10px;
             }
         }
     </style>
@@ -550,18 +605,19 @@
         <nav class="nav-links">
             <a href="#inicio">Inicio</a>
             <a href="#servicios">Servicios</a>
+            <a href="#por-que">¿Por qué elegirnos?</a>
             <a href="#plataformas">Uber / Didi</a>
+            <a href="#testimonios">Testimonios</a>
             <a href="#promos">Promociones</a>
-            <a href="recepcion.html">Recepción en línea</a>
+            <a href="#publicaciones">Publicaciones</a>
             <a href="#contacto">Contacto</a>
+            <a href="whatsapp-ayuda.html">WhatsApp rápido</a>
         </nav>
 
         <div class="nav-contact">
             <span class="contact-dato">Tel: 871 723 043</span>
             <span class="whatsapp">WhatsApp: 871 156 2351</span>
             <span>Francisco I. Madero 453 Nte. · Gómez Palacio</span>
-
-            <!-- RRSS en header -->
             <div class="rrss">
                 <a href="https://www.facebook.com/profile.php?id=61572177524767" target="_blank" rel="noopener" class="rrss-fb" aria-label="Facebook">f</a>
                 <a href="https://www.instagram.com/salvatoriautomotriz/" target="_blank" rel="noopener" class="rrss-ig" aria-label="Instagram">ig</a>
@@ -593,12 +649,14 @@
                 </p>
 
                 <div class="hero-cta">
-                    <button class="btn btn-primary" onclick="location.href='recepcion.html'">
-                        Agendar recepción en línea
-                    </button>
-                    <a href="https://wa.me/5218711562351" target="_blank" rel="noopener">
+                    <a href="whatsapp-ayuda.html">
+                        <button class="btn btn-primary">
+                            Hola, necesito ayuda con mi auto
+                        </button>
+                    </a>
+                    <a href="#servicios">
                         <button class="btn btn-outline">
-                            Escribir por WhatsApp
+                            Ver servicios
                         </button>
                     </a>
                 </div>
@@ -611,7 +669,7 @@
                     <li>Frenos, suspensión y dirección.</li>
                     <li>Diagnóstico electrónico y escáner profesional.</li>
                     <li>Transmisión y reparaciones mayores.</li>
-                    <li>Administración de mantenimiento para Uber / Didi / Flotas.</li>
+                    <li>Administración de mantenimiento para Uber / Didi / flotas.</li>
                 </ul>
             </div>
         </div>
@@ -662,6 +720,31 @@
         </div>
     </section>
 
+    <!-- POR QUÉ ELEGIRNOS -->
+    <section id="por-que" class="section">
+        <h2>¿Por qué elegir Salvatori?</h2>
+        <p class="sub">Más que un taller, somos tu aliado para que tu auto siempre esté listo para trabajar y viajar seguro.</p>
+
+        <div class="grid-por-que">
+            <div class="por-que-card">
+                <h3>+25 años de experiencia</h3>
+                <p>Trayectoria comprobada en la región, atendiendo desde autos particulares hasta flotillas empresariales.</p>
+            </div>
+            <div class="por-que-card">
+                <h3>Diagnóstico avanzado</h3>
+                <p>Equipo de escáner profesional y procedimientos de diagnóstico para encontrar la causa real de la falla.</p>
+            </div>
+            <div class="por-que-card">
+                <h3>Enfoque en plataformas</h3>
+                <p>Programas específicos para conductores de Uber, Didi y flotas, cuidando tu tiempo y tu ingreso.</p>
+            </div>
+            <div class="por-que-card">
+                <h3>Seriedad y respaldo</h3>
+                <p>Trabajo documentado, comunicación clara y seguimiento para generar confianza a largo plazo.</p>
+            </div>
+        </div>
+    </section>
+
     <!-- UBER / DIDi -->
     <section id="plataformas" class="section">
         <h2>Conductores de plataforma: Uber / Didi</h2>
@@ -687,7 +770,7 @@
             <div>
                 <div class="contact-block">
                     <h3>¿Eres driver y quieres entrar al programa?</h3>
-                    <p>1. Regístrate en la página de <a href="recepcion.html"><strong>Recepción en línea</strong></a> indicando que eres Uber / Didi.</p>
+                    <p>1. Envía un WhatsApp desde la sección <strong>“WhatsApp rápido”</strong> indicando que eres Uber / Didi.</p>
                     <p>2. Menciona a tu asesor si vienes por recomendación de algún grupo o administrador.</p>
                     <p>3. Nosotros nos encargamos de la bitácora, recordatorios y seguimiento de tu auto.</p>
                     <p style="margin-top:8px;">
@@ -696,6 +779,30 @@
                         </a>
                     </p>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIOS -->
+    <section id="testimonios" class="section">
+        <h2>Lo que dicen nuestros clientes</h2>
+        <p class="sub">La confianza se construye con experiencias reales.</p>
+
+        <div class="testimonios-grid">
+            <div class="testimonio-card">
+                <div class="estrellas">★★★★★</div>
+                <p>“Llevo años trayendo mis carros aquí. Siempre me explican claro qué tiene y qué le van a hacer.”</p>
+                <strong>José M. · Chevrolet Aveo</strong>
+            </div>
+            <div class="testimonio-card">
+                <div class="estrellas">★★★★★</div>
+                <p>“Soy chofer de plataforma y me apoyan mucho con tiempos y recordatorios de servicios.”</p>
+                <strong>Ana L. · Uber · Nissan Versa</strong>
+            </div>
+            <div class="testimonio-card">
+                <div class="estrellas">★★★★★</div>
+                <p>“Honestos y puntuales. Me dieron diagnóstico y opciones antes de hacer una reparación grande.”</p>
+                <strong>Ricardo G. · VW Jetta</strong>
             </div>
         </div>
     </section>
@@ -729,31 +836,47 @@
     </section>
 
     <!-- PUBLICACIONES / RRSS -->
-  <!-- PUBLICACIONES / RRSS -->
-<section id="publicaciones" class="section">
-    <h2>Últimas publicaciones</h2>
-    <p class="sub">Síguenos en Facebook para ver promociones, trabajos recientes y novedades del taller.</p>
+    <section id="publicaciones" class="section">
+        <h2>Últimas publicaciones</h2>
+        <p class="sub">Síguenos en Facebook para ver promociones, trabajos recientes y novedades del taller.</p>
 
-    <div class="rrss-feed">
-        
-        <!-- FACEBOOK con publicaciones reales -->
-        <div class="rrss-card fb-wrapper">
-            <h3>Facebook</h3>
-            <p>Página oficial Salvatori Servicio Automotriz</p>
-
-            <iframe 
-                src="https://www.facebook.com/plugins/page.php?href=https://www.facebook.com/profile.php?id=61572177524767&tabs=timeline&width=400&height=550&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=false" 
-                style="height:550px; border:none; overflow:hidden; width:100%; border-radius:10px; box-shadow:0 2px 6px rgba(0,0,0,0.15);" 
-                scrolling="no" 
-                frameborder="0" 
-                allowfullscreen="true" 
-                allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
-            </iframe>
+        <div class="rrss-feed">
+            <div class="rrss-card fb-wrapper">
+                <h3>Facebook</h3>
+                <p>Página oficial Salvatori Servicio Automotriz</p>
+                <iframe 
+                    src="https://www.facebook.com/plugins/page.php?href=https://www.facebook.com/profile.php?id=61572177524767&tabs=timeline&width=400&height=550&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=false" 
+                    style="height:550px;" 
+                    scrolling="no" 
+                    frameborder="0" 
+                    allowfullscreen="true" 
+                    allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+                </iframe>
+            </div>
         </div>
+    </section>
 
-    </div>
-</section>
+    <!-- WHATSAPP RÁPIDO -->
+    <section id="whatsapp-rapido" class="section">
+        <h2>WhatsApp rápido</h2>
+        <p class="sub">Si prefieres platicar directo, te dejamos un mensaje listo para enviar por WhatsApp.</p>
 
+        <div class="servicios-grid">
+            <div class="servicio-card">
+                <h3>Mensaje rápido</h3>
+                <p>Al dar clic se abrirá WhatsApp con este mensaje:</p>
+                <p style="font-size:12px; font-style:italic; background:#fffde7; padding:8px; border-radius:8px;">
+                    "Hola, necesito ayuda con mi auto."
+                </p>
+                <a href="https://wa.me/5218711562351?text=Hola%2C%20necesito%20ayuda%20con%20mi%20auto." target="_blank" rel="noopener">
+                    <button class="btn btn-primary">Enviar mensaje en WhatsApp</button>
+                </a>
+                <p style="font-size:12px; margin-top:6px;">
+                    Si quieres, después puedes agregar datos como marca, modelo, año y la falla que presenta.
+                </p>
+            </div>
+        </div>
+    </section>
 
     <!-- CONTACTO -->
     <section id="contacto" class="section">
@@ -780,7 +903,6 @@
                     </a>
                 </p>
 
-                <!-- RRSS también en contacto -->
                 <p style="margin-top:8px;font-size:12px;">
                     Síguenos en redes:
                 </p>
@@ -797,8 +919,7 @@
                     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3599.038293825442!2d-103.49985232489763!3d25.570392716484353!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x868fd9b3548cdc3b%3A0xab65e3f1f3a7c93e!2sServicio%20Automotriz%20Salvatori!5e0!3m2!1ses-419!2smx!4v1764310799212!5m2!1ses-419!2smx" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
                 <p style="margin-top:8px;font-size:12px;">
-                    Si lo prefieres, búscanos en Google como <strong>“Salvatori Servicio Automotriz”</strong>
-                    para ver referencias, reseñas y trazar tu ruta.
+                    También puedes buscarnos en Google como <strong>“Salvatori Servicio Automotriz”</strong> para ver reseñas y trazar tu ruta.
                 </p>
             </div>
         </div>
@@ -808,7 +929,14 @@
 
 <footer>
     Salvatori Servicio Automotriz · Su Taller Experto · Francisco I. Madero 453 Nte., Gómez Palacio · Tel. 871 723 043 · WhatsApp 871 156 2351
+    <br>
+    <span>Este sitio puede utilizar la información de contacto solo para fines de atención y seguimiento de servicio.</span>
 </footer>
+
+<!-- BOTÓN FLOTANTE WHATSAPP -->
+<a href="https://wa.me/5218711562351?text=Hola%2C%20necesito%20ayuda%20con%20mi%20auto." target="_blank" rel="noopener" class="btn-wa-float">
+    <span>WhatsApp</span>
+</a>
 
 </body>
 </html>
