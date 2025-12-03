@@ -23,268 +23,98 @@
         }
 
         * { box-sizing: border-box; }
-
         body {
             margin: 0;
-            font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-            color: var(--texto);
-            background-color: var(--gris-fondo);
+            font-family: 'Poppins', sans-serif;
+            background: var(--gris-fondo);
         }
 
         header {
-            background: #ffffff;
+            background: white;
             border-bottom: 3px solid var(--rojo);
         }
 
         .nav-container {
             max-width: 900px;
-            margin: 0 auto;
+            margin: auto;
             padding: 10px 16px;
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            gap: 16px;
         }
 
-        .logo-area {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
+        .logo-area { display: flex; align-items: center; gap: 10px; }
+        .logo-img { width: 48px; height: 48px; background: #111; border-radius: 8px; overflow: hidden; }
+        .logo-img img{ width:100%; height:100%;}
 
-        .logo-img {
-            width: 48px;
-            height: 48px;
-            border-radius: 8px;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: #111;
-        }
+        main{ max-width:900px; margin:auto; padding:16px; }
 
-        .logo-img img {
-            max-width: 100%;
-            max-height: 100%;
-        }
-
-        .logo-text {
-            display: flex;
-            flex-direction: column;
-            font-size: 11px;
-            line-height: 1.1;
-        }
-
-        .logo-text strong { font-size: 14px; }
-
-        main {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 16px;
-        }
-
-        h1 {
-            margin: 8px 0 4px;
-            font-size: 20px;
-            text-align: center;
-        }
-
-        .subtitulo {
-            font-size: 12px;
-            text-align: center;
-            margin-bottom: 10px;
-        }
-
+        h1{ text-align:center; margin-top:10px;}
         .card {
-            background: #ffffff;
-            border-radius: 12px;
-            padding: 14px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-            margin-bottom: 14px;
+            background:white;
+            padding:14px;
+            border-radius:12px;
+            margin-bottom:15px;
+            box-shadow:0 2px 8px rgba(0,0,0,0.08);
         }
 
-        .card h2 {
-            font-size: 15px;
-            margin: 0 0 8px;
-            border-left: 4px solid var(--rojo);
-            padding-left: 8px;
+        label{ font-size:13px; font-weight:600; display:block; margin-top:10px; }
+
+        input, select, textarea {
+            width:100%; padding:8px 10px; border-radius:8px;
+            border:1px solid #ccc; margin-top:4px; font-size:14px;
         }
 
-        label {
-            display: block;
-            font-size: 13px;
-            margin-top: 10px;
-            font-weight: 600;
+        textarea { min-height:70px; }
+
+        .fila-doble { display:flex; gap:10px; }
+        .fila-doble > div { flex:1; }
+
+        table.checklist{
+            width:100%; margin-top:8px; border-collapse:collapse;
+            font-size:12px;
         }
 
-        input[type="text"],
-        input[type="tel"],
-        input[type="number"],
-        input[type="date"],
-        input[type="time"],
-        select,
-        textarea {
-            width: 100%;
-            padding: 8px 10px;
-            margin-top: 4px;
-            border-radius: 8px;
-            border: 1px solid #ccc;
-            font-size: 14px;
-            font-family: inherit;
+        table.checklist th{
+            background:#f4f4f4; text-align:left; padding:6px;
         }
 
-        textarea {
-            min-height: 80px;
-            resize: vertical;
+        table.checklist td{
+            border-bottom:1px solid #eee; padding:4px;
         }
 
-        .fila-doble {
-            display: flex;
-            gap: 10px;
+        .check-opcion{ margin-right:4px; }
+
+        .btn{
+            border:none; padding:10px 18px; border-radius:20px;
+            font-weight:600; cursor:pointer;
         }
 
-        .fila-doble > div { flex: 1; }
+        .btn-primary{ background:var(--rojo); color:white; }
+        .btn-primary:hover{ background:var(--rojo-oscuro); }
 
-        .checklist {
-            margin-top: 8px;
-            border-collapse: collapse;
-            width: 100%;
-            font-size: 12px;
+        .acciones-form{ display:flex; justify-content:flex-end; gap:10px; margin-top:14px; }
+
+        /* BLOQUEO POR PIN */
+        .lock-screen{
+            background:white;
+            margin:40px auto;
+            max-width:380px;
+            padding:20px;
+            border-radius:12px;
+            box-shadow:0 2px 8px rgba(0,0,0,0.15);
+            text-align:center;
+        }
+        .lock-screen input{
+            letter-spacing:6px; text-align:center;
+            font-size:22px; padding:8px; margin-top:8px;
+        }
+        .lock-msg{ margin-top:8px; font-size:12px; }
+
+        footer{
+            text-align:center; padding:12px;
+            font-size:11px; color:#666;
         }
 
-        .checklist th,
-        .checklist td {
-            border-bottom: 1px solid #eee;
-            padding: 6px 4px;
-        }
-
-        .checklist th {
-            font-weight: 600;
-            background: #fafafa;
-            text-align: left;
-        }
-
-        .checklist td.opciones {
-            white-space: nowrap;
-            font-size: 12px;
-        }
-
-        .check-opcion {
-            margin-right: 6px;
-        }
-
-        .check-opcion input {
-            margin-right: 2px;
-        }
-
-        .checklist input[type="text"] {
-            font-size: 12px;
-            padding: 4px 6px;
-        }
-
-        .nota {
-            font-size: 11px;
-            color: #666;
-            margin-top: 6px;
-        }
-
-        .acciones-form {
-            margin-top: 16px;
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-            justify-content: flex-end;
-        }
-
-        .btn {
-            border: none;
-            border-radius: 22px;
-            padding: 10px 18px;
-            font-size: 14px;
-            cursor: pointer;
-            font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-            transition: 0.15s ease;
-        }
-
-        .btn-primary {
-            background: var(--rojo);
-            color: #fff;
-        }
-
-        .btn-primary:hover {
-            background: var(--rojo-oscuro);
-            transform: translateY(-1px);
-            box-shadow: 0 3px 8px rgba(0,0,0,0.18);
-        }
-
-        .btn-secondary {
-            background: #eee;
-            color: #333;
-        }
-
-        .btn-secondary:hover {
-            background: #ddd;
-            transform: translateY(-1px);
-        }
-
-        .mensaje-form {
-            margin-top: 10px;
-            font-size: 12px;
-        }
-
-        .mensaje-ok { color: var(--verde); }
-        .mensaje-error { color: var(--rojo-oscuro); }
-
-        .checkbox-linea {
-            font-size: 12px;
-            margin-top: 10px;
-        }
-
-        .checkbox-linea input { margin-right: 6px; }
-
-        footer {
-            text-align: center;
-            font-size: 11px;
-            color: #777;
-            padding: 10px 6px 16px;
-        }
-
-        /* PANTALLA BLOQUEO */
-        .lock-screen {
-            max-width: 400px;
-            margin: 40px auto 0;
-            background: #ffffff;
-            padding: 16px;
-            border-radius: 12px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.12);
-            text-align: center;
-            font-size: 13px;
-        }
-
-        .lock-screen input {
-            text-align: center;
-            letter-spacing: 4px;
-            font-size: 18px;
-        }
-
-        .lock-msg {
-            margin-top: 8px;
-            font-size: 12px;
-        }
-
-        @media (max-width: 700px) {
-            .nav-container {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            .fila-doble {
-                flex-direction: column;
-            }
-        }
     </style>
 </head>
 <body>
@@ -293,7 +123,7 @@
     <div class="nav-container">
         <div class="logo-area">
             <div class="logo-img">
-                <img src="img/logo-salvatori.png" alt="Logo Salvatori">
+                <img src="img/logo-salvatori.png">
             </div>
             <div class="logo-text">
                 <strong>Salvatori Servicio Automotriz</strong>
@@ -304,46 +134,356 @@
 </header>
 
 <main>
-    <!-- BLOQUEO POR PIN -->
+
+    <!-- 🔐 BLOQUEO POR PIN -->
     <div id="lockScreen" class="lock-screen">
         <h2>Acceso interno</h2>
-        <p>Ingresa el PIN de asesor para desbloquear el formato de recepción.</p>
-        <input type="password" id="pinAcceso" maxlength="4" placeholder="****">
-        <div style="margin-top:10px;">
-            <button class="btn btn-primary" onclick="desbloquear()">Desbloquear</button>
-        </div>
+        <p>Ingresa el PIN del taller:</p>
+
+        <input type="password" id="pinAcceso" maxlength="6" placeholder="••••••">
+
+        <br><br>
+        <button class="btn btn-primary" onclick="desbloquear()">Desbloquear</button>
+
         <div id="lockMsg" class="lock-msg"></div>
-        <p class="lock-msg" style="margin-top:10px; color:#999;">Uso exclusivo del taller · No compartir esta liga con clientes.</p>
+        <p style="margin-top:12px; color:#999; font-size:11px;">
+            Uso exclusivo del taller · No compartir con clientes
+        </p>
     </div>
 
+    <!-- CONTENIDO FORMULARIO -->
     <div id="contenidoForm" style="display:none;">
+
         <h1>FORMATO DE RECEPCIÓN DE VEHÍCULO</h1>
-        <p class="subtitulo">
-            Uso interno del taller. Llenar junto con el cliente al recibir el vehículo.
-        </p>
+        <p class="subtitulo">Uso interno del taller. Llenar junto con el cliente.</p>
 
         <form id="frmRecepcion">
-            <!-- (MISMO CONTENIDO QUE TE DI ANTES PARA RECEPCIÓN: DATOS GENERALES, CLIENTE, VEHÍCULO, ESTADO, ACCESORIOS, OBSERVACIONES, ETC.) -->
-            <!-- Para no repetir 300 líneas, aquí puedes reutilizar el mismo formulario que ya tienes (el que pegaste antes) tal cual. -->
-            <!-- Solo asegúrate de dejar el mismo script de envío a Make con WEBHOOK_URL. -->
+
+            <!-- DATOS GENERALES -->
+            <div class="card">
+                <h2>Datos generales</h2>
+
+                <div class="fila-doble">
+                    <div>
+                        <label>Fecha recepción</label>
+                        <input type="date" name="FechaRecepcion" required>
+                    </div>
+                    <div>
+                        <label>Hora</label>
+                        <input type="time" name="HoraRecepcion" required>
+                    </div>
+                </div>
+
+                <label>No. OT</label>
+                <input type="text" name="NumeroOT" placeholder="Ej. 1453" required>
+            </div>
+
+            <!-- DATOS CLIENTE -->
+            <div class="card">
+                <h2>Datos del cliente</h2>
+
+                <label>Nombre</label>
+                <input type="text" name="NombreCliente" required>
+
+                <label>Teléfono</label>
+                <input type="tel" name="TelefonoCliente">
+            </div>
+
+            <!-- DATOS VEHÍCULO -->
+            <div class="card">
+                <h2>Datos del vehículo</h2>
+
+                <div class="fila-doble">
+                    <div>
+                        <label>Marca</label>
+                        <input type="text" name="Marca" required>
+                    </div>
+                    <div>
+                        <label>Modelo</label>
+                        <input type="text" name="Modelo" required>
+                    </div>
+                </div>
+
+                <div class="fila-doble">
+                    <div>
+                        <label>Año</label>
+                        <input type="number" name="Anio" required>
+                    </div>
+                    <div>
+                        <label>Kilometraje</label>
+                        <input type="number" name="Kilometraje" required>
+                    </div>
+                </div>
+
+                <label>Placas</label>
+                <input type="text" name="Placas">
+
+                <label>Combustible aprox.</label>
+                <select name="Combustible">
+                    <option value="">Seleccione</option>
+                    <option value="Lleno">Lleno</option>
+                    <option value="3/4">3/4</option>
+                    <option value="1/2">1/2</option>
+                    <option value="1/4">1/4</option>
+                    <option value="Vacío">Vacío</option>
+                </select>
+            </div>
+
+            <!-- ESTADO DEL VEHÍCULO -->
+            <div class="card">
+                <h2>Estado del vehículo</h2>
+
+                <table class="checklist">
+                    <tr><th>Elemento</th><th>Estado</th><th>Observaciones</th></tr>
+
+                    <tr>
+                        <td>Carrocería / golpes</td>
+                        <td class="opciones">
+                            <label class="check-opcion"><input type="radio" name="Carroceria" value="Si"> Sí</label>
+                            <label class="check-opcion"><input type="radio" name="Carroceria" value="No"> No</label>
+                            <label class="check-opcion"><input type="radio" name="Carroceria" value="NA"> N/A</label>
+                        </td>
+                        <td><input type="text" name="CarroceriaObs"></td>
+                    </tr>
+
+                    <tr>
+                        <td>Pintura / rayones</td>
+                        <td class="opciones">
+                            <label class="check-opcion"><input type="radio" name="Pintura" value="Si"> Sí</label>
+                            <label class="check-opcion"><input type="radio" name="Pintura" value="No"> No</label>
+                            <label class="check-opcion"><input type="radio" name="Pintura" value="NA"> N/A</label>
+                        </td>
+                        <td><input type="text" name="PinturaObs"></td>
+                    </tr>
+
+                    <tr>
+                        <td>Cristales / espejos</td>
+                        <td class="opciones">
+                            <label class="check-opcion"><input type="radio" name="Cristales" value="Si"> Sí</label>
+                            <label class="check-opcion"><input type="radio" name="Cristales" value="No"> No</label>
+                            <label class="check-opcion"><input type="radio" name="Cristales" value="NA"> N/A</label>
+                        </td>
+                        <td><input type="text" name="CristalesObs"></td>
+                    </tr>
+
+                    <tr>
+                        <td>Llantas / refacción</td>
+                        <td class="opciones">
+                            <label class="check-opcion"><input type="radio" name="Llantas" value="Si"> Sí</label>
+                            <label class="check-opcion"><input type="radio" name="Llantas" value="No"> No</label>
+                            <label class="check-opcion"><input type="radio" name="Llantas" value="NA"> N/A</label>
+                        </td>
+                        <td><input type="text" name="LlantasObs"></td>
+                    </tr>
+
+                    <tr>
+                        <td>Luces exteriores</td>
+                        <td class="opciones">
+                            <label class="check-opcion"><input type="radio" name="Luces" value="Si"> Sí</label>
+                            <label class="check-opcion"><input type="radio" name="Luces" value="No"> No</label>
+                            <label class="check-opcion"><input type="radio" name="Luces" value="NA"> N/A</label>
+                        </td>
+                        <td><input type="text" name="LucesObs"></td>
+                    </tr>
+
+                    <tr>
+                        <td>Interior / tapicería</td>
+                        <td class="opciones">
+                            <label class="check-opcion"><input type="radio" name="Interior" value="Si"> Sí</label>
+                            <label class="check-opcion"><input type="radio" name="Interior" value="No"> No</label>
+                            <label class="check-opcion"><input type="radio" name="Interior" value="NA"> N/A</label>
+                        </td>
+                        <td><input type="text" name="InteriorObs"></td>
+                    </tr>
+
+                    <tr>
+                        <td>Tablero / instrumentos</td>
+                        <td class="opciones">
+                            <label class="check-opcion"><input type="radio" name="Tablero" value="Si"> Sí</label>
+                            <label class="check-opcion"><input type="radio" name="Tablero" value="No"> No</label>
+                            <label class="check-opcion"><input type="radio" name="Tablero" value="NA"> N/A</label>
+                        </td>
+                        <td><input type="text" name="TableroObs"></td>
+                    </tr>
+
+                    <tr>
+                        <td>Estéreo / pantalla</td>
+                        <td class="opciones">
+                            <label class="check-opcion"><input type="radio" name="Estereo" value="Si"> Sí</label>
+                            <label class="check-opcion"><input type="radio" name="Estereo" value="No"> No</label>
+                            <label class="check-opcion"><input type="radio" name="Estereo" value="NA"> N/A</label>
+                        </td>
+                        <td><input type="text" name="EstereoObs"></td>
+                    </tr>
+
+                    <tr>
+                        <td>Aire acondicionado / calefacción</td>
+                        <td class="opciones">
+                            <label class="check-opcion"><input type="radio" name="Clima" value="Si"> Sí</label>
+                            <label class="check-opcion"><input type="radio" name="Clima" value="No"> No</label>
+                            <label class="check-opcion"><input type="radio" name="Clima" value="NA"> N/A</label>
+                        </td>
+                        <td><input type="text" name="ClimaObs"></td>
+                    </tr>
+                </table>
+            </div>
+
+            <!-- ACCESORIOS -->
+            <div class="card">
+                <h2>Artículos / accesorios entregados</h2>
+
+                <table class="checklist">
+                    <tr><th>Artículo</th><th>Estado</th><th>Observaciones</th></tr>
+
+                    <tr>
+                        <td>Tarjeta de circulación</td>
+                        <td>
+                            <label class="check-opcion"><input type="radio" name="TarjetaCirc" value="Si"> Sí</label>
+                            <label class="check-opcion"><input type="radio" name="TarjetaCirc" value="No"> No</label>
+                            <label class="check-opcion"><input type="radio" name="TarjetaCirc" value="NA"> N/A</label>
+                        </td>
+                        <td><input type="text" name="TarjetaCircObs"></td>
+                    </tr>
+
+                    <tr>
+                        <td>Póliza de seguro</td>
+                        <td>
+                            <label class="check-opcion"><input type="radio" name="Poliza" value="Si"> Sí</label>
+                            <label class="check-opcion"><input type="radio" name="Poliza" value="No"> No</label>
+                            <label class="check-opcion"><input type="radio" name="Poliza" value="NA"> N/A</label>
+                        </td>
+                        <td><input type="text" name="PolizaObs"></td>
+                    </tr>
+
+                    <tr>
+                        <td>Llaves de encendido</td>
+                        <td>
+                            <label class="check-opcion"><input type="radio" name="Llaves" value="Si"> Sí</label>
+                            <label class="check-opcion"><input type="radio" name="Llaves" value="No"> No</label>
+                            <label class="check-opcion"><input type="radio" name="Llaves" value="NA"> N/A</label>
+                        </td>
+                        <td><input type="text" name="LlavesObs"></td>
+                    </tr>
+
+                    <tr>
+                        <td>Control de alarma</td>
+                        <td>
+                            <label class="check-opcion"><input type="radio" name="ControlAlarma" value="Si"> Sí</label>
+                            <label class="check-opcion"><input type="radio" name="ControlAlarma" value="No"> No</label>
+                            <label class="check-opcion"><input type="radio" name="ControlAlarma" value="NA"> N/A</label>
+                        </td>
+                        <td><input type="text" name="ControlAlarmaObs"></td>
+                    </tr>
+
+                    <tr>
+                        <td>Gato / llave de tuercas</td>
+                        <td>
+                            <label class="check-opcion"><input type="radio" name="Gato" value="Si"> Sí</label>
+                            <label class="check-opcion"><input type="radio" name="Gato" value="No"> No</label>
+                            <label class="check-opcion"><input type="radio" name="Gato" value="NA"> N/A</label>
+                        </td>
+                        <td><input type="text" name="GatoObs"></td>
+                    </tr>
+
+                    <tr>
+                        <td>Triángulos de seguridad</td>
+                        <td>
+                            <label class="check-opcion"><input type="radio" name="Triangulos" value="Si"> Sí</label>
+                            <label class="check-opcion"><input type="radio" name="Triangulos" value="No"> No</label>
+                            <label class="check-opcion"><input type="radio" name="Triangulos" value="NA"> N/A</label>
+                        </td>
+                        <td><input type="text" name="TriangulosObs"></td>
+                    </tr>
+
+                    <tr>
+                        <td>Tapetes</td>
+                        <td>
+                            <label class="check-opcion"><input type="radio" name="Tapetes" value="Si"> Sí</label>
+                            <label class="check-opcion"><input type="radio" name="Tapetes" value="No"> No</label>
+                            <label class="check-opcion"><input type="radio" name="Tapetes" value="NA"> N/A</label>
+                        </td>
+                        <td><input type="text" name="TapetesObs"></td>
+                    </tr>
+
+                    <tr>
+                        <td>Herramientas / caja</td>
+                        <td>
+                            <label class="check-opcion"><input type="radio" name="Herramientas" value="Si"> Sí</label>
+                            <label class="check-opcion"><input type="radio" name="Herramientas" value="No"> No</label>
+                            <label class="check-opcion"><input type="radio" name="Herramientas" value="NA"> N/A</label>
+                        </td>
+                        <td><input type="text" name="HerramientasObs"></td>
+                    </tr>
+
+                    <tr>
+                        <td>Lector de peaje / TAG</td>
+                        <td>
+                            <label class="check-opcion"><input type="radio" name="TAG" value="Si"> Sí</label>
+                            <label class="check-opcion"><input type="radio" name="TAG" value="No"> No</label>
+                            <label class="check-opcion"><input type="radio" name="TAG" value="NA"> N/A</label>
+                        </td>
+                        <td><input type="text" name="TAGObs"></td>
+                    </tr>
+
+                    <tr>
+                        <td>Otros</td>
+                        <td>
+                            <label class="check-opcion"><input type="radio" name="Otros" value="Si"> Sí</label>
+                            <label class="check-opcion"><input type="radio" name="Otros" value="No"> No</label>
+                            <label class="check-opcion"><input type="radio" name="Otros" value="NA"> N/A</label>
+                        </td>
+                        <td><input type="text" name="OtrosObs"></td>
+                    </tr>
+                </table>
+            </div>
+
+            <!-- OBSERVACIONES -->
+            <div class="card">
+                <h2>Observaciones generales</h2>
+                <textarea name="ObservacionesGenerales" placeholder="Notas del cliente o condición general..."></textarea>
+
+                <label class="checkbox-linea">
+                    <input type="checkbox" name="AceptaTerminos" required>
+                    El cliente acepta que la información proporcionada es correcta.
+                </label>
+            </div>
+
+            <!-- FIRMAS -->
+            <div class="card">
+                <h2>Firmas</h2>
+
+                <label>Firma del cliente (texto o nombre completo)</label>
+                <input type="text" name="FirmaCliente">
+
+                <label>Firma del asesor</label>
+                <input type="text" name="FirmaAsesor">
+            </div>
+
+            <!-- ACCIONES -->
+            <div class="acciones-form">
+                <button class="btn btn-primary" type="submit">Enviar recepción</button>
+            </div>
+
         </form>
 
         <div id="msgForm" class="mensaje-form"></div>
+
     </div>
 </main>
 
 <footer>
-    Salvatori Servicio Automotriz · Formato interno de recepción · Su Taller Experto
+    Salvatori Servicio Automotriz · Formato interno de recepción · Uso exclusivo del taller
 </footer>
 
 <script>
-    // Cambia este PIN a uno que tú decidas
-    const PIN_ACCESO = "4521";
+    /* === 🔐 PIN DE ACCESO === */
+    const PIN_ACCESO = "871453";
 
-    function desbloquear() {
-        const input = document.getElementById("pinAcceso");
-        const msg   = document.getElementById("lockMsg");
-        if (input.value === PIN_ACCESO) {
+    function desbloquear(){
+        const pin = document.getElementById("pinAcceso").value;
+        const msg = document.getElementById("lockMsg");
+
+        if(pin === PIN_ACCESO){
             document.getElementById("lockScreen").style.display = "none";
             document.getElementById("contenidoForm").style.display = "block";
             msg.textContent = "";
@@ -353,9 +493,38 @@
         }
     }
 
-    // Aquí deberías pegar el mismo JS de envío a Make que ya tienes:
-    // const WEBHOOK_URL = "TU_WEBHOOK_DE_MAKE_AQUI";
-    // frmRecepcion.addEventListener('submit', ... );
+    /* === 🌐 Envío a MAKE === */
+    const WEBHOOK_URL = "https://hook.us2.make.com/qalrej6f1ms2a6bssqkjte8got8kbuzu";
+
+    document.getElementById("frmRecepcion").addEventListener("submit", async function(e){
+        e.preventDefault();
+
+        const form = new FormData(this);
+
+        // Campos automáticos
+        form.append("FechaEnvio", new Date().toLocaleDateString("en-CA"));
+        form.append("HoraEnvio", new Date().toLocaleTimeString("en-US", {hour12:false}));
+        form.append("Origen", "RecepcionInterna");
+
+        try{
+            const res = await fetch(WEBHOOK_URL, {
+                method: "POST",
+                body: form
+            });
+
+            if(res.ok){
+                document.getElementById("msgForm").innerHTML =
+                    "<p class='mensaje-ok'>✔ Recepción enviada correctamente.</p>";
+                this.reset();
+            } else {
+                throw new Error("Error al enviar");
+            }
+
+        } catch(err){
+            document.getElementById("msgForm").innerHTML =
+                "<p class='mensaje-error'>❌ Ocurrió un error al enviar la recepción.</p>";
+        }
+    });
 </script>
 
 </body>
