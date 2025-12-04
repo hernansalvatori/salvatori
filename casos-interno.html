@@ -5,7 +5,7 @@
     <title>Casos reales internos | Salvatori</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="noindex,nofollow">
-    <meta name="description" content="Registro interno de casos reales de taller para mostrar en la página principal.">
+    <meta name="description" content="Registro interno de casos reales del taller Salvatori Servicio Automotriz.">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -42,7 +42,7 @@
             padding: 10px 16px;
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
         }
 
         .logo-area {
@@ -52,8 +52,8 @@
         }
 
         .logo-img {
-            width: 44px;
-            height: 44px;
+            width: 48px;
+            height: 48px;
             border-radius: 8px;
             overflow: hidden;
             display: flex;
@@ -84,14 +84,15 @@
 
         h1 {
             margin: 10px 0 4px;
-            font-size: 20px;
+            font-size: 22px;
             text-align: center;
         }
 
         .subtitulo {
             font-size: 12px;
             text-align: center;
-            margin-bottom: 14px;
+            margin-bottom: 12px;
+            color: #555;
         }
 
         .card {
@@ -117,8 +118,6 @@
         }
 
         input[type="text"],
-        input[type="number"],
-        input[type="url"],
         select,
         textarea {
             width: 100%;
@@ -142,19 +141,49 @@
 
         .fila-doble > div { flex: 1; }
 
-        .checkbox-linea {
+        .dropzone {
+            margin-top: 6px;
+            border: 2px dashed #bbb;
+            border-radius: 10px;
+            padding: 14px;
+            text-align: center;
             font-size: 12px;
-            margin-top: 10px;
+            color: #555;
+            background: #fafafa;
+            cursor: pointer;
+            transition: border-color 0.15s ease, background 0.15s ease;
         }
 
-        .checkbox-linea input { margin-right: 6px; }
+        .dropzone.dragover {
+            border-color: var(--rojo);
+            background: #fff3e0;
+        }
 
-        .acciones-form {
-            margin-top: 16px;
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-            justify-content: flex-end;
+        .dropzone strong {
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .preview-img {
+            margin-top: 8px;
+            max-width: 100%;
+            max-height: 180px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            object-fit: cover;
+            display: none;
+        }
+
+        .preview-label {
+            font-size: 11px;
+            color: #555;
+            margin-top: 4px;
+        }
+
+        .nota {
+            font-size: 11px;
+            color: #666;
+            margin-top: 6px;
         }
 
         .btn {
@@ -192,6 +221,14 @@
             transform: translateY(-1px);
         }
 
+        .acciones-form {
+            margin-top: 16px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
+
         .mensaje-form {
             margin-top: 10px;
             font-size: 12px;
@@ -200,6 +237,23 @@
         .mensaje-ok { color: var(--verde); }
         .mensaje-error { color: var(--rojo-oscuro); }
 
+        .lista-casos {
+            margin-top: 8px;
+            font-size: 12px;
+        }
+
+        .lista-casos-item {
+            padding: 6px 8px;
+            border-radius: 8px;
+            background: #fafafa;
+            border: 1px solid #eee;
+            margin-bottom: 6px;
+        }
+
+        .lista-casos-item strong {
+            font-size: 13px;
+        }
+
         footer {
             text-align: center;
             font-size: 11px;
@@ -207,33 +261,10 @@
             padding: 10px 6px 16px;
         }
 
-        /* BLOQUEO POR PIN */
-        .lock-screen {
-            max-width: 400px;
-            margin: 40px auto 0;
-            background: #ffffff;
-            padding: 16px;
-            border-radius: 12px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.12);
-            text-align: center;
-            font-size: 13px;
-        }
-
-        .lock-screen input {
-            text-align: center;
-            letter-spacing: 3px;
-            font-size: 18px;
-        }
-
-        .lock-msg {
-            margin-top: 8px;
-            font-size: 12px;
-        }
-
         @media (max-width: 700px) {
             .nav-container {
-                flex-direction: column;
-                align-items: flex-start;
+                flex-direction: row;
+                align-items: center;
             }
             .fila-doble {
                 flex-direction: column;
@@ -251,207 +282,292 @@
             </div>
             <div class="logo-text">
                 <strong>Salvatori Servicio Automotriz</strong>
-                <span>Uso interno · Casos reales</span>
+                <span>Uso interno · Casos reales del taller</span>
             </div>
         </div>
     </div>
 </header>
 
 <main>
-    <!-- BLOQUEO PIN -->
-    <div id="lockScreen" class="lock-screen">
-        <h2>Acceso interno</h2>
-        <p>Ingresa el PIN para capturar casos reales.</p>
-        <input type="password" id="pinAcceso" maxlength="6" placeholder="••••••">
-        <div style="margin-top:10px;">
-            <button class="btn btn-primary" onclick="desbloquear()">Desbloquear</button>
-        </div>
-        <div id="lockMsg" class="lock-msg"></div>
-        <p class="lock-msg" style="margin-top:10px; color:#999;">Uso exclusivo del taller. No compartir esta liga con clientes.</p>
+    <h1>Registro de casos reales</h1>
+    <p class="subtitulo">
+        Uso interno del taller. Cada caso que captures podrá mostrarse en la sección “Casos reales” del sitio.
+    </p>
+
+    <div class="card">
+        <h2>Datos del caso</h2>
+
+        <form id="frmCaso">
+            <div class="fila-doble">
+                <div>
+                    <label>Categoría</label>
+                    <select name="Categoria" required>
+                        <option value="">Selecciona una opción</option>
+                        <option value="Motor">Motor</option>
+                        <option value="Transmisión">Transmisión</option>
+                        <option value="Frenos">Frenos</option>
+                        <option value="Suspensión">Suspensión</option>
+                        <option value="Dirección">Dirección</option>
+                        <option value="Eléctrico">Sistema eléctrico</option>
+                        <option value="Mantenimiento">Mantenimiento / servicio</option>
+                        <option value="Otro">Otro</option>
+                    </select>
+                </div>
+                <div>
+                    <label>Título corto del caso</label>
+                    <input type="text" name="Titulo" placeholder="Ej. Transmisión CVT Sentra 2017" required>
+                </div>
+            </div>
+
+            <label>Problema (lo que reporta el cliente)</label>
+            <textarea name="Problema" placeholder="Ej. Pérdida de fuerza, jaloneos, testigo de check engine encendido..." required></textarea>
+
+            <label>Qué se hizo (solución)</label>
+            <textarea name="Solucion" placeholder="Ej. Diagnóstico con escáner, cambio de solenoides, servicio completo a transmisión..." required></textarea>
+
+            <label>Resultado</label>
+            <textarea name="Resultado" placeholder="Ej. Recuperó potencia, cambios suaves, sin códigos de falla al finalizar la prueba de ruta." required></textarea>
+
+            <label>Foto ANTES del servicio</label>
+            <div class="dropzone" id="dropAntes">
+                <strong>Arrastra la foto aquí</strong>
+                o da clic para elegir desde la galería.
+            </div>
+            <input type="file" id="inputAntes" accept="image/*" style="display:none;">
+            <img id="previewAntes" class="preview-img" alt="Vista previa antes">
+            <div id="labelAntes" class="preview-label"></div>
+
+            <label>Foto DESPUÉS del servicio</label>
+            <div class="dropzone" id="dropDespues">
+                <strong>Arrastra la foto aquí</strong>
+                o da clic para elegir desde la galería.
+            </div>
+            <input type="file" id="inputDespues" accept="image/*" style="display:none;">
+            <img id="previewDespues" class="preview-img" alt="Vista previa después">
+            <div id="labelDespues" class="preview-label"></div>
+
+            <p class="nota">
+                Las fotos se guardan solamente para usarse en la web del taller. Evita que se vean placas completas o datos personales del cliente.
+            </p>
+
+            <div class="acciones-form">
+                <button type="button" class="btn btn-secondary" id="btnLimpiar">Limpiar</button>
+                <button type="submit" class="btn btn-primary">Guardar caso</button>
+            </div>
+
+            <div id="msgForm" class="mensaje-form"></div>
+        </form>
     </div>
 
-    <div id="contenidoForm" style="display:none;">
-        <h1>Registro de casos reales</h1>
-        <p class="subtitulo">Estos casos se mostrarán en la sección “Casos reales del taller” del sitio, en esta misma computadora.</p>
-
-        <div class="card">
-            <h2>Datos del caso</h2>
-            <form id="frmCaso">
-                <label for="titulo">Título del caso (ej. “Motor · Pérdida de fuerza”)</label>
-                <input type="text" id="titulo" required>
-
-                <div class="fila-doble">
-                    <div>
-                        <label for="tipoTrabajo">Tipo de trabajo</label>
-                        <select id="tipoTrabajo" required>
-                            <option value="">Selecciona...</option>
-                            <option>Motor</option>
-                            <option>Transmisión</option>
-                            <option>Dirección / Suspensión</option>
-                            <option>Frenos</option>
-                            <option>Eléctrico / Electrónico</option>
-                            <option>Servicio general</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label for="auto">Auto (ej. “Nissan Versa 2014”)</label>
-                        <input type="text" id="auto" placeholder="Marca y modelo">
-                    </div>
-                </div>
-
-                <label for="problema">Problema reportado por el cliente</label>
-                <textarea id="problema" placeholder="Qué sentía el cliente, ruidos, luces, síntomas..."></textarea>
-
-                <label for="solucion">Trabajo realizado / solución</label>
-                <textarea id="solucion" placeholder="Qué se hizo, qué se cambió, limpiezas, ajustes..."></textarea>
-
-                <label for="resultado">Resultado para el cliente</label>
-                <textarea id="resultado" placeholder="Cómo quedó el auto, mejora, beneficios..."></textarea>
-
-                <label for="notaCorta">Nota corta / resumen</label>
-                <input type="text" id="notaCorta" placeholder="Ej. 'El auto recuperó potencia y bajó el consumo'">
-
-                <div class="fila-doble">
-                    <div>
-                        <label for="imgAntes">URL imagen ANTES (opcional)</label>
-                        <input type="url" id="imgAntes" placeholder="https://...">
-                    </div>
-                    <div>
-                        <label for="imgDespues">URL imagen DESPUÉS (opcional)</label>
-                        <input type="url" id="imgDespues" placeholder="https://...">
-                    </div>
-                </div>
-
-                <div class="checkbox-linea">
-                    <input type="checkbox" id="destacado" checked>
-                    <label for="destacado" style="display:inline;font-weight:400;">
-                        Mostrar este caso en el listado principal.
-                    </label>
-                </div>
-
-                <div class="acciones-form">
-                    <button type="button" class="btn btn-secondary" onclick="limpiarFormulario()">Limpiar</button>
-                    <button type="submit" class="btn btn-primary">Guardar caso</button>
-                </div>
-
-                <div id="msgForm" class="mensaje-form"></div>
-
-                <p class="mensaje-form" style="margin-top:10px; color:#555;">
-                    Tip: los casos se guardan en esta computadora usando almacenamiento local.  
-                    Para que se vean en el <strong>index</strong>, solo necesitas abrir la página principal en este mismo navegador.
-                </p>
-            </form>
-        </div>
-
-        <div class="card">
-            <h2>Casos guardados en esta computadora</h2>
-            <div id="listaCasos" style="font-size:12px;"></div>
-        </div>
+    <div class="card">
+        <h2>Casos guardados en este navegador</h2>
+        <p class="nota">
+            Estos casos se guardan en el navegador (localStorage) de esta computadora/tablet.  
+            El <strong>index.html</strong> puede leerlos para mostrarlos en la sección “Casos reales”.
+        </p>
+        <div id="listaCasos" class="lista-casos"></div>
     </div>
 </main>
 
 <footer>
-    Salvatori Servicio Automotriz · Módulo interno de casos reales
+    Salvatori Servicio Automotriz · Uso interno · Casos reales del taller
 </footer>
 
 <script>
-    // PIN interno
-    const PIN_ACCESO = "871453";
+    // Clave de almacenamiento local
+    const STORAGE_KEY = "salvatori_casos";
 
-    function desbloquear() {
-        const input = document.getElementById("pinAcceso");
-        const msg   = document.getElementById("lockMsg");
-        if (input.value === PIN_ACCESO) {
-            document.getElementById("lockScreen").style.display = "none";
-            document.getElementById("contenidoForm").style.display = "block";
-            msg.textContent = "";
-            cargarCasosGuardados();
-        } else {
-            msg.textContent = "PIN incorrecto. Inténtalo de nuevo.";
-            msg.style.color = "#c62828";
-        }
+    // Variables para guardar las imágenes en base64
+    let fotoAntesData = null;
+    let fotoDespuesData = null;
+
+    // ==== Utilidades para dropzones ====
+    function setupDropzone(dropId, inputId, previewId, labelId, setDataCallback) {
+        const dropzone = document.getElementById(dropId);
+        const input = document.getElementById(inputId);
+        const preview = document.getElementById(previewId);
+        const label = document.getElementById(labelId);
+
+        // Click -> abre selector de archivos
+        dropzone.addEventListener("click", () => input.click());
+
+        // Cambio por selector
+        input.addEventListener("change", () => {
+            const file = input.files[0];
+            if (file) {
+                leerArchivoImagen(file, preview, label, setDataCallback);
+            }
+        });
+
+        // Drag & drop
+        dropzone.addEventListener("dragover", (e) => {
+            e.preventDefault();
+            dropzone.classList.add("dragover");
+        });
+
+        dropzone.addEventListener("dragleave", (e) => {
+            e.preventDefault();
+            dropzone.classList.remove("dragover");
+        });
+
+        dropzone.addEventListener("drop", (e) => {
+            e.preventDefault();
+            dropzone.classList.remove("dragover");
+            const file = e.dataTransfer.files[0];
+            if (file) {
+                leerArchivoImagen(file, preview, label, setDataCallback);
+            }
+        });
     }
 
-    function obtenerCasos() {
+    function leerArchivoImagen(file, preview, label, setDataCallback) {
+        if (!file.type.startsWith("image/")) {
+            alert("Por favor selecciona un archivo de imagen.");
+            return;
+        }
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            const dataUrl = e.target.result;
+            preview.src = dataUrl;
+            preview.style.display = "block";
+            label.textContent = "Archivo: " + file.name;
+            setDataCallback(dataUrl);
+        };
+        reader.readAsDataURL(file);
+    }
+
+    // Configurar dropzones al cargar
+    setupDropzone(
+        "dropAntes",
+        "inputAntes",
+        "previewAntes",
+        "labelAntes",
+        (data) => { fotoAntesData = data; }
+    );
+    setupDropzone(
+        "dropDespues",
+        "inputDespues",
+        "previewDespues",
+        "labelDespues",
+        (data) => { fotoDespuesData = data; }
+    );
+
+    // ==== Manejo de formulario ====
+    const frmCaso = document.getElementById("frmCaso");
+    const msgForm = document.getElementById("msgForm");
+    const btnLimpiar = document.getElementById("btnLimpiar");
+
+    frmCaso.addEventListener("submit", function(e) {
+        e.preventDefault();
+        msgForm.textContent = "";
+
+        const formData = new FormData(frmCaso);
+
+        const categoria = formData.get("Categoria");
+        const titulo    = formData.get("Titulo");
+        const problema  = formData.get("Problema");
+        const solucion  = formData.get("Solucion");
+        const resultado = formData.get("Resultado");
+
+        if (!fotoAntesData || !fotoDespuesData) {
+            msgForm.textContent = "Por favor agrega las fotos ANTES y DESPUÉS.";
+            msgForm.className = "mensaje-form mensaje-error";
+            return;
+        }
+
+        const nuevoCaso = {
+            id: Date.now(),
+            categoria,
+            titulo,
+            problema,
+            solucion,
+            resultado,
+            fotoAntes: fotoAntesData,
+            fotoDespues: fotoDespuesData
+        };
+
+        // Leer casos existentes
+        const actuales = cargarCasos();
+        actuales.push(nuevoCaso);
+        guardarCasos(actuales);
+
+        msgForm.textContent = "✔ Caso guardado correctamente.";
+        msgForm.className = "mensaje-form mensaje-ok";
+
+        // Limpiar formulario (pero dejamos vista de lista actualizada)
+        frmCaso.reset();
+        limpiarImagenes();
+        renderListaCasos();
+    });
+
+    btnLimpiar.addEventListener("click", function() {
+        frmCaso.reset();
+        msgForm.textContent = "";
+        limpiarImagenes();
+    });
+
+    function limpiarImagenes() {
+        fotoAntesData = null;
+        fotoDespuesData = null;
+
+        const previewAntes = document.getElementById("previewAntes");
+        const previewDespues = document.getElementById("previewDespues");
+        const labelAntes = document.getElementById("labelAntes");
+        const labelDespues = document.getElementById("labelDespues");
+
+        previewAntes.src = "";
+        previewAntes.style.display = "none";
+        labelAntes.textContent = "";
+
+        previewDespues.src = "";
+        previewDespues.style.display = "none";
+        labelDespues.textContent = "";
+    }
+
+    // ==== LocalStorage helpers ====
+    function cargarCasos() {
         try {
-            return JSON.parse(localStorage.getItem("salvatoriCasos") || "[]");
-        } catch(e) {
+            const raw = localStorage.getItem(STORAGE_KEY);
+            if (!raw) return [];
+            return JSON.parse(raw);
+        } catch (e) {
+            console.error("Error leyendo casos:", e);
             return [];
         }
     }
 
     function guardarCasos(casos) {
-        localStorage.setItem("salvatoriCasos", JSON.stringify(casos));
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(casos));
     }
 
-    function limpiarFormulario() {
-        document.getElementById("frmCaso").reset();
-    }
-
-    function cargarCasosGuardados() {
-        const contenedor = document.getElementById("listaCasos");
-        const casos = obtenerCasos();
+    // ==== Render de lista debajo del formulario ====
+    function renderListaCasos() {
+        const cont = document.getElementById("listaCasos");
+        const casos = cargarCasos();
 
         if (!casos.length) {
-            contenedor.innerHTML = "<p>No hay casos guardados todavía.</p>";
+            cont.innerHTML = "<p class='nota'>Aún no hay casos capturados en este dispositivo.</p>";
             return;
         }
 
-        let html = "<ul>";
-        casos.forEach((c, idx) => {
-            html += `<li><strong>${idx + 1}.</strong> ${c.titulo || "(sin título)"} — <em>${c.tipoTrabajo || ""}</em></li>`;
+        // Ordenar del más reciente al más antiguo
+        casos.sort((a, b) => b.id - a.id);
+
+        cont.innerHTML = "";
+        casos.forEach(caso => {
+            const div = document.createElement("div");
+            div.className = "lista-casos-item";
+            div.innerHTML = `
+                <strong>${caso.titulo || "(Sin título)"}</strong><br>
+                <span style="font-size:11px; color:#666;">Categoría: ${caso.categoria || "-"}</span><br>
+                <span style="font-size:11px; color:#999;">ID: ${caso.id}</span>
+            `;
+            cont.appendChild(div);
         });
-        html += "</ul>";
-        contenedor.innerHTML = html;
     }
 
-    const frmCaso = document.getElementById("frmCaso");
-    frmCaso.addEventListener("submit", function(e) {
-        e.preventDefault();
-
-        const titulo      = document.getElementById("titulo").value.trim();
-        const tipoTrabajo = document.getElementById("tipoTrabajo").value;
-        const auto        = document.getElementById("auto").value.trim();
-        const problema    = document.getElementById("problema").value.trim();
-        const solucion    = document.getElementById("solucion").value.trim();
-        const resultado   = document.getElementById("resultado").value.trim();
-        const notaCorta   = document.getElementById("notaCorta").value.trim();
-        const imgAntes    = document.getElementById("imgAntes").value.trim();
-        const imgDespues  = document.getElementById("imgDespues").value.trim();
-        const destacado   = document.getElementById("destacado").checked;
-
-        if (!titulo || !tipoTrabajo) {
-            document.getElementById("msgForm").textContent = "Al menos llena título y tipo de trabajo.";
-            document.getElementById("msgForm").className = "mensaje-form mensaje-error";
-            return;
-        }
-
-        const casos = obtenerCasos();
-
-        const nuevoCaso = {
-            titulo,
-            tipoTrabajo,
-            auto,
-            problema,
-            solucion,
-            resultado,
-            notaCorta,
-            imgAntes,
-            imgDespues,
-            destacado,
-            fechaRegistro: new Date().toISOString()
-        };
-
-        // Lo agregamos al inicio
-        casos.unshift(nuevoCaso);
-        guardarCasos(casos);
-
-        document.getElementById("msgForm").textContent = "Caso guardado correctamente. Actualiza el index para verlo en 'Casos reales'.";
-        document.getElementById("msgForm").className = "mensaje-form mensaje-ok";
-
-        limpiarFormulario();
-        cargarCasosGuardados();
-    });
+    // Cargar lista al abrir la página
+    renderListaCasos();
 </script>
 
 </body>
