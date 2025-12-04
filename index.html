@@ -627,6 +627,12 @@
             box-shadow: 0 6px 16px rgba(0,0,0,0.3);
         }
 
+        const casos = JSON.parse(localStorage.getItem("salvatori_casos") || "[]");
+// ordenar y tomar los últimos 3
+const ultimos = casos.sort((a,b)=>b.id-a.id).slice(0,3);
+// luego generas las tarjetas con a.fotoAntes, a.fotoDespues, a.problema, etc.
+
+
         /* FOOTER */
         footer {
             background: #111;
