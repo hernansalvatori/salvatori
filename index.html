@@ -439,7 +439,7 @@
             font-size: 13px;
         }
 
-        /* CASOS REALES (antes / después) */
+        /* CASOS REALES (texto, sin fotos) */
         .casos-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -454,25 +454,13 @@
             font-size: 13px;
         }
 
-        .caso-imagenes {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 6px;
-            margin-bottom: 8px;
-        }
-
-        .caso-imagenes img {
-            width: 100%;
-            border-radius: 6px;
-            object-fit: cover;
-            height: 120px;
-        }
-
         .caso-tag {
             font-size: 11px;
             text-transform: uppercase;
             letter-spacing: 0.04em;
             color: #777;
+            display:block;
+            margin-bottom:4px;
         }
 
         /* PAQUETES */
@@ -739,7 +727,6 @@
     <div class="nav-container">
         <div class="logo-area">
             <div class="logo-img">
-                <!-- Asegúrate de subir img/logo-salvatori.png -->
                 <img src="img/logo-salvatori.png" alt="Logo Salvatori Servicio Automotriz">
             </div>
             <div class="logo-text">
@@ -1027,13 +1014,51 @@
         </div>
     </section>
 
-    <!-- CASOS REALES -->
+    <!-- CASOS REALES (FIJOS, SIN FOTOS, BASADOS EN BITÁCORA) -->
     <section id="casos" class="section">
         <h2>Casos reales del taller</h2>
-        <p class="sub">Algunos ejemplos de trabajos que hemos realizado recientemente. Las imágenes respetan la privacidad de nuestros clientes.</p>
+        <p class="sub">
+            Algunos ejemplos reales de trabajos recientes, basados en nuestra bitácora interna.
+            Sin nombres de clientes ni placas, solo el tipo de vehículo y el trabajo realizado.
+        </p>
 
-        <div id="casosContainer" class="casos-grid">
-            <p style="font-size:12px;">Cargando casos...</p>
+        <div class="casos-grid">
+            <!-- Caso 1: Ford Sierra - Dirección electrónica -->
+            <div class="caso-card">
+                <span class="caso-tag">Dirección y suspensión · Pick up Ford</span>
+                <p><strong>Situación:</strong> Dirección imprecisa, con juego en el volante y ruidos al girar.</p>
+                <p><strong>Trabajo realizado:</strong> Cambio de cremallera de dirección y ajustes en suspensión delantera, acompañado de la
+                    <strong>reprogramación de la dirección electrónica</strong> para que el sistema reconociera la nueva pieza.</p>
+                <p><strong>Resultado:</strong> Volante firme y preciso, sin ruidos ni fugas, listo para uso diario y trayectos largos.</p>
+            </div>
+
+            <!-- Caso 2: GMC Sierra - Transmisión automática -->
+            <div class="caso-card">
+                <span class="caso-tag">Transmisión automática · GMC</span>
+                <p><strong>Situación:</strong> Pick up con cambios bruscos y sensación de “patinaje” al acelerar con carga.</p>
+                <p><strong>Trabajo realizado:</strong> Desmontaje y <strong>reparación de transmisión automática</strong>, sustitución de componentes de desgaste interno
+                    y verificación del cuerpo de válvulas.</p>
+                <p><strong>Resultado:</strong> Cambios suaves y firmes, mejor respuesta al acelerar y mayor confiabilidad para trabajo pesado.</p>
+            </div>
+
+            <!-- Caso 3: Chevrolet Cruze - Reparación de motor -->
+            <div class="caso-card">
+                <span class="caso-tag">Motor · Reparación mayor · Chevrolet</span>
+                <p><strong>Situación:</strong> Sedán con pérdida de potencia, consumo de aceite y testigo de motor encendido.</p>
+                <p><strong>Trabajo realizado:</strong> <strong>Reparación general de motor</strong>, ajuste de componentes internos y cambio de
+                    elementos de encendido (bobinas y relacionados), siguiendo las intervenciones registradas en la bitácora.</p>
+                <p><strong>Resultado:</strong> Motor estable, sin vibraciones, con mejor compresión y sin códigos de falla activos.</p>
+            </div>
+
+            <!-- Caso 4: Pick up JAC - Enfriamiento y frenos -->
+            <div class="caso-card">
+                <span class="caso-tag">Sistema de enfriamiento y frenos · Pick up JAC</span>
+                <p><strong>Situación:</strong> Vehículo que se recalentaba en trayectos largos y presentaba ruido en frenos delanteros.</p>
+                <p><strong>Trabajo realizado:</strong> Cambio de bomba de agua y de aceite, lavado de radiador, cambio de termostato,
+                    clutch del motoventilador, bulbo de temperatura, junta de tapa de punterías, bujías y servicio completo de frenos
+                    delanteros según lo registrado en la bitácora.</p>
+                <p><strong>Resultado:</strong> Temperaturas estables, mejor lubricación del motor y frenado seguro para uso diario y de carga.</p>
+            </div>
         </div>
     </section>
 
@@ -1263,44 +1288,6 @@
 
 <!-- SCRIPTS -->
 <script>
-/* === CARGAR CASOS DESDE casos_api.php === */
-(async function cargarCasosPublicos(){
-    const cont = document.getElementById('casosContainer');
-    if (!cont) return;
-
-    try {
-        const res = await fetch('casos_api.php?action=list');
-        const data = await res.json();
-        if (!data.ok || !data.casos || data.casos.length === 0) {
-            cont.innerHTML = '<p style="font-size:12px;">Pronto verás aquí algunos de nuestros trabajos recientes.</p>';
-            return;
-        }
-
-        cont.innerHTML = '';
-        // últimos 3 casos, del más reciente al más antiguo
-        data.casos.slice(-3).reverse().forEach(caso => {
-            const div = document.createElement('div');
-            div.className = 'caso-card';
-            div.innerHTML = `
-                <span class="caso-tag">${caso.tipo || ''}</span>
-                <div class="caso-imagenes">
-                    ${caso.fotoAntes ? `<img src="${caso.fotoAntes}" alt="Antes">` : ''}
-                    ${caso.fotoDespues ? `<img src="${caso.fotoDespues}" alt="Después">` : ''}
-                </div>
-                <p><strong>${caso.titulo || ''}</strong></p>
-                <p><strong>Problema:</strong> ${caso.problema || ''}</p>
-                <p><strong>Solución:</strong> ${caso.solucion || ''}</p>
-                <p><strong>Resultado:</strong> ${caso.resultado || ''}</p>
-            `;
-            cont.appendChild(div);
-        });
-
-    } catch (err) {
-        console.error(err);
-        cont.innerHTML = '<p style="font-size:12px;">No se pudieron cargar los casos en este momento.</p>';
-    }
-})();
-
 /* === ACCESO INTERNO POR PIN (871453) === */
 const PIN_INTERNO = "871453";
 const overlayInterno = document.getElementById('overlayInterno');
