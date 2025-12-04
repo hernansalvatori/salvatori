@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Casos reales internos | Salvatori</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex,nofollow">
+    <meta name="description" content="Registro interno de casos reales de taller para mostrar en la página principal.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="img/favicon.png">
+
+    <style>
+        :root {
+            --rojo: #c62828;
+            --rojo-oscuro: #8e0000;
+            --amarillo: #f9a825;
+            --verde: #2e7d32;
+            --gris-fondo: #f5f5f5;
+            --texto: #333333;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            color: var(--texto);
+            background-color: var(--gris-fondo);
+        }
+
+        header {
+            background: #ffffff;
+            border-bottom: 3px solid var(--rojo);
+        }
+
+        .nav-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 10px 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-img {
+            width: 44px;
+            height: 44px;
+            border-radius: 8px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #111;
+        }
+
+        .logo-img img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            font-size: 11px;
+            line-height: 1.1;
+        }
+
+        .logo-text strong { font-size: 14px; }
+
+        main {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 16px;
+        }
+
+        h1 {
+            margin: 10px 0 4px;
+            font-size: 20px;
+            text-align: center;
+        }
+
+        .subtitulo {
+            font-size: 12px;
+            text-align: center;
+            margin-bottom: 14px;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 14px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            margin-bottom: 14px;
+        }
+
+        .card h2 {
+            font-size: 15px;
+            margin: 0 0 8px;
+            border-left: 4px solid var(--rojo);
+            padding-left: 8px;
+        }
+
+        label {
+            display: block;
+            font-size: 13px;
+            margin-top: 10px;
+            font-weight: 600;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        input[type="url"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 8px 10px;
+            margin-top: 4px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+            font-family: inherit;
+        }
+
+        textarea {
+            min-height: 70px;
+            resize: vertical;
+        }
+
+        .fila-doble {
+            display: flex;
+            gap: 10px;
+        }
+
+        .fila-doble > div { flex: 1; }
+
+        .checkbox-linea {
+            font-size: 12px;
+            margin-top: 10px;
+        }
+
+        .checkbox-linea input { margin-right: 6px; }
+
+        .acciones-form {
+            margin-top: 16px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
+
+        .btn {
+            border: none;
+            border-radius: 22px;
+            padding: 10px 18px;
+            font-size: 14px;
+            cursor: pointer;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            transition: 0.15s ease;
+        }
+
+        .btn-primary {
+            background: var(--rojo);
+            color: #fff;
+        }
+
+        .btn-primary:hover {
+            background: var(--rojo-oscuro);
+            transform: translateY(-1px);
+            box-shadow: 0 3px 8px rgba(0,0,0,0.18);
+        }
+
+        .btn-secondary {
+            background: #eee;
+            color: #333;
+        }
+
+        .btn-secondary:hover {
+            background: #ddd;
+            transform: translateY(-1px);
+        }
+
+        .mensaje-form {
+            margin-top: 10px;
+            font-size: 12px;
+        }
+
+        .mensaje-ok { color: var(--verde); }
+        .mensaje-error { color: var(--rojo-oscuro); }
+
+        footer {
+            text-align: center;
+            font-size: 11px;
+            color: #777;
+            padding: 10px 6px 16px;
+        }
+
+        /* BLOQUEO POR PIN */
+        .lock-screen {
+            max-width: 400px;
+            margin: 40px auto 0;
+            background: #ffffff;
+            padding: 16px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+            text-align: center;
+            font-size: 13px;
+        }
+
+        .lock-screen input {
+            text-align: center;
+            letter-spacing: 3px;
+            font-size: 18px;
+        }
+
+        .lock-msg {
+            margin-top: 8px;
+            font-size: 12px;
+        }
+
+        @media (max-width: 700px) {
+            .nav-container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .fila-doble {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="nav-container">
+        <div class="logo-area">
+            <div class="logo-img">
+                <img src="img/logo-salvatori.png" alt="Logo Salvatori">
+            </div>
+            <div class="logo-text">
+                <strong>Salvatori Servicio Automotriz</strong>
+                <span>Uso interno · Casos reales</span>
+            </div>
+        </div>
+    </div>
+</header>
+
+<main>
+    <!-- BLOQUEO PIN -->
+    <div id="lockScreen" class="lock-screen">
+        <h2>Acceso interno</h2>
+        <p>Ingresa el PIN para capturar casos reales.</p>
+        <input type="password" id="pinAcceso" maxlength="6" placeholder="••••••">
+        <div style="margin-top:10px;">
+            <button class="btn btn-primary" onclick="desbloquear()">Desbloquear</button>
+        </div>
+        <div id="lockMsg" class="lock-msg"></div>
+        <p class="lock-msg" style="margin-top:10px; color:#999;">Uso exclusivo del taller. No compartir esta liga con clientes.</p>
+    </div>
+
+    <div id="contenidoForm" style="display:none;">
+        <h1>Registro de casos reales</h1>
+        <p class="subtitulo">Estos casos se mostrarán en la sección “Casos reales del taller” del sitio, en esta misma computadora.</p>
+
+        <div class="card">
+            <h2>Datos del caso</h2>
+            <form id="frmCaso">
+                <label for="titulo">Título del caso (ej. “Motor · Pérdida de fuerza”)</label>
+                <input type="text" id="titulo" required>
+
+                <div class="fila-doble">
+                    <div>
+                        <label for="tipoTrabajo">Tipo de trabajo</label>
+                        <select id="tipoTrabajo" required>
+                            <option value="">Selecciona...</option>
+                            <option>Motor</option>
+                            <option>Transmisión</option>
+                            <option>Dirección / Suspensión</option>
+                            <option>Frenos</option>
+                            <option>Eléctrico / Electrónico</option>
+                            <option>Servicio general</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="auto">Auto (ej. “Nissan Versa 2014”)</label>
+                        <input type="text" id="auto" placeholder="Marca y modelo">
+                    </div>
+                </div>
+
+                <label for="problema">Problema reportado por el cliente</label>
+                <textarea id="problema" placeholder="Qué sentía el cliente, ruidos, luces, síntomas..."></textarea>
+
+                <label for="solucion">Trabajo realizado / solución</label>
+                <textarea id="solucion" placeholder="Qué se hizo, qué se cambió, limpiezas, ajustes..."></textarea>
+
+                <label for="resultado">Resultado para el cliente</label>
+                <textarea id="resultado" placeholder="Cómo quedó el auto, mejora, beneficios..."></textarea>
+
+                <label for="notaCorta">Nota corta / resumen</label>
+                <input type="text" id="notaCorta" placeholder="Ej. 'El auto recuperó potencia y bajó el consumo'">
+
+                <div class="fila-doble">
+                    <div>
+                        <label for="imgAntes">URL imagen ANTES (opcional)</label>
+                        <input type="url" id="imgAntes" placeholder="https://...">
+                    </div>
+                    <div>
+                        <label for="imgDespues">URL imagen DESPUÉS (opcional)</label>
+                        <input type="url" id="imgDespues" placeholder="https://...">
+                    </div>
+                </div>
+
+                <div class="checkbox-linea">
+                    <input type="checkbox" id="destacado" checked>
+                    <label for="destacado" style="display:inline;font-weight:400;">
+                        Mostrar este caso en el listado principal.
+                    </label>
+                </div>
+
+                <div class="acciones-form">
+                    <button type="button" class="btn btn-secondary" onclick="limpiarFormulario()">Limpiar</button>
+                    <button type="submit" class="btn btn-primary">Guardar caso</button>
+                </div>
+
+                <div id="msgForm" class="mensaje-form"></div>
+
+                <p class="mensaje-form" style="margin-top:10px; color:#555;">
+                    Tip: los casos se guardan en esta computadora usando almacenamiento local.  
+                    Para que se vean en el <strong>index</strong>, solo necesitas abrir la página principal en este mismo navegador.
+                </p>
+            </form>
+        </div>
+
+        <div class="card">
+            <h2>Casos guardados en esta computadora</h2>
+            <div id="listaCasos" style="font-size:12px;"></div>
+        </div>
+    </div>
+</main>
+
+<footer>
+    Salvatori Servicio Automotriz · Módulo interno de casos reales
+</footer>
+
+<script>
+    // PIN interno
+    const PIN_ACCESO = "871453";
+
+    function desbloquear() {
+        const input = document.getElementById("pinAcceso");
+        const msg   = document.getElementById("lockMsg");
+        if (input.value === PIN_ACCESO) {
+            document.getElementById("lockScreen").style.display = "none";
+            document.getElementById("contenidoForm").style.display = "block";
+            msg.textContent = "";
+            cargarCasosGuardados();
+        } else {
+            msg.textContent = "PIN incorrecto. Inténtalo de nuevo.";
+            msg.style.color = "#c62828";
+        }
+    }
+
+    function obtenerCasos() {
+        try {
+            return JSON.parse(localStorage.getItem("salvatoriCasos") || "[]");
+        } catch(e) {
+            return [];
+        }
+    }
+
+    function guardarCasos(casos) {
+        localStorage.setItem("salvatoriCasos", JSON.stringify(casos));
+    }
+
+    function limpiarFormulario() {
+        document.getElementById("frmCaso").reset();
+    }
+
+    function cargarCasosGuardados() {
+        const contenedor = document.getElementById("listaCasos");
+        const casos = obtenerCasos();
+
+        if (!casos.length) {
+            contenedor.innerHTML = "<p>No hay casos guardados todavía.</p>";
+            return;
+        }
+
+        let html = "<ul>";
+        casos.forEach((c, idx) => {
+            html += `<li><strong>${idx + 1}.</strong> ${c.titulo || "(sin título)"} — <em>${c.tipoTrabajo || ""}</em></li>`;
+        });
+        html += "</ul>";
+        contenedor.innerHTML = html;
+    }
+
+    const frmCaso = document.getElementById("frmCaso");
+    frmCaso.addEventListener("submit", function(e) {
+        e.preventDefault();
+
+        const titulo      = document.getElementById("titulo").value.trim();
+        const tipoTrabajo = document.getElementById("tipoTrabajo").value;
+        const auto        = document.getElementById("auto").value.trim();
+        const problema    = document.getElementById("problema").value.trim();
+        const solucion    = document.getElementById("solucion").value.trim();
+        const resultado   = document.getElementById("resultado").value.trim();
+        const notaCorta   = document.getElementById("notaCorta").value.trim();
+        const imgAntes    = document.getElementById("imgAntes").value.trim();
+        const imgDespues  = document.getElementById("imgDespues").value.trim();
+        const destacado   = document.getElementById("destacado").checked;
+
+        if (!titulo || !tipoTrabajo) {
+            document.getElementById("msgForm").textContent = "Al menos llena título y tipo de trabajo.";
+            document.getElementById("msgForm").className = "mensaje-form mensaje-error";
+            return;
+        }
+
+        const casos = obtenerCasos();
+
+        const nuevoCaso = {
+            titulo,
+            tipoTrabajo,
+            auto,
+            problema,
+            solucion,
+            resultado,
+            notaCorta,
+            imgAntes,
+            imgDespues,
+            destacado,
+            fechaRegistro: new Date().toISOString()
+        };
+
+        // Lo agregamos al inicio
+        casos.unshift(nuevoCaso);
+        guardarCasos(casos);
+
+        document.getElementById("msgForm").textContent = "Caso guardado correctamente. Actualiza el index para verlo en 'Casos reales'.";
+        document.getElementById("msgForm").className = "mensaje-form mensaje-ok";
+
+        limpiarFormulario();
+        cargarCasosGuardados();
+    });
+</script>
+
+</body>
+</html>
