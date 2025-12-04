@@ -189,8 +189,8 @@
         .btn {
             border: none;
             border-radius: 22px;
-            padding: 10px 18px;
-            font-size: 14px;
+            padding: 8px 14px;
+            font-size: 13px;
             cursor: pointer;
             font-weight: 600;
             display: inline-flex;
@@ -221,6 +221,12 @@
             transform: translateY(-1px);
         }
 
+        .btn-mini {
+            font-size: 11px;
+            padding: 4px 8px;
+            border-radius: 999px;
+        }
+
         .acciones-form {
             margin-top: 16px;
             display: flex;
@@ -248,6 +254,14 @@
             background: #fafafa;
             border: 1px solid #eee;
             margin-bottom: 6px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .lista-casos-info {
+            flex: 1;
         }
 
         .lista-casos-item strong {
@@ -351,8 +365,8 @@
             </p>
 
             <div class="acciones-form">
-                <button type="button" class="btn btn-secondary" id="btnLimpiar">Limpiar</button>
-                <button type="submit" class="btn btn-primary">Guardar caso</button>
+                <button type="button" class="btn btn-secondary" id="btnCancelar">Limpiar</button>
+                <button type="submit" class="btn btn-primary" id="btnGuardar">Guardar caso</button>
             </div>
 
             <div id="msgForm" class="mensaje-form"></div>
@@ -380,6 +394,9 @@
     // Variables para guardar las imágenes en base64
     let fotoAntesData = null;
     let fotoDespuesData = null;
+
+    // ID del caso que se está editando (null si es nuevo)
+    let editingId = null;
 
     // ==== Utilidades para dropzones ====
     function setupDropzone(dropId, inputId, previewId, labelId, setDataCallback) {
@@ -453,9 +470,10 @@
     );
 
     // ==== Manejo de formulario ====
-    const frmCaso = document.getElementById("frmCaso");
-    const msgForm = document.getElementById("msgForm");
-    const btnLimpiar = document.getElementById("btnLimpiar");
+    const frmCaso    = document.getElementById("frmCaso");
+    const msgForm    = document.getElementById("msgForm");
+    const btnCancelar = document.getElementById("btnCancelar");
+    const btnGuardar  = document.getElementById("btnGuardar");
 
     frmCaso.addEventListener("submit", function(e) {
         e.preventDefault();
@@ -475,8 +493,9 @@
             return;
         }
 
-        const nuevoCaso = {
-            id: Date.now(),
+        const casos = cargarCasos();
+
+        const dataBase = {
             categoria,
             titulo,
             problema,
@@ -486,13 +505,35 @@
             fotoDespues: fotoDespuesData
         };
 
-        // Leer casos existentes
-        const actuales = cargarCasos();
-        actuales.push(nuevoCaso);
-        guardarCasos(actuales);
+        if (editingId !== null) {
+            // Actualizar caso existente
+            const idx = casos.findIndex(c => c.id === editingId);
+            if (idx !== -1) {
+                casos[idx] = Object.assign({}, casos[idx], dataBase, { id: editingId });
+                guardarCasos(casos);
+                msgForm.textContent = "✔ Cambios guardados correctamente.";
+                msgForm.className = "mensaje-form mensaje-ok";
+            } else {
+                msgForm.textContent = "No se encontró el caso a editar.";
+                msgForm.className = "mensaje-form mensaje-error";
+            }
 
-        msgForm.textContent = "✔ Caso guardado correctamente.";
-        msgForm.className = "mensaje-form mensaje-ok";
+            // Salir de modo edición
+            editingId = null;
+            btnGuardar.textContent = "Guardar caso";
+            btnCancelar.textContent = "Limpiar";
+        } else {
+            // Crear caso nuevo
+            const nuevoCaso = Object.assign({}, dataBase, {
+                id: Date.now()
+            });
+
+            casos.push(nuevoCaso);
+            guardarCasos(casos);
+
+            msgForm.textContent = "✔ Caso guardado correctamente.";
+            msgForm.className = "mensaje-form mensaje-ok";
+        }
 
         // Limpiar formulario (pero dejamos vista de lista actualizada)
         frmCaso.reset();
@@ -500,9 +541,18 @@
         renderListaCasos();
     });
 
-    btnLimpiar.addEventListener("click", function() {
+    btnCancelar.addEventListener("click", function() {
+        // Si estamos editando, cancela edición
+        if (editingId !== null) {
+            editingId = null;
+            btnGuardar.textContent = "Guardar caso";
+            btnCancelar.textContent = "Limpiar";
+            msgForm.textContent = "Edición cancelada.";
+            msgForm.className = "mensaje-form";
+        } else {
+            msgForm.textContent = "";
+        }
         frmCaso.reset();
-        msgForm.textContent = "";
         limpiarImagenes();
     });
 
@@ -510,10 +560,10 @@
         fotoAntesData = null;
         fotoDespuesData = null;
 
-        const previewAntes = document.getElementById("previewAntes");
+        const previewAntes   = document.getElementById("previewAntes");
         const previewDespues = document.getElementById("previewDespues");
-        const labelAntes = document.getElementById("labelAntes");
-        const labelDespues = document.getElementById("labelDespues");
+        const labelAntes     = document.getElementById("labelAntes");
+        const labelDespues   = document.getElementById("labelDespues");
 
         previewAntes.src = "";
         previewAntes.style.display = "none";
@@ -540,6 +590,57 @@
         localStorage.setItem(STORAGE_KEY, JSON.stringify(casos));
     }
 
+    // ==== Cargar caso en formulario para edición ====
+    function cargarCasoEnFormulario(id) {
+        const casos = cargarCasos();
+        const caso = casos.find(c => c.id === id);
+        if (!caso) return;
+
+        editingId = id;
+
+        // Campos de texto
+        frmCaso.Categoria.value = caso.categoria || "";
+        frmCaso.Titulo.value    = caso.titulo || "";
+        frmCaso.Problema.value  = caso.problema || "";
+        frmCaso.Solucion.value  = caso.solucion || "";
+        frmCaso.Resultado.value = caso.resultado || "";
+
+        // Fotos
+        const previewAntes   = document.getElementById("previewAntes");
+        const previewDespues = document.getElementById("previewDespues");
+        const labelAntes     = document.getElementById("labelAntes");
+        const labelDespues   = document.getElementById("labelDespues");
+
+        fotoAntesData = caso.fotoAntes || null;
+        fotoDespuesData = caso.fotoDespues || null;
+
+        if (fotoAntesData) {
+            previewAntes.src = fotoAntesData;
+            previewAntes.style.display = "block";
+            labelAntes.textContent = "Imagen cargada (guardada)";
+        } else {
+            previewAntes.src = "";
+            previewAntes.style.display = "none";
+            labelAntes.textContent = "";
+        }
+
+        if (fotoDespuesData) {
+            previewDespues.src = fotoDespuesData;
+            previewDespues.style.display = "block";
+            labelDespues.textContent = "Imagen cargada (guardada)";
+        } else {
+            previewDespues.src = "";
+            previewDespues.style.display = "none";
+            labelDespues.textContent = "";
+        }
+
+        // UI de edición
+        btnGuardar.textContent  = "Guardar cambios";
+        btnCancelar.textContent = "Cancelar edición";
+        msgForm.textContent     = "Editando caso ID: " + id;
+        msgForm.className       = "mensaje-form";
+    }
+
     // ==== Render de lista debajo del formulario ====
     function renderListaCasos() {
         const cont = document.getElementById("listaCasos");
@@ -557,11 +658,27 @@
         casos.forEach(caso => {
             const div = document.createElement("div");
             div.className = "lista-casos-item";
-            div.innerHTML = `
+
+            const info = document.createElement("div");
+            info.className = "lista-casos-info";
+            info.innerHTML = `
                 <strong>${caso.titulo || "(Sin título)"}</strong><br>
                 <span style="font-size:11px; color:#666;">Categoría: ${caso.categoria || "-"}</span><br>
                 <span style="font-size:11px; color:#999;">ID: ${caso.id}</span>
             `;
+
+            const btnEdit = document.createElement("button");
+            btnEdit.type = "button";
+            btnEdit.className = "btn btn-secondary btn-mini";
+            btnEdit.textContent = "Editar";
+            btnEdit.dataset.id = caso.id;
+            btnEdit.addEventListener("click", function() {
+                const idNum = Number(this.dataset.id);
+                cargarCasoEnFormulario(idNum);
+            });
+
+            div.appendChild(info);
+            div.appendChild(btnEdit);
             cont.appendChild(div);
         });
     }
