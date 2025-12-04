@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <title>Salvatori Servicio Automotriz | Su Taller Experto</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Taller mecánico en Gómez Palacio con más de 25 años de experiencia. Afinaciones, frenos, diagnóstico computarizado, motores, dirección y transmisiones, mantenimiento para Uber y Didi.">
+    <meta name="description" content="Taller mecánico en Gómez Palacio con más de 25 años de experiencia. Afinaciones, frenos, diagnóstico computarizado, mantenimiento para Uber y Didi.">
     <meta name="robots" content="index,follow">
 
     <!-- Open Graph para compartir en redes -->
     <meta property="og:title" content="Salvatori Servicio Automotriz | Su Taller Experto">
-    <meta property="og:description" content="Mecánica, diagnóstico computarizado, motores, dirección y transmisiones en Gómez Palacio. Más de 25 años de experiencia.">
+    <meta property="og:description" content="Mecánica, diagnóstico computarizado y mantenimiento profesional en Gómez Palacio. Más de 25 años de experiencia.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://salvatori.com.mx/">
     <meta property="og:image" content="https://salvatori.com.mx/img/og-salvatori.jpg">
@@ -627,11 +627,55 @@
             box-shadow: 0 6px 16px rgba(0,0,0,0.3);
         }
 
-        const casos = JSON.parse(localStorage.getItem("salvatori_casos") || "[]");
-// ordenar y tomar los últimos 3
-const ultimos = casos.sort((a,b)=>b.id-a.id).slice(0,3);
-// luego generas las tarjetas con a.fotoAntes, a.fotoDespues, a.problema, etc.
+        /* OVERLAY ACCESO INTERNO */
+        .overlay-interno {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.6);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 300;
+        }
 
+        .overlay-card {
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 12px;
+            max-width: 320px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+
+        .overlay-card h2 {
+            margin: 0 0 8px;
+            font-size: 18px;
+        }
+
+        .overlay-card input[type="password"] {
+            width: 100%;
+            padding: 8px 10px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            margin-top: 8px;
+            font-size: 18px;
+            text-align: center;
+            letter-spacing: 6px;
+        }
+
+        .lock-msg {
+            margin-top: 6px;
+            font-size: 12px;
+        }
+
+        .overlay-links a {
+            display: block;
+            margin: 6px 0;
+            font-size: 13px;
+            color: var(--rojo-oscuro);
+            font-weight: 600;
+        }
 
         /* FOOTER */
         footer {
@@ -717,6 +761,7 @@ const ultimos = casos.sort((a,b)=>b.id-a.id).slice(0,3);
             <a href="#publicaciones">Publicaciones</a>
             <a href="#bitacora">Bitácora digital</a>
             <a href="whatsapp-ayuda.html">WhatsApp rápido</a>
+            <a href="#" id="btnAccesoInterno">Acceso interno</a>
         </nav>
 
         <div class="nav-contact">
@@ -731,6 +776,26 @@ const ultimos = casos.sort((a,b)=>b.id-a.id).slice(0,3);
         </div>
     </div>
 </header>
+
+<!-- MODAL ACCESO INTERNO -->
+<div id="overlayInterno" class="overlay-interno">
+    <div class="overlay-card">
+        <h2>Acceso interno</h2>
+        <p style="font-size:12px;color:#555;">Ingresa el PIN del taller para ver las herramientas internas.</p>
+        <input type="password" id="pinInterno" maxlength="6" placeholder="••••••">
+        <div id="msgPin" class="lock-msg"></div>
+        <div style="margin-top:12px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap;">
+            <button class="btn btn-primary" id="btnValidarPin" type="button">Entrar</button>
+            <button class="btn btn-outline" id="btnCancelarPin" type="button">Cancelar</button>
+        </div>
+        <div id="enlacesInternos" style="display:none;margin-top:14px;font-size:13px;text-align:left;">
+            <p style="margin-bottom:8px;">Elige a dónde quieres ir:</p>
+            <a href="recepcion-interna.html">📋 Recepción interna de vehículo</a>
+            <a href="casos-internos.html">🛠️ Casos reales internos</a>
+        </div>
+        <p style="margin-top:10px;font-size:11px;color:#999;">Uso exclusivo del taller · No compartir con clientes.</p>
+    </div>
+</div>
 
 <main>
 
@@ -750,8 +815,7 @@ const ultimos = casos.sort((a,b)=>b.id-a.id).slice(0,3);
 
                 <p class="hero-text">
                     En <strong>Salvatori Servicio Automotriz</strong> combinamos experiencia, diagnóstico avanzado y atención
-                    honesta para que tu auto, flota o unidad de plataforma siempre esté listo para trabajar,
-                    desde servicios pequeños hasta motores, dirección y transmisiones.
+                    honesta para que tu auto, flota o unidad de plataforma siempre esté listo para trabajar.
                 </p>
 
                 <div class="hero-cta">
@@ -774,7 +838,7 @@ const ultimos = casos.sort((a,b)=>b.id-a.id).slice(0,3);
                     <li>Afinaciones completas y servicios por kilometraje.</li>
                     <li>Frenos, suspensión y dirección.</li>
                     <li>Diagnóstico electrónico y escáner profesional.</li>
-                    <li>Motores, dirección y transmisiones automáticas y estándar.</li>
+                    <li>Transmisión y reparaciones mayores.</li>
                     <li>Administración de mantenimiento para Uber / Didi / flotas.</li>
                 </ul>
             </div>
@@ -793,16 +857,16 @@ const ultimos = casos.sort((a,b)=>b.id-a.id).slice(0,3);
                     <li>Afinación de motor 4, 6 y 8 cilindros.</li>
                     <li>Cambio de aceite y filtros.</li>
                     <li>Servicio por kilometraje.</li>
-                    <li>Motores y reparaciones mayores.</li>
+                    <li>Revisión de puntos de seguridad.</li>
                 </ul>
             </div>
             <div class="servicio-card">
-                <h3>Frenos, suspensión y dirección</h3>
+                <h3>Frenos y suspensión</h3>
                 <ul>
-                    <li>Servicio de frenos delanteros y traseros.</li>
-                    <li>Amortiguadores, bujes y suspensión.</li>
-                    <li>Dirección y componentes de seguridad.</li>
-                    <li>Preparación para viaje y uso en plataforma.</li>
+                    <li>Cambio de balatas y discos.</li>
+                    <li>Revisión de sistema hidráulico.</li>
+                    <li>Amortiguadores y bujes.</li>
+                    <li>Dirección y alineación (según servicio).</li>
                 </ul>
             </div>
             <div class="servicio-card">
@@ -815,12 +879,12 @@ const ultimos = casos.sort((a,b)=>b.id-a.id).slice(0,3);
                 </ul>
             </div>
             <div class="servicio-card">
-                <h3>Transmisiones y flotas</h3>
+                <h3>Flotas y empresas</h3>
                 <ul>
-                    <li>Diagnóstico y reparación de transmisiones.</li>
-                    <li>Servicios para dirección y tren motriz.</li>
-                    <li>Administración de mantenimiento para flotas.</li>
+                    <li>Administración de mantenimiento.</li>
+                    <li>Bitácoras de servicio y recordatorios.</li>
                     <li>Atención a Uber / Didi y plataformas.</li>
+                    <li>Precios preferenciales por volumen.</li>
                 </ul>
             </div>
         </div>
@@ -835,10 +899,6 @@ const ultimos = casos.sort((a,b)=>b.id-a.id).slice(0,3);
             <div class="por-que-card">
                 <h3>+25 años de experiencia</h3>
                 <p>Trayectoria comprobada en la región, atendiendo desde autos particulares hasta flotillas empresariales.</p>
-            </div>
-            <div class="por-que-card">
-                <h3>Especialistas en motor y transmisiones</h3>
-                <p>Somos muy buenos en motores, dirección y transmisiones; trabajamos como los mejores de La Laguna en transmisiones automáticas y estándar.</p>
             </div>
             <div class="por-que-card">
                 <h3>Diagnóstico avanzado</h3>
@@ -897,8 +957,7 @@ const ultimos = casos.sort((a,b)=>b.id-a.id).slice(0,3);
                     <li>Aceite y filtro de aceite.</li>
                     <li>Filtro de aire y filtro de combustible (según aplicación).</li>
                     <li>Bujías estándar.</li>
-                    <li>Lavado de inyectores.</li>
-                    <li>Lavado de cuerpo de aceleración.</li>
+                    <li>Revisión de 30 puntos de seguridad.</li>
                 </ul>
                 <p class="paquete-precio">Precio preferencial para Uber / Didi.</p>
                 <p class="paquete-nota">El costo final puede variar según tipo de aceite, bujías especiales o condiciones del vehículo.</p>
@@ -907,7 +966,7 @@ const ultimos = casos.sort((a,b)=>b.id-a.id).slice(0,3);
             <div class="paquete-card">
                 <h3>Paquete Frenos Seguros</h3>
                 <ul class="lista-simple">
-                    <li>Cambio de balatas delanteras y traseras (según necesidad).</li>
+                    <li>Cambio de balatas delanteras.</li>
                     <li>Rectificado de discos (cuando aplica).</li>
                     <li>Revisión de mangueras y nivel de líquido.</li>
                     <li>Prueba de frenado y ajuste.</li>
@@ -968,16 +1027,13 @@ const ultimos = casos.sort((a,b)=>b.id-a.id).slice(0,3);
         </div>
     </section>
 
-    <!-- CASOS REALES (DINÁMICO) -->
+    <!-- CASOS REALES -->
     <section id="casos" class="section">
         <h2>Casos reales del taller</h2>
-        <p class="sub">
-            Ejemplos reales de trabajos que realizamos en motor, transmisión, frenos, dirección y más.
-            Lo que ves aquí se puede actualizar desde nuestro módulo interno del taller.
-        </p>
+        <p class="sub">Algunos ejemplos de trabajos que hemos realizado recientemente. Las imágenes respetan la privacidad de nuestros clientes.</p>
 
         <div id="casosContainer" class="casos-grid">
-            <!-- Se rellena automáticamente con JS usando los casos guardados -->
+            <p style="font-size:12px;">Cargando casos...</p>
         </div>
     </section>
 
@@ -1198,10 +1254,6 @@ const ultimos = casos.sort((a,b)=>b.id-a.id).slice(0,3);
     Salvatori Servicio Automotriz · Su Taller Experto · Francisco I. Madero 453 Nte., Gómez Palacio · Tel. 871 723 043 · WhatsApp 871 156 2351
     <br>
     <span>Este sitio puede utilizar la información de contacto solo para fines de atención y seguimiento de servicio.</span>
-    <br>
-    <a href="interno.html" style="font-size:11px; display:inline-block; margin-top:4px;">
-        Acceso interno (personal del taller)
-    </a>
 </footer>
 
 <!-- BOTÓN FLOTANTE WHATSAPP -->
@@ -1209,90 +1261,104 @@ const ultimos = casos.sort((a,b)=>b.id-a.id).slice(0,3);
     <span>WhatsApp</span>
 </a>
 
-<!-- SCRIPT CASOS DINÁMICOS -->
+<!-- SCRIPTS -->
 <script>
-    (function(){
-        const contenedor = document.getElementById("casosContainer");
-        if (!contenedor) return;
+/* === CARGAR CASOS DESDE casos_api.php === */
+(async function cargarCasosPublicos(){
+    const cont = document.getElementById('casosContainer');
+    if (!cont) return;
 
-        let casos = [];
-        try {
-            casos = JSON.parse(localStorage.getItem("salvatoriCasos") || "[]");
-        } catch(e) {
-            casos = [];
+    try {
+        const res = await fetch('casos_api.php?action=list');
+        const data = await res.json();
+        if (!data.ok || !data.casos || data.casos.length === 0) {
+            cont.innerHTML = '<p style="font-size:12px;">Pronto verás aquí algunos de nuestros trabajos recientes.</p>';
+            return;
         }
 
-        if (!casos.length) {
-            const ejemplos = [
-                {
-                    titulo: "Motor · Pérdida de fuerza",
-                    tipoTrabajo: "Motor",
-                    auto: "Sedán 4 cil.",
-                    problema: "Cliente reporta que el auto no responde al acelerar y se encendió el check engine.",
-                    solucion: "Diagnóstico con escáner, cambio de bobinas y bujías, limpieza de cuerpo de aceleración.",
-                    resultado: "El auto recuperó potencia y desapareció la luz de falla.",
-                    notaCorta: "Recuperó fuerza y mejoró el consumo de combustible.",
-                    imgAntes: "img/caso-motor-antes.jpg",
-                    imgDespues: "img/caso-motor-despues.jpg"
-                },
-                {
-                    titulo: "Transmisión · Golpes al cambiar",
-                    tipoTrabajo: "Transmisión",
-                    auto: "Vehículo automático de plataforma",
-                    problema: "Golpes al meter drive y cambios bruscos al acelerar.",
-                    solucion: "Revisión de nivel y estado de fluido, servicio de transmisión y ajustes según especificaciones.",
-                    resultado: "Cambios suaves y sin golpes, ideal para uso diario y plataforma.",
-                    notaCorta: "La caja volvió a hacer cambios suaves.",
-                    imgAntes: "img/caso-transmision-antes.jpg",
-                    imgDespues: "img/caso-transmision-despues.jpg"
-                },
-                {
-                    titulo: "Frenos · Viaje seguro",
-                    tipoTrabajo: "Frenos",
-                    auto: "SUV familiar",
-                    problema: "Vibración en el volante al frenar y recorrido largo del pedal.",
-                    solucion: "Balatas nuevas delanteras y traseras, rectificado de discos y purga del sistema.",
-                    resultado: "Frenado firme y parejo, listo para carretera.",
-                    notaCorta: "Frenos seguros para viajar tranquilo.",
-                    imgAntes: "img/caso-frenos-antes.jpg",
-                    imgDespues: "img/caso-frenos-despues.jpg"
-                }
-            ];
-            renderCasos(ejemplos);
-        } else {
-            const destacados = casos.filter(c => c.destacado !== false).slice(0, 3);
-            renderCasos(destacados.length ? destacados : casos.slice(0,3));
-        }
+        cont.innerHTML = '';
+        // últimos 3 casos, del más reciente al más antiguo
+        data.casos.slice(-3).reverse().forEach(caso => {
+            const div = document.createElement('div');
+            div.className = 'caso-card';
+            div.innerHTML = `
+                <span class="caso-tag">${caso.tipo || ''}</span>
+                <div class="caso-imagenes">
+                    ${caso.fotoAntes ? `<img src="${caso.fotoAntes}" alt="Antes">` : ''}
+                    ${caso.fotoDespues ? `<img src="${caso.fotoDespues}" alt="Después">` : ''}
+                </div>
+                <p><strong>${caso.titulo || ''}</strong></p>
+                <p><strong>Problema:</strong> ${caso.problema || ''}</p>
+                <p><strong>Solución:</strong> ${caso.solucion || ''}</p>
+                <p><strong>Resultado:</strong> ${caso.resultado || ''}</p>
+            `;
+            cont.appendChild(div);
+        });
 
-        function renderCasos(lista) {
-            if (!lista.length) {
-                contenedor.innerHTML = "<p style='font-size:13px;'>Aún no hay casos registrados.</p>";
-                return;
-            }
+    } catch (err) {
+        console.error(err);
+        cont.innerHTML = '<p style="font-size:12px;">No se pudieron cargar los casos en este momento.</p>';
+    }
+})();
 
-            contenedor.innerHTML = lista.map(caso => {
-                const imgAntes = caso.imgAntes ? 
-                    `<img src="${caso.imgAntes}" alt="Antes - ${caso.titulo || ""}" />` : "";
-                const imgDespues = caso.imgDespues ? 
-                    `<img src="${caso.imgDespues}" alt="Después - ${caso.titulo || ""}" />` : "";
+/* === ACCESO INTERNO POR PIN (871453) === */
+const PIN_INTERNO = "871453";
+const overlayInterno = document.getElementById('overlayInterno');
+const btnAccesoInterno = document.getElementById('btnAccesoInterno');
+const pinInput = document.getElementById('pinInterno');
+const msgPin = document.getElementById('msgPin');
+const btnValidarPin = document.getElementById('btnValidarPin');
+const btnCancelarPin = document.getElementById('btnCancelarPin');
+const enlacesInternos = document.getElementById('enlacesInternos');
 
-                const autoTexto = caso.auto ? ` · ${caso.auto}` : "";
+function abrirOverlay() {
+    overlayInterno.style.display = 'flex';
+    msgPin.textContent = '';
+    msgPin.style.color = '#c62828';
+    enlacesInternos.style.display = 'none';
+    pinInput.value = '';
+    setTimeout(() => pinInput.focus(), 100);
+}
 
-                return `
-                <div class="caso-card">
-                    <span class="caso-tag">${caso.tipoTrabajo || "Servicio"}${autoTexto}</span>
-                    <div class="caso-imagenes">
-                        ${imgAntes || "<div></div>"}
-                        ${imgDespues || "<div></div>"}
-                    </div>
-                    <p><strong>Problema:</strong> ${caso.problema || ""}</p>
-                    <p><strong>Solución:</strong> ${caso.solucion || ""}</p>
-                    <p><strong>Resultado:</strong> ${caso.resultado || ""}</p>
-                    ${caso.notaCorta ? `<p style="font-size:12px; color:#555; margin-top:4px;">${caso.notaCorta}</p>` : ""}
-                </div>`;
-            }).join("");
-        }
-    })();
+function cerrarOverlay() {
+    overlayInterno.style.display = 'none';
+}
+
+btnAccesoInterno.addEventListener('click', (e) => {
+    e.preventDefault();
+    abrirOverlay();
+});
+
+btnCancelarPin.addEventListener('click', () => {
+    cerrarOverlay();
+});
+
+function validarPin() {
+    const valor = pinInput.value.trim();
+    if (valor === PIN_INTERNO) {
+        msgPin.textContent = 'PIN correcto.';
+        msgPin.style.color = '#2e7d32';
+        enlacesInternos.style.display = 'block';
+    } else {
+        msgPin.textContent = 'PIN incorrecto. Inténtalo de nuevo.';
+        msgPin.style.color = '#c62828';
+        enlacesInternos.style.display = 'none';
+    }
+}
+
+btnValidarPin.addEventListener('click', validarPin);
+pinInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+        validarPin();
+    }
+});
+
+// cerrar al hacer click fuera de la tarjeta
+overlayInterno.addEventListener('click', (e) => {
+    if (e.target === overlayInterno) {
+        cerrarOverlay();
+    }
+});
 </script>
 
 </body>
