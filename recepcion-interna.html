@@ -46,9 +46,24 @@
         .logo-img { width: 48px; height: 48px; background: #111; border-radius: 8px; overflow: hidden; }
         .logo-img img{ width:100%; height:100%;}
 
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            font-size: 11px;
+            line-height: 1.1;
+        }
+
         main{ max-width:900px; margin:auto; padding:16px; }
 
         h1{ text-align:center; margin-top:10px;}
+        
+        .subtitulo{
+            font-size: 12px;
+            text-align: center;
+            margin-bottom: 10px;
+            color:#555;
+        }
+
         .card {
             background:white;
             padding:14px;
@@ -57,11 +72,19 @@
             box-shadow:0 2px 8px rgba(0,0,0,0.08);
         }
 
+        h2 {
+            font-size: 15px;
+            margin: 0 0 8px;
+            border-left: 4px solid var(--rojo);
+            padding-left: 8px;
+        }
+
         label{ font-size:13px; font-weight:600; display:block; margin-top:10px; }
 
         input, select, textarea {
             width:100%; padding:8px 10px; border-radius:8px;
             border:1px solid #ccc; margin-top:4px; font-size:14px;
+            font-family: inherit;
         }
 
         textarea { min-height:70px; }
@@ -94,10 +117,32 @@
 
         .acciones-form{ display:flex; justify-content:flex-end; gap:10px; margin-top:14px; }
 
+        .checkbox-linea {
+            font-size: 12px;
+            margin-top: 10px;
+        }
+
+        .checkbox-linea input { margin-right: 6px; }
+
+        .mensaje-form {
+            margin-top: 10px;
+            font-size: 12px;
+        }
+
+        .mensaje-ok { color: var(--verde); }
+        .mensaje-error { color: var(--rojo-oscuro); }
+
         footer{
             text-align:center; padding:12px;
             font-size:11px; color:#666;
         }
+
+        @media (max-width: 700px) {
+            .fila-doble {
+                flex-direction: column;
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -105,7 +150,9 @@
 <header>
     <div class="nav-container">
         <div class="logo-area">
-            <div class="logo-img"><img src="img/logo-salvatori.png"></div>
+            <div class="logo-img">
+                <img src="img/logo-salvatori.png" alt="Logo Salvatori">
+            </div>
             <div class="logo-text">
                 <strong>Salvatori Servicio Automotriz</strong>
                 <span>Uso interno · Recepción de vehículo</span>
@@ -138,7 +185,7 @@
             </div>
 
             <label>No. OT</label>
-            <input type="text" name="NumeroOT" required>
+            <input type="text" name="NumeroOT" placeholder="Ej. 1453" required>
         </div>
 
         <!-- DATOS CLIENTE -->
@@ -209,21 +256,227 @@
                     <td><input type="text" name="CarroceriaObs"></td>
                 </tr>
 
-                <!-- (RESTO DEL CHECKLIST IGUAL QUE TU CÓDIGO ORIGINAL)… -->
+                <tr>
+                    <td>Pintura / rayones</td>
+                    <td>
+                        <label class="check-opcion"><input type="radio" name="Pintura" value="Si"> Sí</label>
+                        <label class="check-opcion"><input type="radio" name="Pintura" value="No"> No</label>
+                        <label class="check-opcion"><input type="radio" name="Pintura" value="NA"> N/A</label>
+                    </td>
+                    <td><input type="text" name="PinturaObs"></td>
+                </tr>
+
+                <tr>
+                    <td>Cristales / espejos</td>
+                    <td>
+                        <label class="check-opcion"><input type="radio" name="Cristales" value="Si"> Sí</label>
+                        <label class="check-opcion"><input type="radio" name="Cristales" value="No"> No</label>
+                        <label class="check-opcion"><input type="radio" name="Cristales" value="NA"> N/A</label>
+                    </td>
+                    <td><input type="text" name="CristalesObs"></td>
+                </tr>
+
+                <tr>
+                    <td>Llantas / refacción</td>
+                    <td>
+                        <label class="check-opcion"><input type="radio" name="Llantas" value="Si"> Sí</label>
+                        <label class="check-opcion"><input type="radio" name="Llantas" value="No"> No</label>
+                        <label class="check-opcion"><input type="radio" name="Llantas" value="NA"> N/A</label>
+                    </td>
+                    <td><input type="text" name="LlantasObs"></td>
+                </tr>
+
+                <tr>
+                    <td>Luces exteriores</td>
+                    <td>
+                        <label class="check-opcion"><input type="radio" name="Luces" value="Si"> Sí</label>
+                        <label class="check-opcion"><input type="radio" name="Luces" value="No"> No</label>
+                        <label class="check-opcion"><input type="radio" name="Luces" value="NA"> N/A</label>
+                    </td>
+                    <td><input type="text" name="LucesObs"></td>
+                </tr>
+
+                <tr>
+                    <td>Interior / tapicería</td>
+                    <td>
+                        <label class="check-opcion"><input type="radio" name="Interior" value="Si"> Sí</label>
+                        <label class="check-opcion"><input type="radio" name="Interior" value="No"> No</label>
+                        <label class="check-opcion"><input type="radio" name="Interior" value="NA"> N/A</label>
+                    </td>
+                    <td><input type="text" name="InteriorObs"></td>
+                </tr>
+
+                <tr>
+                    <td>Tablero / instrumentos</td>
+                    <td>
+                        <label class="check-opcion"><input type="radio" name="Tablero" value="Si"> Sí</label>
+                        <label class="check-opcion"><input type="radio" name="Tablero" value="No"> No</label>
+                        <label class="check-opcion"><input type="radio" name="Tablero" value="NA"> N/A</label>
+                    </td>
+                    <td><input type="text" name="TableroObs"></td>
+                </tr>
+
+                <tr>
+                    <td>Estéreo / pantalla</td>
+                    <td>
+                        <label class="check-opcion"><input type="radio" name="Estereo" value="Si"> Sí</label>
+                        <label class="check-opcion"><input type="radio" name="Estereo" value="No"> No</label>
+                        <label class="check-opcion"><input type="radio" name="Estereo" value="NA"> N/A</label>
+                    </td>
+                    <td><input type="text" name="EstereoObs"></td>
+                </tr>
+
+                <tr>
+                    <td>Aire acondicionado / calefacción</td>
+                    <td>
+                        <label class="check-opcion"><input type="radio" name="Clima" value="Si"> Sí</label>
+                        <label class="check-opcion"><input type="radio" name="Clima" value="No"> No</label>
+                        <label class="check-opcion"><input type="radio" name="Clima" value="NA"> N/A</label>
+                    </td>
+                    <td><input type="text" name="ClimaObs"></td>
+                </tr>
             </table>
         </div>
 
-        <!-- ACCESORIOS → igual que tu original -->
-        <!-- OBSERVACIONES → igual -->
-        <!-- FIRMAS → igual -->
+        <!-- ACCESORIOS -->
+        <div class="card">
+            <h2>Artículos / accesorios entregados</h2>
 
+            <table class="checklist">
+                <tr><th>Artículo</th><th>Estado</th><th>Observaciones</th></tr>
+
+                <tr>
+                    <td>Tarjeta de circulación</td>
+                    <td>
+                        <label class="check-opcion"><input type="radio" name="TarjetaCirc" value="Si"> Sí</label>
+                        <label class="check-opcion"><input type="radio" name="TarjetaCirc" value="No"> No</label>
+                        <label class="check-opcion"><input type="radio" name="TarjetaCirc" value="NA"> N/A</label>
+                    </td>
+                    <td><input type="text" name="TarjetaCircObs"></td>
+                </tr>
+
+                <tr>
+                    <td>Póliza de seguro</td>
+                    <td>
+                        <label class="check-opcion"><input type="radio" name="Poliza" value="Si"> Sí</label>
+                        <label class="check-opcion"><input type="radio" name="Poliza" value="No"> No</label>
+                        <label class="check-opcion"><input type="radio" name="Poliza" value="NA"> N/A</label>
+                    </td>
+                    <td><input type="text" name="PolizaObs"></td>
+                </tr>
+
+                <tr>
+                    <td>Llaves de encendido</td>
+                    <td>
+                        <label class="check-opcion"><input type="radio" name="Llaves" value="Si"> Sí</label>
+                        <label class="check-opcion"><input type="radio" name="Llaves" value="No"> No</label>
+                        <label class="check-opcion"><input type="radio" name="Llaves" value="NA"> N/A</label>
+                    </td>
+                    <td><input type="text" name="LlavesObs"></td>
+                </tr>
+
+                <tr>
+                    <td>Control de alarma</td>
+                    <td>
+                        <label class="check-opcion"><input type="radio" name="ControlAlarma" value="Si"> Sí</label>
+                        <label class="check-opcion"><input type="radio" name="ControlAlarma" value="No"> No</label>
+                        <label class="check-opcion"><input type="radio" name="ControlAlarma" value="NA"> N/A</label>
+                    </td>
+                    <td><input type="text" name="ControlAlarmaObs"></td>
+                </tr>
+
+                <tr>
+                    <td>Gato / llave de tuercas</td>
+                    <td>
+                        <label class="check-opcion"><input type="radio" name="Gato" value="Si"> Sí</label>
+                        <label class="check-opcion"><input type="radio" name="Gato" value="No"> No</label>
+                        <label class="check-opcion"><input type="radio" name="Gato" value="NA"> N/A</label>
+                    </td>
+                    <td><input type="text" name="GatoObs"></td>
+                </tr>
+
+                <tr>
+                    <td>Triángulos de seguridad</td>
+                    <td>
+                        <label class="check-opcion"><input type="radio" name="Triangulos" value="Si"> Sí</label>
+                        <label class="check-opcion"><input type="radio" name="Triangulos" value="No"> No</label>
+                        <label class="check-opcion"><input type="radio" name="Triangulos" value="NA"> N/A</label>
+                    </td>
+                    <td><input type="text" name="TriangulosObs"></td>
+                </tr>
+
+                <tr>
+                    <td>Tapetes</td>
+                    <td>
+                        <label class="check-opcion"><input type="radio" name="Tapetes" value="Si"> Sí</label>
+                        <label class="check-opcion"><input type="radio" name="Tapetes" value="No"> No</label>
+                        <label class="check-opcion"><input type="radio" name="Tapetes" value="NA"> N/A</label>
+                    </td>
+                    <td><input type="text" name="TapetesObs"></td>
+                </tr>
+
+                <tr>
+                    <td>Herramientas / caja</td>
+                    <td>
+                        <label class="check-opcion"><input type="radio" name="Herramientas" value="Si"> Sí</label>
+                        <label class="check-opcion"><input type="radio" name="Herramientas" value="No"> No</label>
+                        <label class="check-opcion"><input type="radio" name="Herramientas" value="NA"> N/A</label>
+                    </td>
+                    <td><input type="text" name="HerramientasObs"></td>
+                </tr>
+
+                <tr>
+                    <td>Lector de peaje / TAG</td>
+                    <td>
+                        <label class="check-opcion"><input type="radio" name="TAG" value="Si"> Sí</label>
+                        <label class="check-opcion"><input type="radio" name="TAG" value="No"> No</label>
+                        <label class="check-opcion"><input type="radio" name="TAG" value="NA"> N/A</label>
+                    </td>
+                    <td><input type="text" name="TAGObs"></td>
+                </tr>
+
+                <tr>
+                    <td>Otros</td>
+                    <td>
+                        <label class="check-opcion"><input type="radio" name="Otros" value="Si"> Sí</label>
+                        <label class="check-opcion"><input type="radio" name="Otros" value="No"> No</label>
+                        <label class="check-opcion"><input type="radio" name="Otros" value="NA"> N/A</label>
+                    </td>
+                    <td><input type="text" name="OtrosObs"></td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- OBSERVACIONES -->
+        <div class="card">
+            <h2>Observaciones generales</h2>
+            <textarea name="ObservacionesGenerales" placeholder="Notas del cliente o condición general..."></textarea>
+
+            <label class="checkbox-linea">
+                <input type="checkbox" name="AceptaTerminos" required>
+                El cliente acepta que la información proporcionada es correcta.
+            </label>
+        </div>
+
+        <!-- FIRMAS -->
+        <div class="card">
+            <h2>Firmas</h2>
+
+            <label>Firma del cliente (texto o nombre completo)</label>
+            <input type="text" name="FirmaCliente">
+
+            <label>Firma del asesor</label>
+            <input type="text" name="FirmaAsesor">
+        </div>
+
+        <!-- ACCIONES -->
         <div class="acciones-form">
             <button class="btn btn-primary" type="submit">Enviar recepción</button>
         </div>
 
     </form>
 
-    <div id="msgForm"></div>
+    <div id="msgForm" class="mensaje-form"></div>
 
 </main>
 
@@ -232,28 +485,36 @@
 </footer>
 
 <script>
+    /* === 🌐 Envío a MAKE === */
     const WEBHOOK_URL = "https://hook.us2.make.com/qalrej6f1ms2a6bssqkjte8got8kbuzu";
 
     document.getElementById("frmRecepcion").addEventListener("submit", async function(e){
         e.preventDefault();
 
         const form = new FormData(this);
+
+        // Campos automáticos
         form.append("FechaEnvio", new Date().toLocaleDateString("en-CA"));
         form.append("HoraEnvio", new Date().toLocaleTimeString("en-US", {hour12:false}));
         form.append("Origen", "RecepcionInterna");
 
         try{
-            const res = await fetch(WEBHOOK_URL, { method:"POST", body:form });
+            const res = await fetch(WEBHOOK_URL, {
+                method: "POST",
+                body: form
+            });
 
             if(res.ok){
                 document.getElementById("msgForm").innerHTML =
-                    "<p style='color:green;'>✔ Recepción enviada correctamente.</p>";
+                    "<p class='mensaje-ok'>✔ Recepción enviada correctamente.</p>";
                 this.reset();
-            } else throw new Error();
-        }
-        catch {
+            } else {
+                throw new Error("Error al enviar");
+            }
+
+        } catch(err){
             document.getElementById("msgForm").innerHTML =
-                "<p style='color:red;'>❌ Error al enviar la recepción.</p>";
+                "<p class='mensaje-error'>❌ Ocurrió un error al enviar la recepción.</p>";
         }
     });
 </script>
