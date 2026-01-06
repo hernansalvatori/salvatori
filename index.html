@@ -439,7 +439,7 @@
             font-size: 13px;
         }
 
-        /* CASOS REALES (texto, sin fotos) */
+        /* CASOS REALES */
         .casos-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -746,6 +746,11 @@
             <a href="#casos">Casos reales</a>
             <a href="#testimonios">Testimonios</a>
             <a href="#publicaciones">Publicaciones</a>
+
+            <!-- ✅ NUEVO -->
+            <a href="#blog">Blog</a>
+
+            <a href="#bitacora">Bitácora digital</a>
             <a href="#bitacora">Bitácora digital</a>
             <a href="whatsapp-ayuda.html">WhatsApp rápido</a>
             <a href="#" id="btnAccesoInterno">Acceso interno</a>
@@ -814,6 +819,12 @@
                     <a href="#servicios">
                         <button class="btn btn-outline">
                             Ver servicios
+                        </button>
+                    </a>
+                    <!-- ✅ NUEVO -->
+                    <a href="#blog">
+                        <button class="btn btn-outline">
+                            Ver Blog
                         </button>
                     </a>
                 </div>
@@ -905,6 +916,7 @@
                     <li>Garantía en mano de obra (según servicio).</li>
                     <li>Refacciones con garantía del proveedor.</li>
                     <li>No cambiamos piezas sin tu autorización.</li>
+                    <li>Te explicamos opciones y costos antes de reparar.</li>
                     <li>Te explicamos opciones y costos antes de reparar.</li>
                 </ul>
             </div>
@@ -1014,7 +1026,7 @@
         </div>
     </section>
 
-    <!-- CASOS REALES (FIJOS, SIN FOTOS, BASADOS EN BITÁCORA) -->
+    <!-- CASOS REALES -->
     <section id="casos" class="section">
         <h2>Casos reales del taller</h2>
         <p class="sub">
@@ -1023,7 +1035,6 @@
         </p>
 
         <div class="casos-grid">
-            <!-- Caso 1: Ford Sierra - Dirección electrónica -->
             <div class="caso-card">
                 <span class="caso-tag">Dirección y suspensión · Pick up Ford</span>
                 <p><strong>Situación:</strong> Dirección imprecisa, con juego en el volante y ruidos al girar.</p>
@@ -1032,7 +1043,6 @@
                 <p><strong>Resultado:</strong> Volante firme y preciso, sin ruidos ni fugas, listo para uso diario y trayectos largos.</p>
             </div>
 
-            <!-- Caso 2: GMC Sierra - Transmisión automática -->
             <div class="caso-card">
                 <span class="caso-tag">Transmisión automática · GMC</span>
                 <p><strong>Situación:</strong> Pick up con cambios bruscos y sensación de “patinaje” al acelerar con carga.</p>
@@ -1041,7 +1051,6 @@
                 <p><strong>Resultado:</strong> Cambios suaves y firmes, mejor respuesta al acelerar y mayor confiabilidad para trabajo pesado.</p>
             </div>
 
-            <!-- Caso 3: Chevrolet Cruze - Reparación de motor -->
             <div class="caso-card">
                 <span class="caso-tag">Motor · Reparación mayor · Chevrolet</span>
                 <p><strong>Situación:</strong> Sedán con pérdida de potencia, consumo de aceite y testigo de motor encendido.</p>
@@ -1050,7 +1059,6 @@
                 <p><strong>Resultado:</strong> Motor estable, sin vibraciones, con mejor compresión y sin códigos de falla activos.</p>
             </div>
 
-            <!-- Caso 4: Pick up JAC - Enfriamiento y frenos -->
             <div class="caso-card">
                 <span class="caso-tag">Sistema de enfriamiento y frenos · Pick up JAC</span>
                 <p><strong>Situación:</strong> Vehículo que se recalentaba en trayectos largos y presentaba ruido en frenos delanteros.</p>
@@ -1118,7 +1126,7 @@
         </div>
     </section>
 
-    <!-- PUBLICACIONES / RRSS -->
+    <!-- PUBLICACIONES -->
     <section id="publicaciones" class="section">
         <h2>Últimas publicaciones</h2>
         <p class="sub">Síguenos en Facebook para ver promociones, trabajos recientes y novedades del taller.</p>
@@ -1139,7 +1147,26 @@
         </div>
     </section>
 
-    <!-- WHATSAPP RÁPIDO / PREDIAGNÓSTICO -->
+    <!-- ✅ BLOG (NUEVO) -->
+    <section id="blog" class="section">
+        <h2>Blog</h2>
+        <p class="sub">Consejos prácticos de mantenimiento y prevención para alargar la vida de tu auto.</p>
+
+        <div class="servicios-grid">
+            <div class="servicio-card">
+                <h3>¿Cada cuándo cambiar el aceite del auto?</h3>
+                <p style="margin:6px 0 10px;">
+                    Recomendaciones reales según el uso del auto (ciudad, tráfico, trayectos cortos y carretera) y errores comunes.
+                </p>
+                <a href="blog/cada-cuando-cambiar-aceite.html">
+                    <button class="btn btn-primary">Leer artículo</button>
+                </a>
+                <p style="font-size:11px; color:#555; margin-top:8px;">Publicado: 6 de enero de 2026</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHATSAPP RÁPIDO -->
     <section id="whatsapp-rapido" class="section">
         <h2>WhatsApp rápido y prediagnóstico</h2>
         <p class="sub">Si prefieres platicar directo, te dejamos un mensaje listo para enviar por WhatsApp. Si quieres un prediagnóstico más completo, también tenemos una plantilla guiada.</p>
@@ -1169,29 +1196,6 @@
                 </ul>
                 <a href="whatsapp-ayuda.html">
                     <button class="btn btn-outline">Ir a WhatsApp guiado</button>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- LEAD MAGNET -->
-    <section id="guia" class="section">
-        <h2>Guía gratuita de mantenimiento</h2>
-        <p class="sub">Pídelo por WhatsApp y recibe una guía digital con recomendaciones de servicios por kilometraje y tips para cuidar tu auto.</p>
-
-        <div class="servicios-grid">
-            <div class="servicio-card">
-                <h3>“Checklist Salvatori”</h3>
-                <ul class="lista-simple">
-                    <li>Servicios recomendados por cada rango de kilómetros.</li>
-                    <li>Qué revisar antes de salir a carretera.</li>
-                    <li>Tips para alargar la vida de tu motor y frenos.</li>
-                </ul>
-                <p style="font-size:12px; margin-top:6px;">
-                    Envíanos un mensaje con el texto <strong>"Quiero la guía de mantenimiento"</strong> y te la compartimos sin costo.
-                </p>
-                <a href="https://wa.me/5218711562351?text=Quiero%20la%20guia%20de%20mantenimiento" target="_blank" rel="noopener">
-                    <button class="btn btn-primary">Pedir guía por WhatsApp</button>
                 </a>
             </div>
         </div>
@@ -1281,12 +1285,10 @@
     <span>Este sitio puede utilizar la información de contacto solo para fines de atención y seguimiento de servicio.</span>
 </footer>
 
-<!-- BOTÓN FLOTANTE WHATSAPP -->
 <a href="https://wa.me/5218711562351?text=Hola%2C%20necesito%20ayuda%20con%20mi%20auto." target="_blank" rel="noopener" class="btn-wa-float">
     <span>WhatsApp</span>
 </a>
 
-<!-- SCRIPTS -->
 <script>
 /* === ACCESO INTERNO POR PIN (871453) === */
 const PIN_INTERNO = "871453";
