@@ -7,320 +7,400 @@
   <title>¿Cada cuándo cambiar el aceite del auto? | Salvatori Servicio Automotriz</title>
   <meta name="description" content="Cada cuándo cambiar el aceite según el uso real: ciudad, tráfico, trayectos cortos, carretera y auto parado. Consejos prácticos de taller para evitar reparaciones costosas." />
   <meta name="robots" content="index,follow" />
-  <meta name="author" content="Salvatori Servicio Automotriz" />
 
-  <!-- (Opcional) Cambia por la URL real cuando lo subas -->
-  <link rel="canonical" href="https://TU-DOMINIO.com/blog/cada-cuando-cambiar-aceite.html" />
-
-  <!-- Open Graph para que se vea bien al compartir en Facebook -->
+  <!-- Open Graph para compartir en Facebook -->
   <meta property="og:type" content="article" />
   <meta property="og:locale" content="es_MX" />
   <meta property="og:title" content="¿Cada cuándo cambiar el aceite del auto?" />
-  <meta property="og:description" content="La verdad que vemos en el taller: recomendaciones por uso real y errores comunes." />
-  <!-- (Opcional) imagen previa al compartir -->
-  <meta property="og:image" content="https://TU-DOMINIO.com/img/og-aceite.jpg" />
+  <meta property="og:description" content="Recomendaciones por uso real y errores comunes que vemos en el taller." />
+  <meta property="og:url" content="https://salvatori.com.mx/blog/cada-cuando-cambiar-aceite.html" />
+  <meta property="og:image" content="https://salvatori.com.mx/img/og-salvatori.jpg" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <link rel="icon" type="image/png" href="../img/favicon.png">
 
   <style>
     :root{
-      --bg:#0b1220;
-      --card:#0f1a2e;
-      --text:#eaf0ff;
-      --muted:#b7c4e3;
-      --line:rgba(255,255,255,.12);
-      --accent:#f9a825; /* Amarillo */
-      --accent2:#c62828; /* Rojo */
+      --rojo:#c62828;
+      --rojo-oscuro:#8e0000;
+      --amarillo:#f9a825;
+      --verde:#2e7d32;
+      --gris-fondo:#f5f5f5;
+      --texto:#333333;
+      --card:#ffffff;
+      --shadow: 0 2px 6px rgba(0,0,0,0.08);
     }
-
     *{ box-sizing:border-box; }
     body{
       margin:0;
-      font-family: system-ui,-apple-system,"Segoe UI",Roboto,Arial,"Noto Sans","Liberation Sans",sans-serif;
-      background: radial-gradient(1200px 600px at 20% 0%, rgba(249,168,37,.18), transparent 60%),
-                  radial-gradient(900px 500px at 90% 10%, rgba(198,40,40,.18), transparent 55%),
-                  var(--bg);
-      color:var(--text);
-      line-height:1.6;
+      font-family:'Poppins',system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      background: var(--gris-fondo);
+      color: var(--texto);
     }
+    a{ color: inherit; text-decoration:none; }
 
-    .wrap{
-      max-width: 920px;
-      margin: 0 auto;
-      padding: 24px 16px 64px;
+    /* Header simple igual al estilo */
+    header{
+      position: sticky;
+      top:0;
+      z-index:100;
+      background:#fff;
+      border-bottom:3px solid var(--rojo);
     }
-
-    header.top{
+    .nav-container{
+      max-width:1100px;
+      margin:0 auto;
+      padding:10px 16px;
       display:flex;
-      gap:14px;
       align-items:center;
-      padding: 18px 16px;
-      border:1px solid var(--line);
-      border-radius: 18px;
-      background: rgba(15,26,46,.65);
-      backdrop-filter: blur(8px);
+      justify-content:space-between;
+      gap:16px;
+      flex-wrap:wrap;
     }
-
-    .brand-dot{
-      width: 14px;
-      height: 14px;
-      border-radius: 99px;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      box-shadow: 0 0 0 6px rgba(249,168,37,.10);
+    .logo-area{
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+    .logo-img{
+      width:46px;height:46px;
+      border-radius:8px;
+      overflow:hidden;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:#111;
       flex:0 0 auto;
     }
-
-    .brand h2{
-      margin:0;
-      font-size: 16px;
-      letter-spacing: .2px;
+    .logo-img img{ max-width:100%; max-height:100%; }
+    .logo-text{
+      display:flex;
+      flex-direction:column;
+      font-size:12px;
+      line-height:1.1;
     }
-    .brand p{
-      margin:2px 0 0;
-      color: var(--muted);
-      font-size: 13px;
+    .logo-text strong{ font-size:14px; }
+
+    .nav-links{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      font-size:13px;
+      justify-content:flex-start;
+    }
+    .nav-links a{
+      padding:6px 10px;
+      border-radius:20px;
+      transition: background 0.2s;
+    }
+    .nav-links a:hover{ background: rgba(0,0,0,0.05); }
+
+    .nav-contact{
+      text-align:right;
+      font-size:12px;
+      margin-left:auto;
+    }
+    .nav-contact span{ display:block; }
+    .whatsapp{ color: var(--verde); font-weight:700; }
+
+    /* Contenido del blog */
+    main{
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px 14px 80px;
+    }
+    .breadcrumb{
+      font-size:12px;
+      color:#666;
+      margin: 10px 0 16px;
+    }
+    .hero{
+      background: linear-gradient(135deg, rgba(198,40,40,.10), rgba(249,168,37,.18));
+      border: 1px solid rgba(0,0,0,.06);
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: var(--shadow);
+    }
+    .tag{
+      display:inline-block;
+      font-size:11px;
+      font-weight:700;
+      color:#000;
+      background:#fff;
+      border:1px solid rgba(0,0,0,.08);
+      border-radius:999px;
+      padding:4px 10px;
+      margin-bottom:10px;
+    }
+    h1{
+      margin: 6px 0 8px;
+      font-size: clamp(22px, 4.4vw, 34px);
+      line-height: 1.15;
+      color:#111;
+    }
+    .subtitle{
+      margin:0;
+      color:#333;
+      font-size: 14px;
+    }
+    .meta{
+      margin-top:10px;
+      font-size:12px;
+      color:#666;
     }
 
     article{
-      margin-top: 18px;
-      border:1px solid var(--line);
-      border-radius: 22px;
-      background: rgba(15,26,46,.75);
-      backdrop-filter: blur(8px);
-      overflow:hidden;
+      margin-top: 16px;
+      background: var(--card);
+      border-radius: 14px;
+      box-shadow: var(--shadow);
+      padding: 18px;
     }
-
-    .hero{
-      padding: 26px 20px 10px;
-      border-bottom: 1px solid var(--line);
-      background:
-        linear-gradient(180deg, rgba(249,168,37,.14), transparent 70%);
-    }
-
-    .kicker{
-      display:inline-block;
-      padding: 6px 10px;
-      border-radius: 999px;
-      background: rgba(249,168,37,.14);
-      border:1px solid rgba(249,168,37,.35);
-      color: #ffe9b0;
-      font-weight: 600;
-      font-size: 12px;
-      letter-spacing: .3px;
-    }
-
-    h1{
-      margin: 12px 0 8px;
-      font-size: clamp(26px, 3.2vw, 38px);
-      line-height: 1.15;
-    }
-
-    .meta{
-      margin:0;
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    .content{
-      padding: 18px 20px 26px;
-    }
-
     h2{
-      margin: 22px 0 8px;
-      font-size: 22px;
-      line-height:1.25;
+      margin: 22px 0 10px;
+      font-size: 18px;
+      color: var(--rojo-oscuro);
     }
-
-    p{ margin: 12px 0; color: var(--text); }
-    ul{ margin: 10px 0 10px 20px; color: var(--text); }
+    p{ margin: 10px 0; font-size: 14px; }
+    ul{ margin: 10px 0 10px 18px; font-size: 14px; }
     li{ margin: 6px 0; }
 
     .callout{
-      margin: 16px 0;
-      padding: 14px 14px;
-      border-radius: 16px;
-      border: 1px solid rgba(249,168,37,.35);
-      background: rgba(249,168,37,.10);
-      color: #ffe9b0;
-      font-weight: 600;
+      margin: 14px 0;
+      padding: 12px 12px;
+      border-left: 5px solid var(--amarillo);
+      background: #fffde7;
+      border-radius: 10px;
+      font-size: 14px;
     }
 
     .grid{
       display:grid;
-      grid-template-columns: 1fr;
+      grid-template-columns: 1fr 1fr;
       gap: 12px;
       margin: 12px 0;
     }
-
-    .card{
-      border:1px solid var(--line);
-      border-radius: 16px;
-      padding: 14px;
-      background: rgba(11,18,32,.35);
+    .mini{
+      border: 1px solid rgba(0,0,0,.08);
+      border-radius: 12px;
+      padding: 12px;
+      background: #fff;
     }
-
-    .card strong{ color:#fff; }
-    .small{ color: var(--muted); font-size: 13px; }
+    .mini strong{ color:#111; display:block; margin-bottom:4px; }
+    .mini span{ color:#555; font-size:12px; }
 
     .cta{
-      margin-top: 22px;
-      padding: 16px;
-      border-radius: 18px;
-      border:1px solid rgba(198,40,40,.35);
-      background: rgba(198,40,40,.10);
+      margin-top: 18px;
+      padding: 14px;
+      border-radius: 12px;
+      background: rgba(46,125,50,.08);
+      border: 1px solid rgba(46,125,50,.20);
+    }
+    .btn{
+      border:none;
+      border-radius:24px;
+      padding:10px 16px;
+      font-size:14px;
+      cursor:pointer;
+      font-weight:700;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:6px;
+      transition: transform .15s ease, box-shadow .15s ease;
+    }
+    .btn:hover{
+      transform: translateY(-1px);
+      box-shadow: 0 3px 8px rgba(0,0,0,0.18);
+    }
+    .btn-primary{
+      background: var(--amarillo);
+      color:#000;
     }
 
-    .cta h3{ margin:0 0 6px; font-size: 18px; }
-    .cta p{ margin: 6px 0; color: var(--text); }
-    .cta a{
-      display:inline-block;
-      margin-top: 10px;
-      padding: 10px 14px;
-      border-radius: 999px;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      color:#0b1220;
-      text-decoration:none;
-      font-weight: 800;
+    /* WhatsApp flotante */
+    .btn-wa-float{
+      position: fixed;
+      right: 16px;
+      bottom: 16px;
+      z-index: 200;
+      background:#25D366;
+      color:#fff;
+      border-radius:999px;
+      padding:10px 16px;
+      font-size:14px;
+      font-weight:700;
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
     }
 
     footer{
-      margin-top: 16px;
-      color: var(--muted);
-      font-size: 13px;
+      background:#111;
+      color:#ccc;
+      font-size:11px;
       text-align:center;
+      padding: 14px 5px 18px;
+      margin-top: 22px;
     }
 
-    @media (min-width: 840px){
-      .grid{ grid-template-columns: 1fr 1fr; }
-      header.top{ padding: 18px 18px; }
-      .hero{ padding: 30px 26px 14px; }
-      .content{ padding: 22px 26px 30px; }
+    /* ✅ MÓVIL */
+    @media (max-width: 800px){
+      .nav-container{ align-items:flex-start; }
+      .nav-contact{ text-align:left; width:100%; margin-left:0; }
+      .grid{ grid-template-columns: 1fr; }
+      main{ padding: 18px 12px 80px; }
+      article{ padding: 16px; }
+      .btn-wa-float{ right: 10px; bottom: 10px; }
     }
   </style>
 </head>
 
 <body>
-  <div class="wrap">
-
-    <header class="top">
-      <div class="brand-dot" aria-hidden="true"></div>
-      <div class="brand">
-        <h2>Salvatori Servicio Automotriz</h2>
-        <p>Blog de mantenimiento y prevención</p>
+<header>
+  <div class="nav-container">
+    <div class="logo-area">
+      <div class="logo-img">
+        <img src="../img/logo-salvatori.png" alt="Logo Salvatori Servicio Automotriz">
       </div>
-    </header>
+      <div class="logo-text">
+        <strong>Salvatori Servicio Automotriz</strong>
+        <span>Su Taller Experto · Gómez Palacio</span>
+        <span>+25 años contigo</span>
+      </div>
+    </div>
 
-    <article>
-      <section class="hero">
-        <span class="kicker">Mantenimiento • Aceite</span>
-        <h1>¿Cada cuándo cambiar el aceite del auto?</h1>
-        <p class="meta">La verdad que vemos todos los días en el taller</p>
-        <p class="meta small">Última actualización: <time datetime="2026-01-06">6 de enero de 2026</time></p>
-      </section>
+    <nav class="nav-links">
+      <a href="../index.html#inicio">Inicio</a>
+      <a href="../index.html#servicios">Servicios</a>
+      <a href="../index.html#contacto">Contacto</a>
+      <a href="../index.html#blog">Blog</a>
+    </nav>
 
-      <section class="content">
-        <p>Si hay algo que escuchamos diario en el taller es esta frase: <strong>“Todavía aguanta, el aceite se ve limpio.”</strong></p>
-        <p>La realidad es que <strong>el aceite no avisa cuando deja de proteger</strong>, y cuando lo hace, el daño ya empezó.</p>
-        <p>Con años de experiencia, hemos visto motores dañados <strong>no por falta de aceite</strong>, sino por <strong>aceite vencido</strong>.</p>
-
-        <h2>¿Por qué el aceite es tan importante?</h2>
-        <p>El aceite cumple funciones críticas:</p>
-        <ul>
-          <li>Lubrica piezas internas del motor</li>
-          <li>Reduce fricción y desgaste</li>
-          <li>Ayuda a controlar la temperatura</li>
-          <li>Limpia residuos internos</li>
-        </ul>
-
-        <div class="callout">👉 El daño por aceite vencido suele ser silencioso y progresivo.</div>
-
-        <h2>Entonces… ¿cada cuándo debo cambiarlo?</h2>
-        <p>La respuesta real es: <strong>depende del uso del auto</strong>, no solo del kilometraje.</p>
-
-        <div class="grid">
-          <div class="card">
-            <strong>Uso normal en ciudad</strong>
-            <div class="small">Recomendación práctica</div>
-            <p>👉 cada <strong>5,000 a 7,000 km</strong></p>
-          </div>
-
-          <div class="card">
-            <strong>Mucho tráfico / trayectos cortos</strong>
-            <div class="small">Mayor desgaste</div>
-            <p>👉 <strong>antes de los 5,000 km</strong></p>
-          </div>
-
-          <div class="card">
-            <strong>Auto parado por largos periodos</strong>
-            <div class="small">También se degrada</div>
-            <p>👉 conviene <strong>revisar y cambiar</strong> por tiempo/uso</p>
-          </div>
-
-          <div class="card">
-            <strong>Carretera frecuente</strong>
-            <div class="small">Condición más favorable</div>
-            <p>👉 puede extenderse, pero <strong>con revisión</strong></p>
-          </div>
-        </div>
-
-        <p class="small">Tip: Los arranques en frío y el tráfico pesado desgastan más que la carretera.</p>
-
-        <h2>“Pero el aceite todavía se ve limpio…”</h2>
-        <p>Este es uno de los errores más comunes. El color <strong>NO</strong> indica:</p>
-        <ul>
-          <li>Capacidad de lubricación</li>
-          <li>Protección contra desgaste</li>
-          <li>Vida útil real</li>
-        </ul>
-        <p>El aceite puede verse “bien” y <strong>ya no proteger</strong>.</p>
-
-        <h2>¿Y el filtro?</h2>
-        <p>Un error frecuente es <strong>cambiar aceite sin cambiar filtro</strong>.</p>
-        <p>¿Por qué está mal?</p>
-        <ul>
-          <li>El filtro guarda residuos</li>
-          <li>Contamina el aceite nuevo</li>
-          <li>Reduce la vida del motor</li>
-        </ul>
-
-        <div class="callout">🔧 Regla práctica: <strong>Aceite nuevo = filtro nuevo</strong>.</div>
-
-        <h2>¿Qué pasa si lo dejas “un poco más”?</h2>
-        <p>En el taller vemos problemas como:</p>
-        <ul>
-          <li>Desgaste prematuro</li>
-          <li>Consumo excesivo de aceite</li>
-          <li>Ruidos internos</li>
-          <li>Reparaciones mayores que pudieron evitarse</li>
-        </ul>
-        <p><strong>Un ahorro pequeño hoy puede ser una reparación costosa mañana.</strong></p>
-
-        <h2>Nuestra recomendación</h2>
-        <p>No esperes a que el motor avise. Cambia el aceite:</p>
-        <ul>
-          <li>A tiempo</li>
-          <li>Con el tipo correcto</li>
-          <li>Con filtro nuevo</li>
-          <li>Con una revisión general básica</li>
-        </ul>
-        <p><strong>Prevenir siempre es más barato que reparar.</strong></p>
-
-        <div class="cta">
-          <h3>¿Quieres que lo revisemos?</h3>
-          <p>Si notas algo fuera de lo normal (ruido, vibración, consumo o testigos), tráelo a diagnóstico.</p>
-          <!-- Cambia este enlace por tu WhatsApp o tu página de contacto -->
-          <a href="https://wa.me/5218711562351?text=Hola%20Salvatori%2C%20quiero%20cotizar%20cambio%20de%20aceite%20y%20revisi%C3%B3n." target="_blank" rel="noopener">Pedir revisión por WhatsApp</a>
-                </div>
-
-      </section>
-    </article>
-
-    <footer>
-      © <span id="y"></span> Salvatori Servicio Automotriz. Todos los derechos reservados.
-    </footer>
-
+    <div class="nav-contact">
+      <span class="contact-dato">Tel: 871 723 043</span>
+      <span class="whatsapp">WhatsApp: 871 156 2351</span>
+      <span>Francisco I. Madero 453 Nte. · Gómez Palacio</span>
+    </div>
   </div>
+</header>
 
-  <script>
-    document.getElementById('y').textContent = new Date().getFullYear();
-  </script>
+<main>
+  <div class="breadcrumb">Inicio / Blog / Aceite</div>
+
+  <section class="hero">
+    <span class="tag">Mantenimiento • Aceite</span>
+    <h1>¿Cada cuándo cambiar el aceite del auto?</h1>
+    <p class="subtitle">La verdad que vemos todos los días en el taller</p>
+    <div class="meta">Publicado: <time datetime="2026-01-06">6 de enero de 2026</time></div>
+  </section>
+
+  <article>
+    <p>Si hay algo que escuchamos diario en el taller es esta frase: <strong>“Todavía aguanta, el aceite se ve limpio.”</strong></p>
+    <p>La realidad es que <strong>el aceite no avisa cuando deja de proteger</strong>, y cuando lo hace, el daño ya empezó.</p>
+    <p>Con años de experiencia, hemos visto motores dañados <strong>no por falta de aceite</strong>, sino por <strong>aceite vencido</strong>.</p>
+
+    <h2>¿Por qué el aceite es tan importante?</h2>
+    <p>El aceite cumple funciones críticas:</p>
+    <ul>
+      <li>Lubrica piezas internas del motor</li>
+      <li>Reduce fricción y desgaste</li>
+      <li>Ayuda a controlar la temperatura</li>
+      <li>Limpia residuos internos</li>
+    </ul>
+
+    <div class="callout">👉 El daño por aceite vencido suele ser silencioso y progresivo.</div>
+
+    <h2>Entonces… ¿cada cuándo debo cambiarlo?</h2>
+    <p>La respuesta real es: <strong>depende del uso del auto</strong>, no solo del kilometraje.</p>
+
+    <div class="grid">
+      <div class="mini">
+        <strong>Uso normal en ciudad</strong>
+        <span>Recomendación práctica</span>
+        <p>👉 cada <strong>5,000 a 7,000 km</strong></p>
+      </div>
+
+      <div class="mini">
+        <strong>Mucho tráfico / trayectos cortos</strong>
+        <span>Mayor desgaste</span>
+        <p>👉 <strong>antes de los 5,000 km</strong></p>
+      </div>
+
+      <div class="mini">
+        <strong>Auto parado por largos periodos</strong>
+        <span>También se degrada</span>
+        <p>👉 conviene <strong>revisar y cambiar</strong> por tiempo/uso</p>
+      </div>
+
+      <div class="mini">
+        <strong>Carretera frecuente</strong>
+        <span>Condición más favorable</span>
+        <p>👉 puede extenderse, pero <strong>con revisión</strong></p>
+      </div>
+    </div>
+
+    <p style="font-size:12px;color:#666;">Tip: Los arranques en frío y el tráfico pesado desgastan más que la carretera.</p>
+
+    <h2>“Pero el aceite todavía se ve limpio…”</h2>
+    <p>Este es uno de los errores más comunes. El color <strong>NO</strong> indica:</p>
+    <ul>
+      <li>Capacidad de lubricación</li>
+      <li>Protección contra desgaste</li>
+      <li>Vida útil real</li>
+    </ul>
+    <p>El aceite puede verse “bien” y <strong>ya no proteger</strong>.</p>
+
+    <h2>¿Y el filtro?</h2>
+    <p>Un error frecuente es <strong>cambiar aceite sin cambiar filtro</strong>.</p>
+    <p>¿Por qué está mal?</p>
+    <ul>
+      <li>El filtro guarda residuos</li>
+      <li>Contamina el aceite nuevo</li>
+      <li>Reduce la vida del motor</li>
+    </ul>
+
+    <div class="callout">🔧 Regla práctica: <strong>Aceite nuevo = filtro nuevo</strong>.</div>
+
+    <h2>¿Qué pasa si lo dejas “un poco más”?</h2>
+    <p>En el taller vemos problemas como:</p>
+    <ul>
+      <li>Desgaste prematuro</li>
+      <li>Consumo excesivo de aceite</li>
+      <li>Ruidos internos</li>
+      <li>Reparaciones mayores que pudieron evitarse</li>
+    </ul>
+    <p><strong>Un ahorro pequeño hoy puede ser una reparación costosa mañana.</strong></p>
+
+    <h2>Nuestra recomendación</h2>
+    <p>No esperes a que el motor avise. Cambia el aceite:</p>
+    <ul>
+      <li>A tiempo</li>
+      <li>Con el tipo correcto</li>
+      <li>Con filtro nuevo</li>
+      <li>Con una revisión general básica</li>
+    </ul>
+    <p><strong>Prevenir siempre es más barato que reparar.</strong></p>
+
+    <div class="cta">
+      <p style="margin:0 0 10px;"><strong>¿Quieres que lo revisemos?</strong> Si notas ruido, vibración, consumo o testigos, tráelo a diagnóstico.</p>
+      <a href="https://wa.me/5218711562351?text=Hola%2C%20quiero%20cambio%20de%20aceite%20y%20revisi%C3%B3n." target="_blank" rel="noopener">
+        <button class="btn btn-primary" type="button">Pedir revisión por WhatsApp</button>
+      </a>
+    </div>
+  </article>
+</main>
+
+<footer>
+  Salvatori Servicio Automotriz · Su Taller Experto · Francisco I. Madero 453 Nte., Gómez Palacio · Tel. 871 723 043 · WhatsApp 871 156 2351
+</footer>
+
+<a href="https://wa.me/5218711562351?text=Hola%2C%20necesito%20ayuda%20con%20mi%20auto." target="_blank" rel="noopener" class="btn-wa-float">
+  <span>WhatsApp</span>
+</a>
 </body>
 </html>
