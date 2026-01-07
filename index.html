@@ -270,6 +270,15 @@
 
         .btn-outline:hover { background: rgba(255,255,255,0.1); }
 
+        /* FIX: outline visible sobre fondo blanco */
+        .section .btn-outline{
+            color: #111 !important;
+            border-color: rgba(0,0,0,0.35) !important;
+        }
+        .section .btn-outline:hover{
+            background: rgba(0,0,0,0.06) !important;
+        }
+
         .hero-card {
             background: #ffffff;
             color: #000;
@@ -332,6 +341,13 @@
         .servicio-card ul {
             margin: 6px 0 0 18px;
             padding: 0;
+        }
+
+        /* BLOG CARDS (usa la misma base .servicio-card) */
+        .blog-meta{
+            font-size:11px;
+            color:#555;
+            margin-top:8px;
         }
 
         /* POR QUÉ ELEGIRNOS */
@@ -657,14 +673,6 @@
             font-size: 12px;
         }
 
-        .overlay-links a {
-            display: block;
-            margin: 6px 0;
-            font-size: 13px;
-            color: var(--rojo-oscuro);
-            font-weight: 600;
-        }
-
         /* FOOTER */
         footer {
             background: #111;
@@ -746,10 +754,7 @@
             <a href="#casos">Casos reales</a>
             <a href="#testimonios">Testimonios</a>
             <a href="#publicaciones">Publicaciones</a>
-
-            <!-- ✅ NUEVO -->
             <a href="#blog">Blog</a>
-
             <a href="#bitacora">Bitácora digital</a>
             <a href="whatsapp-ayuda.html">WhatsApp rápido</a>
             <a href="#" id="btnAccesoInterno">Acceso interno</a>
@@ -811,20 +816,13 @@
 
                 <div class="hero-cta">
                     <a href="whatsapp-ayuda.html">
-                        <button class="btn btn-primary">
-                            Hola, necesito ayuda con mi auto
-                        </button>
+                        <button class="btn btn-primary">Hola, necesito ayuda con mi auto</button>
                     </a>
                     <a href="#servicios">
-                        <button class="btn btn-outline">
-                            Ver servicios
-                        </button>
+                        <button class="btn btn-outline">Ver servicios</button>
                     </a>
-                    <!-- ✅ NUEVO -->
                     <a href="#blog">
-                        <button class="btn btn-outline">
-                            Ver Blog
-                        </button>
+                        <button class="btn btn-outline">Ver Blog</button>
                     </a>
                 </div>
             </div>
@@ -854,7 +852,6 @@
                     <li>Afinación de motor 4, 6 y 8 cilindros.</li>
                     <li>Cambio de aceite y filtros.</li>
                     <li>Servicio por kilometraje.</li>
-                  
                 </ul>
             </div>
             <div class="servicio-card">
@@ -916,7 +913,6 @@
                     <li>Refacciones con garantía del proveedor.</li>
                     <li>No cambiamos piezas sin tu autorización.</li>
                     <li>Te explicamos opciones y costos antes de reparar.</li>
-                    <li>Te explicamos opciones y costos antes de reparar.</li>
                 </ul>
             </div>
         </div>
@@ -943,7 +939,7 @@
         </div>
     </section>
 
-    <!-- PAQUETES DE SERVICIO -->
+    <!-- PAQUETES -->
     <section id="paquetes" class="section">
         <h2>Paquetes de servicio</h2>
         <p class="sub">Diseñados para que tengas claridad en lo que incluye cada servicio y puedas planear mejor tus gastos de mantenimiento.</p>
@@ -955,7 +951,6 @@
                     <li>Aceite y filtro de aceite.</li>
                     <li>Filtro de aire y filtro de combustible (según aplicación).</li>
                     <li>Bujías estándar.</li>
-                    
                 </ul>
                 <p class="paquete-precio">Precio preferencial para Uber / Didi.</p>
                 <p class="paquete-nota">El costo final puede variar según tipo de aceite, bujías especiales o condiciones del vehículo.</p>
@@ -987,7 +982,7 @@
         </div>
     </section>
 
-    <!-- UBER / DIDi -->
+    <!-- UBER / DIDI -->
     <section id="plataformas" class="section">
         <h2>Conductores de plataforma: Uber / Didi</h2>
         <p class="sub">Sabemos que tu auto es tu herramienta de trabajo. Cuidamos tu unidad y tu bolsillo.</p>
@@ -1016,16 +1011,14 @@
                     <p>2. Menciona a tu asesor si vienes por recomendación de algún grupo o administrador.</p>
                     <p>3. Nosotros nos encargamos de la bitácora, recordatorios y seguimiento de tu auto.</p>
                     <p style="margin-top:8px;">
-                        <a href="whatsapp-ayuda.html">
-                            📲 Ir a WhatsApp rápido
-                        </a>
+                        <a href="whatsapp-ayuda.html">📲 Ir a WhatsApp rápido</a>
                     </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CASOS REALES -->
+    <!-- CASOS -->
     <section id="casos" class="section">
         <h2>Casos reales del taller</h2>
         <p class="sub">
@@ -1106,9 +1099,7 @@
             <div class="promo-card">
                 <h3>“Gracias por un año más juntos”</h3>
                 <p>Cerramos el año agradeciendo tu confianza con dinámicas especiales de regalo y beneficios en servicios.</p>
-                <p class="promo-detalle">
-                    Consulta en el taller o en nuestras redes las bases y vigencia de cada promoción.
-                </p>
+                <p class="promo-detalle">Consulta en el taller o en nuestras redes las bases y vigencia de cada promoción.</p>
             </div>
             <div class="promo-card" style="border-left-color: var(--amarillo);">
                 <h3>Campañas de temporada</h3>
@@ -1118,9 +1109,7 @@
                     <li>Navidad y fin de año</li>
                     <li>Aniversario del taller</li>
                 </ul>
-                <p class="promo-detalle">
-                    Las dinámicas pueden incluir rifas, regalos y precios especiales en servicios seleccionados.
-                </p>
+                <p class="promo-detalle">Las dinámicas pueden incluir rifas, regalos y precios especiales en servicios seleccionados.</p>
             </div>
         </div>
     </section>
@@ -1134,35 +1123,28 @@
             <div class="rrss-card fb-wrapper">
                 <h3>Facebook</h3>
                 <p>Página oficial Salvatori Servicio Automotriz</p>
-                <iframe 
-                    src="https://www.facebook.com/plugins/page.php?href=https://www.facebook.com/profile.php?id=61572177524767&tabs=timeline&width=400&height=550&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=false" 
-                    style="height:550px;" 
-                    scrolling="no" 
-                    frameborder="0" 
-                    allowfullscreen="true" 
+                <iframe
+                    src="https://www.facebook.com/plugins/page.php?href=https://www.facebook.com/profile.php?id=61572177524767&tabs=timeline&width=400&height=550&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=false"
+                    style="height:550px;"
+                    scrolling="no"
+                    frameborder="0"
+                    allowfullscreen="true"
                     allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
                 </iframe>
             </div>
         </div>
     </section>
 
-    <!-- ✅ BLOG (NUEVO) -->
+    <!-- ✅ BLOG AUTOMÁTICO -->
     <section id="blog" class="section">
         <h2>Blog</h2>
         <p class="sub">Consejos prácticos de mantenimiento y prevención para alargar la vida de tu auto.</p>
 
-        <div class="servicios-grid">
-            <div class="servicio-card">
-                <h3>¿Cada cuándo cambiar el aceite del auto?</h3>
-                <p style="margin:6px 0 10px;">
-                    Recomendaciones reales según el uso del auto (ciudad, tráfico, trayectos cortos y carretera) y errores comunes.
-                </p>
-                <a href="blog/cada-cuando-cambiar-aceite.html">
-                    <button class="btn btn-primary">Leer artículo</button>
-                </a>
-                <p style="font-size:11px; color:#555; margin-top:8px;">Publicado: 6 de enero de 2026</p>
-            </div>
+        <div id="blog-grid" class="servicios-grid">
+            <!-- tarjetas se generan automáticamente desde blog/posts.json -->
         </div>
+
+        <p id="blog-status" style="font-size:12px;color:#555;margin-top:10px;"></p>
     </section>
 
     <!-- WHATSAPP RÁPIDO -->
@@ -1193,10 +1175,9 @@
                     <li>Marca, modelo y año.</li>
                     <li>Qué falla notas (ruidos, luces en tablero, pérdida de fuerza, etc.).</li>
                 </ul>
-               <a href="whatsapp-ayuda.html">
-    <button class="btn btn-primary">Ir a WhatsApp guiado</button>
-</a>
-
+                <a href="whatsapp-ayuda.html">
+                    <button class="btn btn-primary">Ir a WhatsApp guiado</button>
+                </a>
             </div>
         </div>
     </section>
@@ -1215,9 +1196,7 @@
                     <li>Ideal para autos de plataforma y flotillas.</li>
                 </ul>
 
-                <p style="font-size:12px; margin-top:6px;">
-                    Si ya eres cliente y quieres revisar tu historial, ingresa a:
-                </p>
+                <p style="font-size:12px; margin-top:6px;">Si ya eres cliente y quieres revisar tu historial, ingresa a:</p>
 
                 <a href="bitacoras.html">
                     <button class="btn btn-primary">Ver mi bitácora digital</button>
@@ -1250,14 +1229,10 @@
                     <span class="contact-dato">WhatsApp:</span> 871 156 2351
                 </p>
                 <p style="margin-top:6px;">
-                    <a href="https://wa.me/5218711562351" target="_blank" rel="noopener">
-                        📲 Enviar mensaje por WhatsApp
-                    </a>
+                    <a href="https://wa.me/5218711562351" target="_blank" rel="noopener">📲 Enviar mensaje por WhatsApp</a>
                 </p>
 
-                <p style="margin-top:8px;font-size:12px;">
-                    Síguenos en redes:
-                </p>
+                <p style="margin-top:8px;font-size:12px;">Síguenos en redes:</p>
                 <div class="rrss rrss-contact">
                     <a href="https://www.facebook.com/profile.php?id=61572177524767" target="_blank" rel="noopener" class="rrss-fb" aria-label="Facebook">f</a>
                     <a href="https://www.instagram.com/salvatoriautomotriz/" target="_blank" rel="noopener" class="rrss-ig" aria-label="Instagram">ig</a>
@@ -1348,6 +1323,69 @@ overlayInterno.addEventListener('click', (e) => {
         cerrarOverlay();
     }
 });
+</script>
+
+<script>
+/* === BLOG AUTOMÁTICO (GitHub Pages) ===
+   Lee blog/posts.json y genera tarjetas en #blog-grid
+*/
+(function () {
+    const grid = document.getElementById('blog-grid');
+    const status = document.getElementById('blog-status');
+
+    function formatDateMX(iso) {
+        try {
+            return new Date(iso + "T12:00:00").toLocaleDateString('es-MX', {
+                year: 'numeric', month: 'long', day: 'numeric'
+            });
+        } catch (e) {
+            return iso;
+        }
+    }
+
+    fetch('blog/posts.json', { cache: "no-cache" })
+        .then(r => {
+            if (!r.ok) throw new Error("No se pudo cargar blog/posts.json");
+            return r.json();
+        })
+        .then(posts => {
+            if (!Array.isArray(posts) || posts.length === 0) {
+                status.textContent = "Próximamente publicaremos artículos de mantenimiento y prevención.";
+                return;
+            }
+
+            // Ordena del más nuevo al más viejo por date (YYYY-MM-DD)
+            posts.sort((a, b) => (b.date || "").localeCompare(a.date || ""));
+
+            // Mostrar solo los 3 más recientes (cámbialo si quieres)
+            const top = posts.slice(0, 3);
+
+            top.forEach(post => {
+                const title = post.title || "Artículo del blog";
+                const excerpt = post.excerpt || "Consejo práctico de mantenimiento para tu auto.";
+                const url = post.url || "#";
+                const date = post.date ? formatDateMX(post.date) : "";
+
+                const card = document.createElement('div');
+                card.className = 'servicio-card';
+                card.innerHTML = `
+                    <h3>${title}</h3>
+                    <p style="margin:6px 0 10px;">${excerpt}</p>
+                    <a href="${url}">
+                        <button class="btn btn-primary">Leer artículo</button>
+                    </a>
+                    ${date ? `<p class="blog-meta">Publicado: ${date}</p>` : ``}
+                `;
+                grid.appendChild(card);
+            });
+
+            status.textContent = `Mostrando ${top.length} artículo(s) más recientes.`;
+        })
+        .catch(err => {
+            console.error(err);
+            status.textContent = "No se pudo cargar el blog en este momento. Revisa que exista el archivo blog/posts.json.";
+        });
+})();
 </script>
 
 </body>
