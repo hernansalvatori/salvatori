@@ -143,6 +143,50 @@
             }
         }
 
+        /* === Modal WhatsApp (Sí/No) === */
+        .modal-wa {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.45);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            padding: 16px;
+        }
+        .modal-wa.activo { display: flex; }
+
+        .modal-wa .caja {
+            width: 100%;
+            max-width: 420px;
+            background: #fff;
+            border-radius: 14px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            padding: 16px;
+        }
+        .modal-wa .titulo {
+            font-weight: 700;
+            margin: 0 0 6px;
+            font-size: 15px;
+        }
+        .modal-wa .texto {
+            margin: 0 0 14px;
+            font-size: 13px;
+            color: #444;
+        }
+        .modal-wa .acciones {
+            display: flex;
+            gap: 10px;
+            justify-content: flex-end;
+        }
+        .btn-secundario{
+            background: #eee;
+            color: #222;
+        }
+        .btn-secundario:hover{
+            background: #e2e2e2;
+        }
+
     </style>
 </head>
 <body>
@@ -480,6 +524,18 @@
 
 </main>
 
+<!-- Modal WhatsApp Sí/No -->
+<div id="modalWhatsApp" class="modal-wa" aria-hidden="true">
+    <div class="caja">
+        <p class="titulo">Enviar por WhatsApp</p>
+        <p class="texto">¿Quieres enviar esta recepción por WhatsApp?</p>
+        <div class="acciones">
+            <button id="btnNoWA" class="btn btn-secundario" type="button">No</button>
+            <button id="btnSiWA" class="btn btn-primary" type="button">Sí</button>
+        </div>
+    </div>
+</div>
+
 <footer>
     Salvatori Servicio Automotriz · Formato interno de recepción · Uso exclusivo del taller
 </footer>
@@ -488,11 +544,36 @@
     /* === 🌐 Envío a MAKE === */
     const WEBHOOK_URL = "https://hook.us2.make.com/qalrej6f1ms2a6bssqkjte8got8kbuzu";
 
+    // Modal con opciones Sí/No (y siempre se envía al webhook)
+    function preguntarWhatsApp(){
+        return new Promise((resolve) => {
+            const modal = document.getElementById("modalWhatsApp");
+            const btnSi = document.getElementById("btnSiWA");
+            const btnNo = document.getElementById("btnNoWA");
+
+            function cerrar(valor){
+                modal.classList.remove("activo");
+                modal.setAttribute("aria-hidden", "true");
+                btnSi.removeEventListener("click", onSi);
+                btnNo.removeEventListener("click", onNo);
+                resolve(valor);
+            }
+            function onSi(){ cerrar(true); }
+            function onNo(){ cerrar(false); }
+
+            btnSi.addEventListener("click", onSi);
+            btnNo.addEventListener("click", onNo);
+
+            modal.classList.add("activo");
+            modal.setAttribute("aria-hidden", "false");
+        });
+    }
+
     document.getElementById("frmRecepcion").addEventListener("submit", async function(e){
         e.preventDefault();
 
-        // ✅ Pregunta si lo quieres enviar por WhatsApp (Sí/No)
-        const enviarWhatsApp = confirm("¿Quieres enviar esta recepción por WhatsApp?");
+        // ✅ Pregunta Sí/No (pero SIEMPRE se manda al webhook)
+        const enviarWhatsApp = await preguntarWhatsApp();
 
         const form = new FormData(this);
 
