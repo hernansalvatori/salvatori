@@ -491,7 +491,13 @@
     document.getElementById("frmRecepcion").addEventListener("submit", async function(e){
         e.preventDefault();
 
+        // ✅ Pregunta si lo quieres enviar por WhatsApp (Sí/No)
+        const enviarWhatsApp = confirm("¿Quieres enviar esta recepción por WhatsApp?");
+
         const form = new FormData(this);
+
+        // ✅ Se agrega la variable al mismo webhook
+        form.append("EnviarWhatsApp", enviarWhatsApp ? "Si" : "No");
 
         // Campos automáticos
         form.append("FechaEnvio", new Date().toLocaleDateString("en-CA"));
