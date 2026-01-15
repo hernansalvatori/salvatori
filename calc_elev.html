@@ -3,20 +3,21 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Calculadora Elevador Residencial (Tracción + Contrapeso) | Hueco 1.5×1.5</title>
+  <title>Calculadora Elevador Residencial (Tracción + Contrapeso)</title>
   <style>
     :root { --bg:#0b0f14; --card:#111826; --muted:#9aa4b2; --txt:#e6edf3; --ok:#2ecc71; --warn:#f39c12; --bad:#e74c3c; --line:#243044; }
     body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Arial,sans-serif;background:linear-gradient(180deg,#0b0f14 0%, #0a0d12 100%);color:var(--txt);}
     .wrap{max-width:1100px;margin:24px auto;padding:0 16px;}
     h1{font-size:20px;margin:0 0 8px;}
     .sub{color:var(--muted);margin:0 0 18px;line-height:1.4}
-    .grid{display:grid;grid-template-columns:340px 1fr;gap:16px;}
+    .grid{display:grid;grid-template-columns:360px 1fr;gap:16px;}
     @media (max-width: 900px){ .grid{grid-template-columns:1fr;} }
     .card{background:rgba(17,24,38,.9);border:1px solid var(--line);border-radius:14px;padding:14px 14px 12px;box-shadow:0 10px 30px rgba(0,0,0,.25);}
     label{display:block;font-size:12px;color:var(--muted);margin:10px 0 6px;}
     input,select{width:100%;box-sizing:border-box;background:#0b1220;color:var(--txt);border:1px solid #263248;border-radius:10px;padding:10px 10px;font-size:14px;outline:none;}
     input:focus,select:focus{border-color:#3b82f6;}
     .row{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+    .row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;}
     .btns{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap}
     button{cursor:pointer;border:1px solid #2a3a55;background:#132238;color:var(--txt);border-radius:10px;padding:10px 12px;font-weight:600}
     button.primary{background:#1f3a62;border-color:#355a93}
@@ -42,31 +43,46 @@
   <div class="wrap">
     <h1>Calculadora (pre-dimensionamiento) — Elevador Residencial de Tracción + Contrapeso</h1>
     <p class="sub">
-      Entrada: <b>paradas</b>, <b>carga nominal (kg)</b>, <b>recorrido (m)</b>. Estándar fijo: <b>hueco 1.5×1.5 m</b> y <b>foso 0.20 m</b> (20 cm).
-      <br><span class="small">⚠️ Esto NO sustituye ingeniería normativa/cálculo estructural; es para iteración inicial.</span>
+      Variables de entrada: <b>paradas</b>, <b>carga (kg)</b>, <b>recorrido (m)</b>, <b>hueco (m)</b> y <b>foso (m)</b>.
+      <br><span class="small">⚠️ No sustituye verificación normativa/cálculo estructural; es para dimensionamiento inicial y selección de rangos.</span>
     </p>
 
     <div class="grid">
-      <!-- Left: Inputs -->
+      <!-- Inputs -->
       <div class="card">
-        <div class="pill"><span>Estándar:</span> <b>Hueco 1.5×1.5 m</b> · <b>Foso 0.20 m</b> · <b>Puertas abatibles</b></div>
-
-        <label for="paradas">Paradas</label>
-        <input id="paradas" type="number" min="2" step="1" value="2" />
+        <div class="pill"><span>Modelo:</span> <b>Tracción 1:1 + contrapeso</b> · <b>Puertas abatibles</b></div>
 
         <div class="row">
+          <div>
+            <label for="paradas">Paradas</label>
+            <input id="paradas" type="number" min="2" step="1" value="2" />
+          </div>
           <div>
             <label for="carga">Carga nominal (kg)</label>
             <input id="carga" type="number" min="100" step="10" value="400" />
           </div>
+        </div>
+
+        <label for="recorrido">Recorrido total (m)</label>
+        <input id="recorrido" type="number" min="1" step="0.1" value="4" />
+
+        <div class="row">
           <div>
-            <label for="recorrido">Recorrido total (m)</label>
-            <input id="recorrido" type="number" min="1" step="0.1" value="4" />
+            <label for="huecoW">Hueco ancho (m)</label>
+            <input id="huecoW" type="number" min="1.1" max="3.0" step="0.01" value="1.50" />
+          </div>
+          <div>
+            <label for="huecoD">Hueco fondo (m)</label>
+            <input id="huecoD" type="number" min="1.1" max="3.0" step="0.01" value="1.50" />
           </div>
         </div>
 
+        <label for="foso">Foso (m) bajo piso</label>
+        <input id="foso" type="number" min="0.00" max="1.50" step="0.01" value="0.20" />
+
         <details>
           <summary>Opciones (supuestos) — ajustables</summary>
+
           <div class="row">
             <div>
               <label for="vel">Velocidad (m/s) [auto si vacío]</label>
@@ -108,7 +124,36 @@
               <input id="overhead" type="number" min="2.2" max="4.5" step="0.1" value="3.2" />
             </div>
           </div>
-          <p class="note">Estos supuestos controlan el tamaño estimado de motor, cargas y avisos. La selección real de cuerdas/guías depende de proveedor y norma.</p>
+
+          <details>
+            <summary>Geometría reservada (para cabina/contrapeso)</summary>
+            <div class="row3">
+              <div>
+                <label for="cwcol">Columna contrapeso (m)</label>
+                <input id="cwcol" type="number" min="0.25" max="0.60" step="0.01" value="0.35" />
+              </div>
+              <div>
+                <label for="railzone">Zona guías (m)</label>
+                <input id="railzone" type="number" min="0.06" max="0.20" step="0.01" value="0.10" />
+              </div>
+              <div>
+                <label for="runclr">Holgura corrida (m)</label>
+                <input id="runclr" type="number" min="0.02" max="0.10" step="0.01" value="0.05" />
+              </div>
+            </div>
+            <div class="row">
+              <div>
+                <label for="wallt">Espesor pared cabina (m)</label>
+                <input id="wallt" type="number" min="0.015" max="0.06" step="0.001" value="0.030" />
+              </div>
+              <div>
+                <label for="doorW">Puerta libre (m)</label>
+                <input id="doorW" type="number" min="0.65" max="0.95" step="0.01" value="0.80" />
+              </div>
+            </div>
+          </details>
+
+          <p class="note">La selección real de motor/cuerdas/guías depende de proveedor y norma. Aquí se dan rangos y checks de coherencia.</p>
         </details>
 
         <div class="btns">
@@ -121,7 +166,7 @@
         <div id="errors"></div>
       </div>
 
-      <!-- Right: Results -->
+      <!-- Results -->
       <div class="card">
         <div class="kpi">
           <div class="box">
@@ -133,40 +178,57 @@
             <div class="v" id="kpiMotor">—</div>
           </div>
           <div class="box">
+            <div class="t">Caballaje (HP)</div>
+            <div class="v" id="kpiHP">—</div>
+          </div>
+          <div class="box">
             <div class="t">Contrapeso (estim.)</div>
             <div class="v" id="kpiCW">—</div>
           </div>
+        </div>
+
+        <div class="kpi">
           <div class="box">
-            <div class="t">Cabina int. (estim.)</div>
+            <div class="t">Cabina interna (estim.)</div>
             <div class="v" id="kpiCab">—</div>
+          </div>
+          <div class="box">
+            <div class="t">Hueco</div>
+            <div class="v" id="kpiShaft">—</div>
+          </div>
+          <div class="box">
+            <div class="t">Foso</div>
+            <div class="v" id="kpiPit">—</div>
+          </div>
+          <div class="box">
+            <div class="t">Cuerdas (heurística)</div>
+            <div class="v" id="kpiRopes">—</div>
           </div>
         </div>
 
         <div id="warnBox"></div>
 
         <details open>
-          <summary>Reporte estructural y selección de equipos</summary>
+          <summary>Reporte completo (JSON)</summary>
           <pre id="out">Pulsa “Calcular”.</pre>
         </details>
 
         <p class="note">
-          Recomendación práctica: para un “elevador barato pero seguro”, compra certificados: <b>gobernador+paracaídas</b>, <b>interlocks</b>, <b>control+VVVF</b>, <b>buffers</b>, <b>finales de seguridad</b>.
-          Fabrica tú: cabina/sling/contrapeso/ménsulas/puertas (estructura).
+          Tip: si el foso te sale bajo en advertencias, normalmente necesitas un <b>kit low-pit</b> o re-plantear la obra civil.
         </p>
       </div>
     </div>
   </div>
 
   <script>
-    // -----------------------
-    // Math helpers
-    // -----------------------
+    // Helpers
     const clamp = (v, min, max) => Math.max(min, Math.min(max, v));
     const roundSig = (value, sig=3) => {
       if (value === 0) return 0;
       const mult = Math.pow(10, sig - Math.floor(Math.log10(Math.abs(value))) - 1);
       return Math.round(value * mult) / mult;
     };
+    const kW_to_HP = (kW) => kW * 1.34102209;
 
     function download(filename, text) {
       const el = document.createElement('a');
@@ -178,33 +240,34 @@
       document.body.removeChild(el);
     }
 
-    // -----------------------
-    // Core calculator
-    // -----------------------
-    function calculate({stops, loadKg, travelM, speedMode, cwRatio, eta, fric, acc, overheadM}) {
+    function calculate({
+      stops, loadKg, travelM,
+      shaftW, shaftD, pitDepth_m,
+      speedMode, cwRatio, eta, fric, acc, overheadM,
+      cwColumn_m, railZone_m, runningClear_m, cabinWall_t_m, doorClearW_m
+    }) {
       const warnings = [];
       const errors = [];
 
+      // Validation
       if (!Number.isFinite(stops) || stops < 2) errors.push("paradas debe ser >= 2.");
       if (!Number.isFinite(loadKg) || loadKg <= 0) errors.push("carga (kg) debe ser > 0.");
       if (!Number.isFinite(travelM) || travelM <= 0) errors.push("recorrido (m) debe ser > 0.");
+      if (!Number.isFinite(shaftW) || shaftW < 1.0) errors.push("hueco ancho inválido.");
+      if (!Number.isFinite(shaftD) || shaftD < 1.0) errors.push("hueco fondo inválido.");
+      if (!Number.isFinite(pitDepth_m) || pitDepth_m < 0) errors.push("foso inválido.");
       if (!Number.isFinite(eta) || eta <= 0 || eta > 1) errors.push("eficiencia debe estar en (0, 1].");
       if (!Number.isFinite(fric) || fric < 0 || fric > 0.3) errors.push("fricción debe estar en [0, 0.3].");
       if (!Number.isFinite(acc) || acc <= 0 || acc > 2) errors.push("aceleración fuera de rango razonable.");
       if (!Number.isFinite(overheadM) || overheadM < 2.0) errors.push("overhead demasiado bajo para estimación.");
+      if (!Number.isFinite(doorClearW_m) || doorClearW_m < 0.6 || doorClearW_m > 1.0) errors.push("ancho de puerta libre inválido.");
 
       if (errors.length) return { ok:false, errors };
 
-      // Fixed standard shaft
-      const shaftWidth_m = 1.5;
-      const shaftDepth_m = 1.5;
-      const pitDepth_m = 0.20; // per user
-      const doorClear = { w_m: 0.80, h_m: 2.0 };
-
-      // Gravity
+      // Constants
       const g = 9.81;
 
-      // Speed (auto rules)
+      // Speed
       let v_mps = 0.35;
       if (speedMode !== "auto") {
         v_mps = parseFloat(speedMode);
@@ -214,24 +277,27 @@
         if (travelM > 8.0) v_mps = 0.45;
       }
 
-      // Geometry assumptions
-      const cabinWall_t_m = 0.03;      // 30mm
-      const counterweightColumn_m = 0.35; // 350mm
-      const railZone_m = 0.10;
-      const runningClear_m = 0.05;
+      // Cabin dimensions inside shaft (lateral counterweight model)
+      // We assume counterweight occupies width, cabin uses remaining width, depth uses nearly all.
+      const cabinExtWidth_m = shaftW - cwColumn_m - railZone_m - runningClear_m;
+      const cabinExtDepth_m = shaftD - railZone_m - runningClear_m;
 
-      const cabinExtWidth_m = shaftWidth_m - counterweightColumn_m - railZone_m - runningClear_m;
-      const cabinExtDepth_m = shaftDepth_m - railZone_m - runningClear_m;
+      const cabinIntWidth_m = Math.max(0.70, cabinExtWidth_m - 2*cabinWall_t_m);
+      const cabinIntDepth_m = Math.max(0.85, cabinExtDepth_m - 2*cabinWall_t_m);
 
-      const cabinIntWidth_m = Math.max(0.75, cabinExtWidth_m - 2*cabinWall_t_m);
-      const cabinIntDepth_m = Math.max(0.90, cabinExtDepth_m - 2*cabinWall_t_m);
       const cabinArea_m2 = cabinIntWidth_m * cabinIntDepth_m;
 
-      // Cabin+sling mass heuristic (kg)
+      // Coherence checks
+      if (cabinExtWidth_m <= 0.80) warnings.push("Hueco ancho muy justo con columna de contrapeso/holguras actuales. Considera reducir columna/holguras o aumentar hueco.");
+      if (cabinIntWidth_m < 0.80) warnings.push("Cabina interna estimada < 0.80 m: puede sentirse muy estrecha.");
+      if (cabinIntDepth_m < 1.00) warnings.push("Cabina interna estimada < 1.00 m: puede quedar muy corta.");
+      if (doorClearW_m > cabinIntWidth_m - 0.05) warnings.push("Ancho de puerta libre es cercano al ancho interno estimado: revisa marcos, bisagras y holguras.");
+
+      // Cabin+sling mass estimate (kg)
       let cabinMass_kg = 250 + 120*cabinArea_m2 + 0.15*loadKg;
       cabinMass_kg = clamp(cabinMass_kg, 300, 650);
 
-      // Counterweight mass
+      // Counterweight
       const counterMass_kg = cabinMass_kg + cwRatio * loadKg;
 
       // Floors
@@ -252,7 +318,9 @@
 
       let motor_kW = Math.max(2.2, (P_peak_W/1000) * 1.25);
       if (motor_kW < 3.0) motor_kW = 3.0;
-      motor_kW = roundSig(motor_kW, 3);
+
+      // Motor HP
+      const motor_HP = kW_to_HP(motor_kW);
 
       // Rope heuristic
       const suspensionLoad_N = (cabinMass_kg + loadKg) * g;
@@ -307,7 +375,7 @@
       let bracketDesignLoad_N = lateralLoad_N / Math.max(1, (bracketsPerRail/2));
       bracketDesignLoad_N = Math.max(bracketDesignLoad_N, 1500);
 
-      // Top beam reaction
+      // Top beam reaction estimate
       const topBeamVertical_N = 1.2 * suspensionLoad_N;
       const topBeamVertical_kN = roundSig(topBeamVertical_N/1000, 3);
 
@@ -317,9 +385,14 @@
         ? "Paracaídas progresivo (recomendado) o instantáneo con amortiguación (según kit)"
         : "Paracaídas progresivo (típicamente requerido a mayor velocidad)";
 
-      if (pitDepth_m < 0.40) {
-        warnings.push("Foso de 0.20 m es extremadamente pequeño para un elevador de tracción convencional: puede NO permitir buffers/espacios de refugio típicos. Considera low-pit kit/solución específica.");
-      }
+      // Pit warnings
+      if (pitDepth_m < 0.20) warnings.push("Foso < 0.20 m: extremadamente crítico para buffers/refugio. Requiere solución low-pit especializada.");
+      else if (pitDepth_m < 0.40) warnings.push("Foso < 0.40 m: muy limitado para diseño convencional. Considera low-pit kit o ajustar obra civil.");
+      else if (pitDepth_m < 0.60) warnings.push("Foso moderado (<0.60 m): revisa buffers y espacios de seguridad con norma/proveedor.");
+
+      // Shaft warnings
+      if (shaftW < 1.35 || shaftD < 1.35) warnings.push("Hueco < 1.35 m en algún lado: muy apretado para tracción+contrapeso + cabina usable.");
+      if (shaftW < (cwColumn_m + 0.95)) warnings.push("Hueco ancho puede ser insuficiente para contrapeso + cabina razonable. Revisa geometría reservada.");
 
       // Build report
       const report = {
@@ -327,23 +400,20 @@
         inputs: {
           paradas: stops,
           carga_nominal_kg: loadKg,
-          recorrido_m: travelM
-        },
-        standard_shaft: {
-          hueco_m: [shaftWidth_m, shaftDepth_m],
-          foso_m: pitDepth_m,
-          puerta_libre_m: [doorClear.w_m, doorClear.h_m],
-          nota: "Hueco estándar 1.5×1.5 m y foso 0.20 m según solicitud."
+          recorrido_m: travelM,
+          hueco_m: [shaftW, shaftD],
+          foso_m: pitDepth_m
         },
         recommended_geometry: {
           configuration: "Tracción 1:1 con contrapeso lateral + puertas abatibles",
+          door_clear_opening_m: [doorClearW_m, 2.0],
           cabin_internal_m: {
             width: roundSig(cabinIntWidth_m, 3),
             depth: roundSig(cabinIntDepth_m, 3),
             area_m2: roundSig(cabinArea_m2, 3)
           },
           reserved_spaces_m: {
-            counterweight_column: counterweightColumn_m,
+            counterweight_column: cwColumn_m,
             rail_zone: railZone_m,
             running_clearance: runningClear_m,
             cabin_wall_thickness: cabinWall_t_m
@@ -360,7 +430,8 @@
           counterweight_rule: `CW ≈ Cabina + ${Math.round(cwRatio*100)}%×Carga`
         },
         motor_and_drive: {
-          suggested_motor_kW: motor_kW,
+          suggested_motor_kW: roundSig(motor_kW, 3),
+          suggested_motor_HP: roundSig(motor_HP, 3),
           drive: "VVVF (variador) con entradas de seguridad / relé de seguridad",
           assumptions: {
             eta_total: eta,
@@ -368,7 +439,8 @@
             acceleration_mps2: acc
           },
           notes: [
-            "Selección final depende de máquina (polea), eficiencia real, guiado y kit de control.",
+            "Caballaje (HP) se calcula como: HP = kW × 1.341.",
+            "La selección final depende de la máquina (polea), eficiencia real, guiado y kit de control.",
             "Recomendado gearless con freno fail-safe y monitoreo de freno si está disponible."
           ]
         },
@@ -419,8 +491,8 @@
           },
           buffers: {
             recommended: "Buffers en foso (cabina y/o contrapeso según layout y kit).",
-            warning: (pitDepth_m < 0.40)
-              ? "Con foso 0.20 m es probable que necesites solución low-pit específica."
+            pit_related_warning: (pitDepth_m < 0.40)
+              ? "Con foso bajo probablemente necesitas solución low-pit específica."
               : "OK (aún debe verificarse con norma)."
           },
           safety_chain_concept: {
@@ -444,17 +516,14 @@
       return report;
     }
 
-    // -----------------------
-    // UI bindings
-    // -----------------------
+    // UI
     const el = (id) => document.getElementById(id);
-
     let lastReport = null;
 
     function render(report) {
-      // errors
       const errorsBox = el("errors");
       errorsBox.innerHTML = "";
+
       if (!report.ok) {
         const ul = document.createElement("ul");
         ul.className = "errlist";
@@ -469,21 +538,35 @@
         el("warnBox").innerHTML = "";
         el("kpiVel").textContent = "—";
         el("kpiMotor").textContent = "—";
+        el("kpiHP").textContent = "—";
         el("kpiCW").textContent = "—";
         el("kpiCab").textContent = "—";
+        el("kpiShaft").textContent = "—";
+        el("kpiPit").textContent = "—";
+        el("kpiRopes").textContent = "—";
         return;
       }
 
       // KPIs
       el("kpiVel").textContent = report.performance.rated_speed_mps + " m/s";
       el("kpiMotor").textContent = report.motor_and_drive.suggested_motor_kW + " kW";
+      el("kpiHP").textContent = report.motor_and_drive.suggested_motor_HP + " HP";
       el("kpiCW").textContent = report.masses.counterweight_kg + " kg";
+
       const ci = report.recommended_geometry.cabin_internal_m;
       el("kpiCab").textContent = `${ci.width}×${ci.depth} m`;
+
+      const sh = report.inputs.hueco_m;
+      el("kpiShaft").textContent = `${sh[0]}×${sh[1]} m`;
+      el("kpiPit").textContent = report.inputs.foso_m + " m";
+
+      const r = report.ropes.selection_heuristic;
+      el("kpiRopes").textContent = `${r.rope_count}×${r.rope_diameter_mm}mm`;
 
       // Warnings
       const warnBox = el("warnBox");
       warnBox.innerHTML = "";
+
       if (report.warnings && report.warnings.length) {
         const div = document.createElement("div");
         div.className = "pill";
@@ -505,7 +588,6 @@
         warnBox.appendChild(div);
       }
 
-      // Output JSON
       el("out").textContent = JSON.stringify(report, null, 2);
     }
 
@@ -514,6 +596,10 @@
       const loadKg = parseFloat(el("carga").value);
       const travelM = parseFloat(el("recorrido").value);
 
+      const shaftW = parseFloat(el("huecoW").value);
+      const shaftD = parseFloat(el("huecoD").value);
+      const pitDepth_m = parseFloat(el("foso").value);
+
       const speedMode = el("vel").value;
       const cwRatio = parseFloat(el("cwratio").value);
       const eta = parseFloat(el("eta").value);
@@ -521,7 +607,19 @@
       const acc = parseFloat(el("acc").value);
       const overheadM = parseFloat(el("overhead").value);
 
-      const report = calculate({stops, loadKg, travelM, speedMode, cwRatio, eta, fric, acc, overheadM});
+      const cwColumn_m = parseFloat(el("cwcol").value);
+      const railZone_m = parseFloat(el("railzone").value);
+      const runningClear_m = parseFloat(el("runclr").value);
+      const cabinWall_t_m = parseFloat(el("wallt").value);
+      const doorClearW_m = parseFloat(el("doorW").value);
+
+      const report = calculate({
+        stops, loadKg, travelM,
+        shaftW, shaftD, pitDepth_m,
+        speedMode, cwRatio, eta, fric, acc, overheadM,
+        cwColumn_m, railZone_m, runningClear_m, cabinWall_t_m, doorClearW_m
+      });
+
       lastReport = report.ok ? report : null;
       render(report);
     }
@@ -540,7 +638,8 @@
 
     el("downloadBtn").addEventListener("click", () => {
       if (!lastReport) return alert("Primero calcula para generar un JSON válido.");
-      const name = `reporte_elevador_${lastReport.inputs.paradas}paradas_${lastReport.inputs.carga_nominal_kg}kg_${lastReport.inputs.recorrido_m}m.json`;
+      const i = lastReport.inputs;
+      const name = `reporte_elevador_${i.paradas}paradas_${i.carga_nominal_kg}kg_${i.recorrido_m}m_${i.hueco_m[0]}x${i.hueco_m[1]}_foso${i.foso_m}.json`;
       download(name, JSON.stringify(lastReport, null, 2));
     });
 
@@ -548,23 +647,31 @@
       el("paradas").value = 2;
       el("carga").value = 400;
       el("recorrido").value = 4;
+      el("huecoW").value = 1.50;
+      el("huecoD").value = 1.50;
+      el("foso").value = 0.20;
+
       el("vel").value = "auto";
       el("cwratio").value = "0.50";
       el("eta").value = 0.70;
       el("fric").value = 0.08;
       el("acc").value = 0.60;
       el("overhead").value = 3.2;
+
+      el("cwcol").value = 0.35;
+      el("railzone").value = 0.10;
+      el("runclr").value = 0.05;
+      el("wallt").value = 0.030;
+      el("doorW").value = 0.80;
+
       lastReport = null;
       el("errors").innerHTML = "";
       el("warnBox").innerHTML = "";
       el("out").textContent = "Pulsa “Calcular”.";
-      el("kpiVel").textContent = "—";
-      el("kpiMotor").textContent = "—";
-      el("kpiCW").textContent = "—";
-      el("kpiCab").textContent = "—";
+      ["kpiVel","kpiMotor","kpiHP","kpiCW","kpiCab","kpiShaft","kpiPit","kpiRopes"].forEach(id => el(id).textContent = "—");
     });
 
-    // Auto-calc first time
+    // Auto calc
     doCalc();
   </script>
 </body>
