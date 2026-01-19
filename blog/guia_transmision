@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cuidado de la transmisión: guía práctica para alargar su vida | Salvatori Servicio Automotriz</title>
+  <meta name="description" content="Aprende cómo cuidar la transmisión de tu auto: señales de alerta, hábitos recomendados, cambios de aceite/ATF, mantenimiento preventivo y cuándo acudir al taller." />
+  <style>
+    :root{--txt:#1a1a1a;--muted:#555;--bg:#fff;--card:#f7f7f7;--accent:#0b6;--accent2:#c00}
+    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,Arial,sans-serif;color:var(--txt);margin:0;background:var(--bg);line-height:1.55}
+    .wrap{max-width:900px;margin:0 auto;padding:22px}
+    header{padding:10px 0 8px;border-bottom:1px solid #e9e9e9;margin-bottom:16px}
+    h1{font-size:1.9rem;margin:.2rem 0 .4rem}
+    .meta{color:var(--muted);font-size:.95rem}
+    .hero{background:linear-gradient(135deg,#0b6, #0b6 45%, #fff 45%, #fff 55%, #c00 55%);border-radius:16px;padding:18px;margin:16px 0}
+    .hero strong{display:inline-block;background:rgba(255,255,255,.92);padding:8px 10px;border-radius:12px}
+    h2{margin:22px 0 10px;font-size:1.35rem}
+    h3{margin:18px 0 8px;font-size:1.1rem}
+    p{margin:10px 0}
+    .callout{background:var(--card);border-left:6px solid var(--accent);padding:12px 14px;border-radius:12px;margin:14px 0}
+    .warn{border-left-color:var(--accent2)}
+    ul{padding-left:20px}
+    li{margin:6px 0}
+    .grid{display:grid;grid-template-columns:1fr;gap:12px}
+    @media(min-width:860px){.grid{grid-template-columns:1fr 1fr}}
+    .box{background:var(--card);padding:12px 14px;border-radius:14px}
+    .cta{background:#111;color:#fff;border-radius:18px;padding:16px 16px;margin:18px 0}
+    .cta a{color:#fff;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.45)}
+    .faq details{background:var(--card);border-radius:14px;padding:10px 12px;margin:10px 0}
+    .faq summary{cursor:pointer;font-weight:700}
+    .small{font-size:.95rem;color:var(--muted)}
+    .hr{height:1px;background:#e9e9e9;margin:20px 0}
+    .tag{display:inline-block;font-size:.85rem;background:#eef7f1;color:#064;padding:4px 10px;border-radius:999px;margin-right:6px}
+  </style>
+</head>
+
+<body>
+  <article class="wrap">
+    <header>
+      <div>
+        <span class="tag">Mantenimiento</span>
+        <span class="tag">Transmisión</span>
+        <span class="tag">Consejos</span>
+      </div>
+      <h1>Cuidado de la transmisión: cómo alargar su vida y evitar reparaciones costosas</h1>
+      <div class="meta">
+        Salvatori Servicio Automotriz · Gómez Palacio, Dgo. · Actualizado: <time datetime="2026-01-19">19/01/2026</time>
+      </div>
+    </header>
+
+    <section class="hero" aria-label="Introducción destacada">
+      <strong>
+        La transmisión es una de las partes más importantes (y caras) del auto. Con buenos hábitos y mantenimiento
+        preventivo, puedes evitar fallas y prolongar su funcionamiento por muchos kilómetros.
+      </strong>
+    </section>
+
+    <section>
+      <h2>¿Qué hace la transmisión y por qué se desgasta?</h2>
+      <p>
+        La transmisión (manual o automática) se encarga de transmitir la potencia del motor hacia las ruedas.
+        Para lograrlo, utiliza componentes que trabajan con fricción, presión hidráulica, engranes y lubricación.
+        Con el tiempo, el calor, el uso rudo, la falta de servicio o el aceite inadecuado aceleran el desgaste.
+      </p>
+
+      <div class="callout warn">
+        <strong>Dato importante:</strong> Muchas fallas graves empiezan con señales pequeñas. Atenderlas a tiempo suele
+        ser mucho más económico que “esperar a que se quite”.
+      </div>
+    </section>
+
+    <section>
+      <h2>Señales de alerta: ¿cuándo revisar la transmisión?</h2>
+      <div class="grid">
+        <div class="box">
+          <h3>Automática (AT/CVT/DCT)</h3>
+          <ul>
+            <li>Cambios “bruscos”, patinamiento o tarda en entrar la velocidad.</li>
+            <li>Golpes al pasar de P a D o de D a R.</li>
+            <li>Revoluciones suben, pero el auto no avanza como debería.</li>
+            <li>Vibraciones inusuales o “jaloneos” a cierta velocidad.</li>
+            <li>Testigo de transmisión/Check Engine relacionado a cambios.</li>
+            <li>Olor a quemado o fugas de fluido (ATF) rojizo/ámbar.</li>
+          </ul>
+        </div>
+
+        <div class="box">
+          <h3>Manual</h3>
+          <ul>
+            <li>Entran duras las velocidades (en frío o en caliente).</li>
+            <li>Truena o rechina al meter cambios.</li>
+            <li>Se “bota” una velocidad.</li>
+            <li>Zumbidos/ruidos en neutral o al acelerar.</li>
+            <li>Pedal de clutch muy alto o muy bajo, o patina al acelerar.</li>
+            <li>Fugas de aceite de transmisión o del sistema hidráulico del clutch.</li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="small">
+        Si notas una o más señales, lo ideal es revisar cuanto antes para diagnosticar el origen (fluido, sensores,
+        solenoides, clutch, soportes, fugas, etc.).
+      </p>
+    </section>
+
+    <section>
+      <h2>Hábitos que cuidan la transmisión (y los que la dañan)</h2>
+
+      <h3>✅ Hábitos recomendados</h3>
+      <ul>
+        <li><strong>Calienta el auto con suavidad:</strong> los primeros minutos evita aceleraciones fuertes.</li>
+        <li><strong>Usa el freno en alto total:</strong> antes de pasar de D a R o R a D.</li>
+        <li><strong>Respeta la carga:</strong> no excedas el peso del vehículo ni remolques sin preparación.</li>
+        <li><strong>Conducción constante:</strong> evita acelerones y frenados innecesarios en tráfico.</li>
+        <li><strong>Revisa fugas:</strong> un goteo pequeño puede terminar en sobrecalentamiento.</li>
+      </ul>
+
+      <h3>❌ Errores comunes</h3>
+      <ul>
+        <li>Cambiar de D a R (o viceversa) sin estar completamente detenido.</li>
+        <li>Usar “N” en bajadas para “ahorrar gasolina” (no es recomendable y puede ser inseguro).</li>
+        <li>Ignorar tirones o patinamiento pensando que “es normal”.</li>
+        <li>Mezclar fluidos o usar un ATF/aceite que no corresponde.</li>
+        <li>“Lavados” agresivos o servicios sin diagnóstico (pueden empeorar si hay desgaste interno).</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>¿Cada cuándo se cambia el aceite/ATF de la transmisión?</h2>
+      <p>
+        No existe un único intervalo universal: depende de la marca, el tipo de transmisión, el uso y el fluido.
+        Muchos fabricantes establecen rangos o condiciones “severas” (tráfico pesado, calor, montaña, remolque).
+      </p>
+
+      <div class="callout">
+        <strong>Regla práctica:</strong> si tu auto trabaja en ciudad con calor y tráfico, conviene revisar el estado del
+        fluido más seguido. En Salvatori podemos evaluar color/olor, fugas, escaneo y comportamiento en prueba de manejo.
+      </div>
+
+      <div class="grid">
+        <div class="box">
+          <h3>¿Qué revisamos en un servicio preventivo?</h3>
+          <ul>
+            <li>Nivel y condición del fluido (color, olor, contaminación).</li>
+            <li>Fugas en cárter, sellos, líneas y enfriador.</li>
+            <li>Soportes (mounts) y vibraciones.</li>
+            <li>Escaneo de códigos y parámetros (cuando aplica).</li>
+            <li>Prueba de manejo y diagnóstico de cambios.</li>
+          </ul>
+        </div>
+        <div class="box">
+          <h3>¿Cuándo urge atención?</h3>
+          <ul>
+            <li>Patina al acelerar o pierde fuerza.</li>
+            <li>Se enciende testigo y se queda “en una sola velocidad”.</li>
+            <li>Golpes fuertes repetitivos en cambios.</li>
+            <li>Olor a quemado o fluido muy oscuro.</li>
+            <li>Fuga considerable (mancha grande) debajo del auto.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="faq">
+      <h2>Preguntas frecuentes</h2>
+
+      <details>
+        <summary>¿Puedo seguir manejando si siento un “jalón” al cambiar?</summary>
+        <p>
+          Si el jalón es reciente o va empeorando, lo recomendable es revisar cuanto antes. Manejar así puede aumentar
+          el desgaste interno o provocar sobrecalentamiento. Un diagnóstico temprano suele evitar reparaciones mayores.
+        </p>
+      </details>
+
+      <details>
+        <summary>¿El cambio de fluido puede “dañar” una transmisión?</summary>
+        <p>
+          Cuando una transmisión ya está muy desgastada y con residuos internos, un servicio incorrecto (o sin evaluación)
+          puede evidenciar un problema que ya existía. Por eso lo ideal es diagnosticar primero y elegir el procedimiento
+          adecuado según el estado del sistema.
+        </p>
+      </details>
+
+      <details>
+        <summary>¿Qué pasa si uso un fluido incorrecto?</summary>
+        <p>
+          La transmisión depende de la viscosidad y aditivos correctos para presión, fricción y temperatura. Un fluido
+          equivocado puede provocar cambios bruscos, patinamiento y desgaste acelerado.
+        </p>
+      </details>
+    </section>
+
+    <div class="hr"></div>
+
+    <section class="cta" aria-label="Llamado a la acción">
+      <h2 style="margin:0 0 8px;font-size:1.35rem;">¿Quieres revisar tu transmisión?</h2>
+      <p style="margin:0 0 10px;">
+        En <strong>Salvatori Servicio Automotriz</strong> te ayudamos con diagnóstico y mantenimiento preventivo.
+      </p>
+      <p style="margin:0;">
+        📍 <strong>Francisco I. Madero 453 Nte., Gómez Palacio, Dgo.</strong><br />
+        📲 <strong>WhatsApp:</strong> 871 156 2351 &nbsp; · &nbsp; ☎️ <strong>Tel:</strong> 871 723 0430
+      </p>
+      <p style="margin:10px 0 0;" class="small">
+        <em>Tu Taller Experto.</em>
+      </p>
+    </section>
+
+    <footer class="small">
+      <p>
+        Nota: Esta guía es informativa. El mantenimiento correcto depende del modelo, año y tipo de transmisión.
+        Para recomendaciones exactas, lo mejor es revisar el vehículo.
+      </p>
+    </footer>
+  </article>
+</body>
+</html>
