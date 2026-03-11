@@ -1,0 +1,123 @@
+<article class="blog-post">
+  <header class="blog-hero">
+    <div class="container">
+      <span class="blog-category">Diagnóstico Automotriz</span>
+      <h1>¿Por qué se enciende el Check Engine y qué debes hacer?</h1>
+      <p class="blog-excerpt">
+        No siempre significa una falla grave, pero ignorarlo puede salir caro. 
+        Te explicamos las causas más comunes, qué revisar primero y cuándo acudir al taller.
+      </p>
+      <div class="blog-meta">
+        <span>Publicado: 11 de marzo de 2026</span>
+      </div>
+    </div>
+  </header>
+
+  <section class="blog-content">
+    <div class="container">
+      <p>
+        Ver encendido el testigo de <strong>Check Engine</strong> en el tablero puede causar preocupación,
+        y con razón: ese foco indica que la computadora del vehículo detectó una anomalía en alguno de sus sistemas.
+        A veces se trata de algo menor, pero en otros casos puede ser el aviso temprano de una falla que, si se ignora,
+        termina en una reparación más costosa.
+      </p>
+
+      <h2>¿Qué significa realmente el Check Engine?</h2>
+      <p>
+        El Check Engine es una alerta del sistema de diagnóstico del vehículo. Cuando aparece, la computadora
+        registra uno o varios códigos de falla relacionados con sensores, emisiones, encendido, combustible,
+        admisión de aire o funcionamiento del motor.
+      </p>
+      <p>
+        En pocas palabras: <strong>el auto detectó algo fuera de parámetros</strong>. El problema puede ser simple
+        o complejo, pero no conviene adivinar ni seguir manejando durante mucho tiempo sin revisarlo.
+      </p>
+
+      <h2>Causas comunes por las que se prende</h2>
+      <ul>
+        <li>Tapa de gasolina floja o en mal estado.</li>
+        <li>Fallas en sensores de oxígeno.</li>
+        <li>Bujías o bobinas desgastadas.</li>
+        <li>Problemas en el sistema de admisión de aire.</li>
+        <li>Inyectores sucios o mala combustión.</li>
+        <li>Falla en el catalizador.</li>
+        <li>Sensores de motor fuera de rango, como MAF, MAP o temperatura.</li>
+      </ul>
+
+      <h2>¿Se puede seguir usando el auto?</h2>
+      <p>
+        Depende de cómo esté encendido el testigo y de cómo se comporte el vehículo:
+      </p>
+
+      <h3>1. Si el foco está fijo</h3>
+      <p>
+        Generalmente indica una falla que debe revisarse pronto, pero no siempre obliga a detener el auto en ese instante.
+        Aun así, lo recomendable es hacer un diagnóstico lo antes posible para evitar que el problema empeore.
+      </p>
+
+      <h3>2. Si el foco está parpadeando</h3>
+      <p>
+        Aquí sí hay que tomarlo con mayor seriedad. Un parpadeo suele indicar una falla más severa,
+        como una combustión incorrecta que podría dañar el catalizador. En este caso,
+        lo mejor es <strong>dejar de exigir el vehículo y llevarlo a revisión de inmediato</strong>.
+      </p>
+
+      <h2>Señales que acompañan esta alerta</h2>
+      <p>
+        Además del foco en el tablero, es común notar uno o varios de estos síntomas:
+      </p>
+      <ul>
+        <li>Motor inestable o tembloroso.</li>
+        <li>Pérdida de potencia.</li>
+        <li>Consumo excesivo de combustible.</li>
+        <li>Dificultad para arrancar.</li>
+        <li>Olor fuerte a gasolina.</li>
+        <li>Jaloneos al acelerar.</li>
+      </ul>
+
+      <h2>Qué no debes hacer</h2>
+      <p>
+        Uno de los errores más comunes es borrar el código con escáner sin revisar la causa real.
+        Eso puede apagar el foco temporalmente, pero la falla sigue presente. También es mala idea
+        cambiar piezas “por prueba y error”, porque terminas gastando más sin resolver el origen del problema.
+      </p>
+
+      <h2>Qué sí conviene hacer</h2>
+      <ol>
+        <li>Verifica si la tapa de gasolina está bien cerrada.</li>
+        <li>Observa si el vehículo pierde fuerza, vibra o consume más gasolina.</li>
+        <li>Evita trayectos largos si el auto presenta síntomas notorios.</li>
+        <li>Realiza un escaneo profesional para identificar el código exacto.</li>
+        <li>Corrige la causa real, no solo el testigo.</li>
+      </ol>
+
+      <h2>La importancia de un buen diagnóstico</h2>
+      <p>
+        En muchos casos, dos autos pueden mostrar el mismo foco encendido, pero tener causas completamente distintas.
+        Por eso, un buen diagnóstico no consiste solo en “leer códigos”, sino en interpretar datos,
+        revisar señales, confirmar lecturas y comprobar el funcionamiento de sensores, encendido y combustible.
+      </p>
+
+      <p>
+        Atender el Check Engine a tiempo puede evitar daños mayores en componentes costosos del motor
+        y mejorar el rendimiento general del vehículo.
+      </p>
+
+      <div class="blog-callout">
+        <h2>En Salvatori Servicio Automotriz podemos ayudarte</h2>
+        <p>
+          Si tu auto ya encendió el Check Engine, lo revisamos con diagnóstico profesional para detectar
+          la falla real y proponerte una solución clara. Atenderlo a tiempo puede ahorrarte una reparación mayor.
+        </p>
+        <a href="https://wa.me/5218710000000" class="btn-blog">Solicitar revisión por WhatsApp</a>
+      </div>
+
+      <h2>Conclusión</h2>
+      <p>
+        El Check Engine no debe ignorarse. A veces la causa es sencilla, pero también puede ser el primer aviso
+        de una falla que irá creciendo con el tiempo. Lo más inteligente es revisar el vehículo pronto,
+        diagnosticar correctamente y evitar gastos innecesarios.
+      </p>
+    </div>
+  </section>
+</article>
